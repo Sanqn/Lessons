@@ -1958,7 +1958,6 @@
 # print(max(k), k.index(max(k)), sep='\n')
 
 
-
 # n, m = map(int, input().split())
 # a = []
 # for m in range(n):
@@ -2060,12 +2059,58 @@
 #             count += 1
 # print(count)
 
-n, x = map(int, input().split())
+# n, x = map(int, input().split())
+# count = 0
+# for i in range(1, n + 1):
+#     for j in range(1, n + 2):
+#         if i * j == x:
+#             count += 1
+# print(count)
+
+# n = int(input())
+# a = []
+# g = []
+# s = []
+# count = 0
+# count_1 = 0
+# for i in range(n):
+#     a.append(list(map(int, input().split(' '))))
+#
+# for i in range(n):
+#     g.append(a[i][0])
+# for i in range(n):
+#     s.append(a[i][1])
+#
+# for i in range(n):
+#     if g[i] in s:
+#         count += 1
+# if count == n:
+#     count_1 += 1
+# print(count + count_1)
+
+# n = int(input())
+# a = [list(map(int, input().split())) for i in range(n)]
+# count = 0
+# for i in range(n):
+#     for j in range(n):
+#         print(a[i][0], a[j][1])
+#         if a[i][0] == a[j][1]:
+#             count += 1
+# print(count)
+
+N, M = map(int, input().split())
+a = []
 count = 0
-for i in range(1, n + 1):
-    for j in range(1, n + 2):
-        if i * j == x:
+for i in range(N):
+    a.append('.' + input() + '.')
+a.insert(0, ('.' * (M + 2)))
+a.append(('.' * (M + 2)))
+for i in range(1, N + 1):
+    for j in range(1, M + 1):
+        if a[i][j] == a[i][j - 1] == a[i][j + 1] == a[i - 1][j] == a[i + 1][j] == '.':
             count += 1
 print(count)
+
+
 
 
