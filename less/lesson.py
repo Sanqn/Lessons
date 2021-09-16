@@ -2098,19 +2098,66 @@
 #             count += 1
 # print(count)
 
+# N, M = map(int, input().split())
+# a = []
+# count = 0
+# for i in range(N):
+#     a.append('.' + input() + '.')
+# a.insert(0, ('.' * (M + 2)))
+# a.append(('.' * (M + 2)))
+# for i in range(1, N + 1):
+#     for j in range(1, M + 1):
+#         if a[i][j] == a[i][j - 1] == a[i][j + 1] == a[i - 1][j] == a[i + 1][j] == '.':
+#             count += 1
+# print(count)
+
+# n, m = map(int, input().split())
+# a = []
+# b = []
+# g = []
+# for i in range(n):
+#     for j in range(m):
+#         a.append(j)
+# for i in range(len(a)):
+#     b.append(i)
+# while len(b) > m:
+#     pice = b[:m]
+#     g.append(pice)
+#     b = b[m:]
+# g.append(b)
+# for i in range(n):
+#     if (i + 1) % 2 != 0:
+#         print(*g[i])
+#     elif (i + 1) % 2 == 0:
+#         g[i].reverse()
+#         print(*g[i])
+
+# n, m = map(int, input().split())
+# g = []
+# u = 0
+# for i in range(n):
+#     a = []
+#     for j in range(m):
+#         a.append(u)
+#         u += 1
+#     g.append(a)
+# for i in range(n):
+#     if (i + 1) % 2 != 0:
+#         print(*g[i])
+#     elif (i + 1) % 2 == 0:
+#         print(*g[i][::-1])
+
 N, M = map(int, input().split())
-a = []
-count = 0
-for i in range(N):
-    a.append('.' + input() + '.')
-a.insert(0, ('.' * (M + 2)))
-a.append(('.' * (M + 2)))
+n = 0
+
 for i in range(1, N + 1):
-    for j in range(1, M + 1):
-        if a[i][j] == a[i][j - 1] == a[i][j + 1] == a[i - 1][j] == a[i + 1][j] == '.':
-            count += 1
-print(count)
+  x = list(range(n, n + M))
+  n += M
+  if i % 2 == 0:
+    x = x[::-1]
+  print(*x)
 
-
+x = list(range(0, 0 + 10))
+print(x)
 
 
