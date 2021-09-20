@@ -2237,22 +2237,44 @@
 # for i in mat:
 #     print(*i)
 
-n, m = map(int, input().split())
-b, c, l = [], [], []
-for i in range(n):
-    a = input()
-    if 'S' not in a:
-        b.append(a.count(a[i]))
-    else:
-        c.append(a)
-for j in range(m):
-    k = []
-    for i in range(len(c)):
-        k.append(c[i][j])
-    l.append(k)
-for i in range(len(l)):
-    if 'S' not in l[i] and len(l[i]) > 1:
-        b.append(len(l[i]))
-print(sum(b))
+# n, m = map(int, input().split())
+# b, c, l = [], [], []
+# for i in range(n):
+#     a = input()
+#     if 'S' not in a:
+#         b.append(a.count(a[i]))
+#     else:
+#         c.append(a)
+# for j in range(m):
+#     k = []
+#     for i in range(len(c)):
+#         k.append(c[i][j])
+#     l.append(k)
+# for i in range(len(l)):
+#     if 'S' not in l[i] and len(l[i]) > 1:
+#         b.append(len(l[i]))
+# print(sum(b))
+
+n = int(input())
+a = []
+
+for i in range(n + 1):
+    a.append([1] + [0] * n)
+
+for i in range(1, n + 1):
+    for j in range(1, n + 1):
+        a[i][j] = a[i - 1][j] + a[i -1][j - 1]
+
+for i in range(n + 1):
+    for j in range(n + 1):
+        print(a[i][j], end='')
+    print()
+
+
+
+
+
+
+
 
 
