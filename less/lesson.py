@@ -2147,17 +2147,112 @@
 #     elif (i + 1) % 2 == 0:
 #         print(*g[i][::-1])
 
-N, M = map(int, input().split())
-n = 0
+# N, M = map(int, input().split())
+# n = 0
+#
+# for i in range(1, N + 1):
+#   x = list(range(n, n + M))
+#   n += M
+#   if i % 2 == 0:
+#     x = x[::-1]
+#   print(*x)
+#
+# x = list(range(0, 0 + 10))
+# print(x)
 
-for i in range(1, N + 1):
-  x = list(range(n, n + M))
-  n += M
-  if i % 2 == 0:
-    x = x[::-1]
-  print(*x)
+# r = range(10, 100, 10)
+# print(list(r))
 
-x = list(range(0, 0 + 10))
-print(x)
+# n, m = map(int, input().split())
+# N = 0
+# for i in range(1, n + 1):
+#     x = list(range(N, N + m))
+#     print(x)
+#     N += m
+
+# a = [3, 8, 2, 3, 7]
+#
+# for i in range(len(a)):
+#     for j in range(0, len(a) - 1):
+#         if a[j] > a[j + 1]:
+#             a[j], a[j + 1] = a[j + 1], a[j]
+# print(a)
+
+# a = [3, 8, 2, 3, 7]
+#
+# for i in range(len(a)):
+#     for j in range(len(a)):
+#         if j != 0 and a[j] < a[j - 1]:
+#             a[j], a[j - 1] = a[j - 1], a[j]
+# print(a)
+
+# n, m = map(int, input().split())
+# color = 0
+# BW = 0
+# for i in range(n):
+#     a = list(map(str, input().split()))
+#     print(a)
+#     for j in range(m):
+#         if a[j] == 'W' or a[j] == 'B':
+#             BW += 1
+#         else:
+#             color += 1
+# if color == 0:
+#     print('#Black&White')
+# else:
+#     print('#Color')
+
+
+# n = int(input())
+# mat = [[0] * n for i in range(n)]
+# st, m = 1, 0
+# # Заранее присваиваю значение центральному элементу
+# # матрицы
+# mat[n // 2][n // 2] = n * n
+# print(n // 2)
+# for v in range(n // 2):
+#     # Заполнение верхней горизонтальной матрицы
+#     for i in range(n - m):
+#         mat[v][i + v] = st
+#         st += 1
+#         # i+=1
+#     # Заполнение правой вертикальной матрицы
+#     for i in range(v + 1, n - v):
+#         mat[i][-v - 1] = st
+#         st += 1
+#         # i+=1
+#     # Заполнение нижней горизонтальной матрицы
+#     for i in range(v + 1, n - v):
+#         mat[-v - 1][-i - 1] = st
+#         st += 1
+#         # i+=1
+#     # Заполнение левой вертикальной матрицы
+#     for i in range(v + 1, n - (v + 1)):
+#         mat[-i - 1][v] = st
+#         st += 1
+#         # i+=1
+#     # v+=1
+#     m += 2
+# # Вывод результата на экран
+# for i in mat:
+#     print(*i)
+
+n, m = map(int, input().split())
+b, c, l = [], [], []
+for i in range(n):
+    a = input()
+    if 'S' not in a:
+        b.append(a.count(a[i]))
+    else:
+        c.append(a)
+for j in range(m):
+    k = []
+    for i in range(len(c)):
+        k.append(c[i][j])
+    l.append(k)
+for i in range(len(l)):
+    if 'S' not in l[i] and len(l[i]) > 1:
+        b.append(len(l[i]))
+print(sum(b))
 
 
