@@ -2255,26 +2255,139 @@
 #         b.append(len(l[i]))
 # print(sum(b))
 
-n = int(input())
-a = []
+# n = int(input())
+# a = []
+#
+# for i in range(n + 1):
+#     a.append([1] + [0] * n)
+#
+# for i in range(1, i + 1):
+#     for j in range(1, i + 1):
+#         a[i][j] = a[i - 1][j] + a[i -1][j - 1]
+#
+# for i in range(i + 1):
+#     for j in range(i + 1):
+#         print(a[i][j], end='')
+#     print()
 
-for i in range(n + 1):
-    a.append([1] + [0] * n)
+# [выражение for val in коллеция]
 
-for i in range(1, n + 1):
-    for j in range(1, n + 1):
-        a[i][j] = a[i - 1][j] + a[i -1][j - 1]
+# #[0, 0, 0, 0, 0, 0, 0, 0]
+# a = [0 for i in range(8)]
+# print(a)
+# #
+# a = []
+# for i in range(8):
+#     a.append(0)
+# print(a)
+# #[0, 1, 2, 3, 4, 5, 6, 7]
+# a = [i for i in range(8)]
+# print(a)
+# # или
+# a = []
+# for i in range(8):
+#     a.append(i)
+# print(a)
+#
+# #[0, 1, 4, 9, 16, 25, 36, 49]
+# a = [i**2 for i in range(8)]
+# print(a)
 
-for i in range(n + 1):
-    for j in range(n + 1):
-        print(a[i][j], end='')
-    print()
+# a = [i % 2 for i in range(21)]
+# print(a)
+#
+# a = [i for i in 'hello']
+# print(a)
+#
+# #or
+#
+# a = []
+# for i in 'Hello':
+#     a.append(i)
+# print(a)
+
+# a = [ord(i) for i in 'hello']
+# print(a)
+
+# import random
+#
+# a = [random.randint(-10, 10) for i in range(10)]
+# print(a)
+# a = [i + 1 for i in a]
+# print(a)
+
+# [выражение for val in коллеция if условие]
+
+# import random
+#
+# a = [random.randint(-10, 10) for i in range(10)]
+# print(a)
+# a = [i for i in a if i % 2 == 0 and i % 3 == 0]
+# print(a)
+
+#-----------------------------------------------------------------------
+# a = input().split()
+# b = []
+# for i in a:
+#     b.append(int(i))
+# print(b)
+
+# or
+
+# a = input().split()
+# a = [int(i) for i in a]
+# print(a)
+
+# n = 4
+# m = 5
+#
+# a = [[0] * m for i in range(n)]
+# for i in a:
+#     print(i)
+#
+# #or
+#
+# a = []
+# for i in range(n):
+#         a.append([0] * m)
+# for i in a:
+#     print(i)
+
+# a = [[i, j] for i in 'abs' for j in range(4)]
+# for i in a:
+#     print(i)
+
+# a = [[i * j] for i in range(6) for j in range(4)  if i * j >= 10]
+# for i in a:
+#     print(i)
+
+# zeroes = [0 for i in range(100)]
+# print(len(zeroes))
 
 
+# n = int(input())
+# a = [i for i in range(1, n + 1)]
+# print(a)
 
+from string import ascii_uppercase
+# n = int(input())
+# a = [ascii_uppercase[i] for i in range(n)]
+# print(a)
 
+# a = [ascii_uppercase[i] for i in range(int(input()))]
+# print(a)
 
+# print(list(ascii_uppercase[:int(input())]))
 
+# st = 'Create a list of the first letters of every word in this string'
+# st = [i[0] for i in st.split(' ')]
+# print(st)
 
+# from string import ascii_uppercase
+# n = int(input())
+# a = [ascii_uppercase[i] * (i + 1) for i in range(n)]
+# print(a)
 
-
+a, b = map(int, input().split())
+s = [i**2 for i in range(a, b + 1) if a <= b] or [i**3 for i in range(b, a + 1)[::-1] if a > b]
+print(s)
