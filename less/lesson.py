@@ -2325,7 +2325,7 @@
 # a = [i for i in a if i % 2 == 0 and i % 3 == 0]
 # print(a)
 
-#-----------------------------------------------------------------------
+# -----------------------------------------------------------------------
 # a = input().split()
 # b = []
 # for i in a:
@@ -2370,6 +2370,7 @@
 # print(a)
 
 from string import ascii_uppercase
+
 # n = int(input())
 # a = [ascii_uppercase[i] for i in range(n)]
 # print(a)
@@ -2388,6 +2389,75 @@ from string import ascii_uppercase
 # a = [ascii_uppercase[i] * (i + 1) for i in range(n)]
 # print(a)
 
-a, b = map(int, input().split())
-s = [i**2 for i in range(a, b + 1) if a <= b] or [i**3 for i in range(b, a + 1)[::-1] if a > b]
-print(s)
+# a, b = map(int, input().split())
+# s = [i**2 for i in range(a, b + 1) if a <= b] or [i**3 for i in range(b, a + 1)[::-1] if a > b]
+# print(s)
+
+# n = int(input())
+# s = [i for i in range(1, n + 1) if n % i == 0]
+# print(s)
+
+# phrase = 'Take only the words that start with t in this sentence'
+# s = [i for i in phrase.split(' ')]
+# s = [s[i] for i in range(len(s)) if s[i][0] == 'T' or s[i][0] == 't']
+# print(s)
+
+# or
+
+# print([i for i in phrase.split(' ') if i[0] == 'T' or i[0] == 't'])
+# print([i for i in phrase.split(' ') if i[0] in 'Tt'])
+# print([i for i in phrase.split(' ') if i.startswith(('T', 't'))])
+
+# a = [
+#     ('Mikle', 1995),
+#     ('Godridg', 1965),
+#     ['Gorhorn', 2005],
+#     ('Jonson', 2011),
+#     ('Davinci', 1970)
+# ]
+# b = [elem[0] for elem in a if elem[0].startswith('M')]
+# print(b)
+# b = [elem[1] for elem in a if elem[1] > 2000]
+# print(b)
+# b = [elem[0][0] for elem in a if elem[1] > 2000]
+# print(b)
+
+# a = {
+#     'Mikle': {'age': 1995, 'hobby': 'soccer', 'car': 'BMW'},
+#     'Godridg': {'age': 1967, 'hobby': 'box', 'car': 'Jaguar'},
+#     'Jonson': {'age': 2001, 'hobby': 'IT', 'car': 'Opel'},
+#     'Garry': {'age': 2005, 'hobby': 'travel', 'car': 'Lancha'},
+# }
+# b = [[elem, a[elem]['car']] for elem in a if a[elem]['age'] < 2000]
+# print(b)
+
+# a = 'jgslgjslJFLFJl45ksg,b,d;237'
+# b = [int(i) for i in a if i.isdigit()]
+# print(b)
+# b = [i for i in a if i.isalpha()]
+# print(b)
+
+# import random
+# n = 6
+# m = 6
+#
+# a = [[random.randint(1, 7) for j in range(m)] for i in range(n)]
+# for i in a:
+#     print(i)
+# print()
+# b = [a[i][j] for i in range(n) for j in range(m) if i == j]
+# c = [a[2][j] for j in range(m)]
+# f = [a[i][3] for i in range(n)]
+# print('diagonal', b)
+# print('2d line', c)
+# print('3d column', f)
+
+# n = 5
+# m = 5
+# a = [[(i * j) for j in range(1, m + 1)] for i in range(1, n + 1)]
+# for i in a:
+#     print(i)
+
+vector = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]]
+vector = [vector[i][j] for i in range(len(vector)) for j in range((len(vector[0])))]
+print(vector)
