@@ -2458,6 +2458,23 @@ from string import ascii_uppercase
 # for i in a:
 #     print(i)
 
-vector = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]]
-vector = [vector[i][j] for i in range(len(vector)) for j in range((len(vector[0])))]
-print(vector)
+# vector = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]]
+# vector = [vector[i][j] for i in range(len(vector)) for j in range((len(vector[0])))]
+# print(vector)
+
+# Dict --------------------------------------------
+
+b = {}
+print(b)
+n = dict()
+print(n)
+c = dict.fromkeys(['a', 'b'], 100)
+print(c)
+
+a = {'city': 'NY',
+    'city2': 'LY',
+     'city3': 'Chicago'
+}
+
+for key in a:
+    print(key, a[key])
