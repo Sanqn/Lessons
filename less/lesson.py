@@ -2464,17 +2464,117 @@ from string import ascii_uppercase
 
 # Dict --------------------------------------------
 
-b = {}
-print(b)
-n = dict()
-print(n)
-c = dict.fromkeys(['a', 'b'], 100)
-print(c)
+# b = {}
+# print(b)
+# n = dict()
+# print(n)
+# c = dict.fromkeys(['a', 'b'], 100)
+# print(c)
+#
+# a = {'city': 'NY',
+#     'city2': 'LY',
+#      'city3': 'Chicago'
+# }
+#
+# for key in a:
+#     print(key, a[key])
 
-a = {'city': 'NY',
-    'city2': 'LY',
-     'city3': 'Chicago'
-}
+# person = {}
+# a = 'Garry Adan sendler Oxford 4 5 6 8 9 10'
+# a = a.split()
+# person['Name'] = a[0]
+# person['Secodname'] = a[1]
+# person['Lastname'] = a[2]
+# person['University'] = a[3]
+# person['Grids'] = []
+# for i in a[4:10]:
+#     person['Grids'].append(int(i))
+# print(person)
+# del person['University']
+# print(person)
+# print('Name' in person)
+# if 'University' in person:
+#     print(person['University'])
+# else:
+#     person['University'] = 'Oxford'
+# print(person)
+# print(person.get('Name'))
+# print(person.setdefault('Grids'))# если нет такого ключа, создаст новый ключ со значением None
+# # или задать значение через запятую
+# person.setdefault('school', 'Florida')
+# print(person)
+# print(person.pop('Secodname'))
+# print(person)
+# print(person.popitem()) # удаляет рандомно ключ и значение, т.к. словарь не упорядоченная последов..
+# print(person.keys()) # возвращает все ключи из словаря
+# for key in dict.keys(person):
+#     print(key)
+# print(person.values()) # возвращает значение ключа
+# for value in person.values():
+#     print(value)
+# for i in person:
+#     print(i, '+', person[i])
+# print(person.items()) # возвращает картеж пар(key, value)
+# for key, value in person.items():
+#     print(key, ':', value)
 
-for key in a:
-    print(key, a[key])
+
+# n = int(input())
+# b = {}
+# for i in range(1, n + 1):
+#     if i not in b:
+#         b[i] = i * i
+# print(b)
+
+# n = int(input())
+# b = {}
+# for i in range(1, n + 1):
+#     b.setdefault(i, i * i)
+# print(b)
+
+# print({i: i*i for i in range(1, int(input()) + 1)})
+
+# from string import ascii_lowercase
+# alphabet = {ascii_lowercase[i]: (i + 1) for i in range(len(ascii_lowercase))}
+# for key, value in alphabet.items():
+#     print(key, value)
+
+# d1 = {'a': 100, 'b': 200, 'c': 333}
+# d2 = {'x': 300, 'y': 200, 'z': 777}
+# rez = d1 | d2
+# print(rez)
+#
+# d1 = {'a': 100, 'b': 200, 'c': 333}
+# d2 = {'x': 300, 'y': 200, 'z': 777}
+# rez = {**d1, **d2}
+# print(rez)
+
+log = {}
+for i in range(int(input())):
+    a = input()
+    if a in log:
+        log[a] += 1
+        print(a + str(log[a]))
+    else:
+        log[a] = 0
+        print('OK')
+
+
+# logins = {}
+# logins['n'] = 2
+# logins['n'] = logins['n'] + 3
+# print(logins)
+# for i in logins:
+#     print(i + str(logins[i]))
+
+
+
+
+
+
+
+
+
+
+
+
