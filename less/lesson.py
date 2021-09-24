@@ -2371,6 +2371,7 @@
 
 from string import ascii_uppercase
 
+
 # n = int(input())
 # a = [ascii_uppercase[i] for i in range(n)]
 # print(a)
@@ -2539,6 +2540,13 @@ from string import ascii_uppercase
 # for key, value in alphabet.items():
 #     print(key, value)
 
+# from string import ascii_lowercase
+# alphabet = {}
+# for i in range(len(ascii_lowercase)):
+#     alphabet[ascii_lowercase[i]] = i + 1 #setdefault(ascii_lowercase[i], i + 1)
+# print(alphabet)
+
+
 # d1 = {'a': 100, 'b': 200, 'c': 333}
 # d2 = {'x': 300, 'y': 200, 'z': 777}
 # rez = d1 | d2
@@ -2549,15 +2557,22 @@ from string import ascii_uppercase
 # rez = {**d1, **d2}
 # print(rez)
 
-log = {}
-for i in range(int(input())):
-    a = input()
-    if a in log:
-        log[a] += 1
-        print(a + str(log[a]))
-    else:
-        log[a] = 0
-        print('OK')
+# d1 = {'a': 100, 'b': 200, 'c': 333}
+# d2 = {'x': 300, 'y': 200, 'z': 777}
+# rez = d1
+# for i in d2:
+#     d1.setdefault(i, d2[i])
+# print(rez)
+
+# log = {}
+# for i in range(int(input())):
+#     a = input()
+#     if a in log:
+#         log[a] += 1
+#         print(a + str(log[a]))
+#     else:
+#         log[a] = 0
+#         print('OK')
 
 
 # logins = {}
@@ -2567,14 +2582,105 @@ for i in range(int(input())):
 # for i in logins:
 #     print(i + str(logins[i]))
 
+# def create_phone_number(n):
+#     n = str(n).replace(',', '').replace(' ', '').replace('[', '').replace(']', '')
+#     return f'({n[:3]}) {n[3:6]} - {n[6:]}'
+# print(create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+
+# def create_phone_number(n):
+#     return "({}{}{}) {}{}{}-{}{}{}{}".format(*n)
+# print(create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+
+# def create_phone_number(n):
+#     return f'({n[0]}{n[1]}{n[2]}) {n[3]}{n[4]}{n[5]}-{n[6]}{n[7]}{n[8]}{n[9]}'
+# print(create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
 
 
+# def sort_vowels(s):
+#     b = []
+#     for i in range(len(s)):
+#         if s[i].isdigit() or s[i] == None:
+#             print('')
+#             break
+#         elif s[i] in 'A, E, I, O, U, Y' or s[i] in 'a, e, i, o, u, y':
+#             b.append('|' + s[i])
+#         else:
+#             b.append(s[i] + '|')
+#     for i in range(len(b)):
+#         print(b[i])
+# sort_vowels(input())
 
+# a = {
+#     'BMW': 145,
+#     'Oprl': 1478,
+#     'Reno': 2578,
+#     'Jaguar': 578
+# }
+#
+# for i in sorted(a.items(), key=lambda para: (para[1], para[0])):
+#     print(i)
 
+# s = []
+# d = {}
+# g = []
+# while True:
+#     a = input()
+#     if a == 'конец':
+#         break
+#     else:
+#         s.append(a)
+# for i in s:
+#     i = i.replace('[', '').replace(']', '').split(':')
+#     g.append(i)
+# for i in g:
+#     d.setdefault(int(i[1]), i[0])
+# for i in sorted(d)[::-1]:
+#     print(d[i])
 
+# or
 
+# d = {}
+# while True:
+#     a = input()
+#     if a == 'конец':
+#         break
+#     else:
+#         spis = a.split(':')
+#         d.setdefault(int(spis[1]), spis[0])
+# for i in sorted(d)[::-1]:
+#     print(d[i])
 
+# new_d = {}
+# d = {}
+# while True:
+#     a = input()
+#     if a == 'конец':
+#         break
+#     else:
+#         spis = a.replace(' ', '').split(',')
+#         d.setdefault(spis[0], []).append(int(spis[1]))
+# # for i in d:
+#     # new_d.setdefault(i, (sum(d[i])/len(d[i])))
+# # for i in sorted(new_d.items(), key=lambda para: (-para[1], para[0])):
+# #     print(*i)
+#
+# #or
+#
+# for k, v in d.items():
+#     d[k] = sum(v)/len(v)
+#
+# for k, v in sorted(d.items(), key=lambda para: (-para[1], para[0])):
+#     print(k, v)
 
+d = {}
 
+for s in iter(input, 'конец'):
+    k, v = s.split(', ')
+    d.setdefault(k, []).append(int(v))
 
+for k, v in d.items():
+    d[k] = sum(v) / len(v)
+
+for k, v in sorted(d.items(), key=lambda x: (-x[1], x[0])):
+    print(k, v)
 
