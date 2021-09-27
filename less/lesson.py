@@ -2741,18 +2741,42 @@ from string import ascii_uppercase
 #     else:
 #         print('Неизвестный номер')
 
-n = {}
+# n = {}
+# for i in range(int(input())):
+#     item = input().split()
+#     if item[1] in n:
+#         n[item[1]].append(item[0])
+#     else:
+#         n[item[1]] = [item[0]]
+# for i in range(int(input())):
+#     name = input()
+#     if name in n:
+#         print(*n[name])
+#     else:
+#         print('Неизвестный номер')
+# b = {}
+# for _ in range(int(input())):
+#     phone_no, name = input().split()
+#     b[name] = b.get(name, []) + [phone_no]
+# for _ in range(int(input())):
+#     lst = b.get(input(), [])
+#     print(*lst if lst else ['Неизвестный номер'])
+
+b = {}
 for i in range(int(input())):
-    item = input().split()
-    if item[1] in n:
-        n[item[1]].append(item[0])
-    else:
-        n[item[1]] = [item[0]]
-for i in range(int(input())):
-    name = input()
-    if name in n:
-        print(*n[name])
-    else:
-        print('Неизвестный номер')
+    name, date, mon = input().split()
+    b[mon] = sorted(b.get(mon, []) + [name])
 
 
+#     b[mon].sort()
+#
+for i in range(int(input())):
+    mon = input()
+    if mon in b:
+        print(*b[mon])
+    else:
+        print('Нет данных')
+#или
+
+# for _ in range(int(input())):
+#     print(*sorted(b.get(input(), ["Нет данных"])))
