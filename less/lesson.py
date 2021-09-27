@@ -2672,15 +2672,87 @@ from string import ascii_uppercase
 # for k, v in sorted(d.items(), key=lambda para: (-para[1], para[0])):
 #     print(k, v)
 
-d = {}
+# d = {}
+#
+# for s in iter(input, 'конец'):
+#     k, v = s.split(', ')
+#     d.setdefault(k, []).append(int(v))
+#
+# for k, v in d.items():
+#     d[k] = sum(v) / len(v)
+#
+# for k, v in sorted(d.items(), key=lambda x: (-x[1], x[0])):
+#     print(k, v)
 
-for s in iter(input, 'конец'):
-    k, v = s.split(', ')
-    d.setdefault(k, []).append(int(v))
+# n = int(input())
+# k = {}
+# l = {}
+# for i in range(n):
+#     j = input()
+#     if j in k:
+#         k.setdefault(j, []).append(1)
+#     else:
+#         k.setdefault(j, []).append(1)
+# for k, v in sorted(k.items(), key=lambda x: (x[1])):
+#     l.setdefault(k, sum(v))
+# for k, v in filter(lambda x: l[x[0]] == max(l.values()), l.items()):
+#     print(f'{k}, {v}')
+# for k, v in filter(lambda x: l[x[0]] == min(l.values()), l.items()):
+#     print(f'{k}, {v}')
 
-for k, v in d.items():
-    d[k] = sum(v) / len(v)
+# n = int(input())
+# l = {}
+# for i in range(n):
+#     j = input()
+#     if j not in l:
+#         l[j] = 1
+#     else:
+#         l[j] += 1
+# l_max = max(l, key=l.get)
+# l_min = min(l, key=l.get)
+# print(f'{l_max}, {l[l_max]}')
+# print(f'{l_min}, {l[l_min]}')
 
-for k, v in sorted(d.items(), key=lambda x: (-x[1], x[0])):
-    print(k, v)
+# s = {}
+# for i in range(int(input())):
+#     x = input()
+#     s[x] = s.get(x, 0) + 1
+# print(*max(s.items(), key = lambda value: value[1]), sep = ', ')
+# print(*min(s.items(), key = lambda value: value[1]), sep = ', ')
+
+# s = {}
+# for i in range(int(input())):
+#     x = input()
+#     s[x] = s.setdefault(x, 0) + 1
+# print(*max(s.items(), key=lambda val: val[1]), sep=', ')
+# print(*min(s.items(), key=lambda val: val[1]), sep=', ')
+
+# s = {}
+# n = {}
+# for i in range(int(input())):
+#     x = input().split()
+#     s.setdefault(*x)
+# for k, v in s.items():
+#     n.setdefault(v, []).append(k)
+# for i in range(int(input())):
+#     name = input()
+#     if name in n:
+#         print(*n[name])
+#     else:
+#         print('Неизвестный номер')
+
+n = {}
+for i in range(int(input())):
+    item = input().split()
+    if item[1] in n:
+        n[item[1]].append(item[0])
+    else:
+        n[item[1]] = [item[0]]
+for i in range(int(input())):
+    name = input()
+    if name in n:
+        print(*n[name])
+    else:
+        print('Неизвестный номер')
+
 
