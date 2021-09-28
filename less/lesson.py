@@ -2469,6 +2469,8 @@ from string import ascii_uppercase
 # print(b)
 # n = dict()
 # print(n)
+
+# #{'a': 100, 'b': 100}
 # c = dict.fromkeys(['a', 'b'], 100)
 # print(c)
 #
@@ -2491,15 +2493,19 @@ from string import ascii_uppercase
 # for i in a[4:10]:
 #     person['Grids'].append(int(i))
 # print(person)
-# del person['University']
+
+# del person['University'] # удаление ключа--------------
 # print(person)
+
 # print('Name' in person)
 # if 'University' in person:
 #     print(person['University'])
 # else:
 #     person['University'] = 'Oxford'
+
+
 # print(person)
-# print(person.get('Name'))
+# print(person.get('Name'))# если нет такого ключа, создаст новый ключ со значением None
 # print(person.setdefault('Grids'))# если нет такого ключа, создаст новый ключ со значением None
 # # или задать значение через запятую
 # person.setdefault('school', 'Florida')
@@ -2762,21 +2768,137 @@ from string import ascii_uppercase
 #     lst = b.get(input(), [])
 #     print(*lst if lst else ['Неизвестный номер'])
 
-b = {}
-for i in range(int(input())):
-    name, date, mon = input().split()
-    b[mon] = sorted(b.get(mon, []) + [name])
-
-
-#     b[mon].sort()!
+# b = {}
+# for i in range(int(input())):
+#     name, date, mon = input().split()
+#     b[mon] = sorted(b.get(mon, []) + [name])
 #
-for i in range(int(input())):
-    mon = input()
-    if mon in b:
-        print(*b[mon])
-    else:
-        print('Нет данных')
+#
+# #     b[mon].sort()!
+# #
+# for i in range(int(input())):
+#     mon = input()
+#     if mon in b:
+#         print(*b[mon])
+#     else:
+#         print('Нет данных')
 #или
 
 # for _ in range(int(input())):
 #     print(*sorted(b.get(input(), ["Нет данных"])))
+
+# s = input()
+# d = {}
+#
+# for i in s:
+#     if i.isalpha():
+#         d[i] = d.get(i, 0) + 1
+#         # if i in d:
+#         #     d[i] += 1
+#         # else:
+#         #     d[i] = 1
+# for i in sorted(d):
+#     print(i, d[i])
+
+# words = {}
+#
+# while True:
+#     n = input()
+#     if n in words:
+#         print(f'{n} переводится как {words[n]}')
+#     else:
+#         print(f'Введите перевод слова {n}')
+#         words[n] = input()
+import age as age
+
+# a = {
+#     'Mikle': {'age': 1995, 'hobby': 'soccer', 'car': 'BMW'},
+#     'Godridg': {'age': 1967, 'hobby': 'box', 'car': 'Jaguar'},
+#     'Jonson': {'age': 2001, 'hobby': 'IT', 'car': 'Opel'},
+#     'Garry': {'age': 2005, 'hobby': 'travel', 'car': 'Lancha'},
+# }
+#
+# name = ['Mikle', 'Godridg', 'Jonson', 'Garry']
+# for person in name:
+#     # print(person, a[person]['hobby'])
+#     print(person)
+#     for data in a[person]:
+#         print(data, a[person][data])
+
+# b = [(name, a[name]['car']) for name in a]
+# print(b)
+
+# s = {}
+# n = input()
+#
+# for i in n:
+#     i = i.lower()
+#     if i.isalpha():
+#         s[i] = s.get(i, 0) + 1
+# print(s)
+
+# data = {
+#   "my_friends": {
+#     "count": ...,
+#     "items": [
+#       {
+#         "first_name": 'Lot',
+#         "id": 1,
+#         "last_name": 'Cotovki',
+#       },
+#       {
+#         "first_name": 'San',
+#         "id": 2,
+#         "last_name": 'Shurgen',
+#       },
+#     ]
+#   }
+# }
+#
+# names = []
+# for i in data:
+#   print(data[i]['items'])
+#   for name in data[i]['items']:
+#     names.append(name['first_name'])
+# for i in sorted(names):
+#   print(i)
+
+# a = []
+# b = []
+# n, s = input(), input()
+# for i in n:
+#   a.append(i)
+# for i in s:
+#   b.append(i)
+# if sorted(a) == sorted(b):
+#   print('YES')
+# else:
+#   print('NO')
+
+# s1, s2 = input(), input()
+# d1, d2 = {}, {}
+# for i in s1:
+#   d1[i] = d1.get(i, 0) + 1
+# for i in s2:
+#   d2[i] = d2.get(i, 0) + 1
+# print('YES 'if d1 == d2 else 'No')
+# c = []
+
+morze = {'a': '•—', 'b': '—•••', 'c': '—•—•', 'd': '—••',
+         'e': '•', 'f': '••—•', 'g': '——•', 'h': '••••',
+         'i': '••', 'j': '•———', 'k': '—•—', 'l': '•—••',
+         'm': '——', 'n': '—•', 'o': '———', 'p': '•——•',
+         'q': '——•—', 'r': '•—•', 's': '•••', 't': '—',
+         'u': '••—', 'v': '•••—', 'w': '•——', 'x': '—••—',
+         'y': '—•——', 'z': '——••'}
+a = input().lower().split()
+print(a)
+for i in a:
+  for j in i:
+    if j in morze:
+      print(morze[j], end=' ')
+  print()
+
+
+
+
