@@ -2463,7 +2463,7 @@ from string import ascii_uppercase
 # vector = [vector[i][j] for i in range(len(vector)) for j in range((len(vector[0])))]
 # print(vector)
 
-# Dict --------------------------------------------
+#Creqte Dict +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # b = {}
 # print(b)
@@ -2884,21 +2884,73 @@ import age as age
 # print('YES 'if d1 == d2 else 'No')
 # c = []
 
-morze = {'a': '•—', 'b': '—•••', 'c': '—•—•', 'd': '—••',
-         'e': '•', 'f': '••—•', 'g': '——•', 'h': '••••',
-         'i': '••', 'j': '•———', 'k': '—•—', 'l': '•—••',
-         'm': '——', 'n': '—•', 'o': '———', 'p': '•——•',
-         'q': '——•—', 'r': '•—•', 's': '•••', 't': '—',
-         'u': '••—', 'v': '•••—', 'w': '•——', 'x': '—••—',
-         'y': '—•——', 'z': '——••'}
-a = input().lower().split()
-print(a)
-for i in a:
-  for j in i:
-    if j in morze:
-      print(morze[j], end=' ')
-  print()
+# morze = {'a': '•—', 'b': '—•••', 'c': '—•—•', 'd': '—••',
+#          'e': '•', 'f': '••—•', 'g': '——•', 'h': '••••',
+#          'i': '••', 'j': '•———', 'k': '—•—', 'l': '•—••',
+#          'm': '——', 'n': '—•', 'o': '———', 'p': '•——•',
+#          'q': '——•—', 'r': '•—•', 's': '•••', 't': '—',
+#          'u': '••—', 'v': '•••—', 'w': '•——', 'x': '—••—',
+#          'y': '—•——', 'z': '——••'}
+# a = input().lower().split()
+# print(a)
+# for i in a:
+#   for j in i:
+#     if j in morze:
+#       print(morze[j], end=' ')
+#   print()
 
 
+# people = [
+#     ['Amy Smith', '694.322.8133x22426'],
+#     ['Brian Shaw', '593.662.5217x338'],
+#     ['Christian Sharp', '118.197.8810'],
+#     ['Sean Schmidt', '9722527521'],
+#     ['Thomas Long', '163.814.9938'],
+#     ['Joshua Willis', '+1-978-530-6971x601'],
+#     ['Ann Hoffman', '434.104.4302'],
+#     ['John Leonard', '(956)182-8435'],
+#     ['Daniel Ross', '870-365-8303x416'],
+#     ['Jacqueline Moon', '+1-757-865-4488x652'],
+#     ['Gregory Baker', '705-576-1122'],
+#     ['Michael Spencer', '(922)816-0599x7007'],
+#     ['Austin Vazquez', '399-813-8599'],
+#     ['Chad Delgado', '979.908.8506x886'],
+#     ['Jonathan Gilbert', '9577853541']
+# ]
+#
+# print({i[1]: i[0] for i in people})
 
+# data = {
+#     'Jo Nikolas': '128',
+#     'loren moriS': '58'
+# }
+# nwe_data = {key.title(): int(val) for key, val in data.items()}
+# print(nwe_data)
 
+# users = [
+#     [0, 'pass', 'vslvnsl'],
+#     [1, 'pass', 'vslv'],
+#     [23, 'pass', 'vslv463030']
+# ]
+#
+# info_user = {info[0]: info for info in users}
+# print(info_user[1])
+
+#Create Tuple+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+a = 1, 2, 3
+b = tuple((1, 2, 3)) # tuple([1, 2, 3]), ()
+c = tuple(range(5))
+s = 1, 5, 10, 2, 58, 41, 41, 42
+print(len(c))
+print(1 in c)
+print(c + a, a + c) # (0, 1, 2, 3, 4, 1, 2, 3) (1, 2, 3, 0, 1, 2, 3, 4)
+print(a * 2) #(0, 1, 2, 3, 4, 1, 2, 3) (1, 2, 3, 0, 1, 2, 3, 4)
+print(min(c), max(c), sorted(s))
+n = (1, 5, 8, 100)
+g = {}
+g[n] = 'Hello'
+print(g)
+print(list(n))
+
+#Create Set +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
