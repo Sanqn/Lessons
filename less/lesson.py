@@ -2938,19 +2938,157 @@ import age as age
 
 #Create Tuple+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-a = 1, 2, 3
-b = tuple((1, 2, 3)) # tuple([1, 2, 3]), ()
-c = tuple(range(5))
-s = 1, 5, 10, 2, 58, 41, 41, 42
-print(len(c))
-print(1 in c)
-print(c + a, a + c) # (0, 1, 2, 3, 4, 1, 2, 3) (1, 2, 3, 0, 1, 2, 3, 4)
-print(a * 2) #(0, 1, 2, 3, 4, 1, 2, 3) (1, 2, 3, 0, 1, 2, 3, 4)
-print(min(c), max(c), sorted(s))
-n = (1, 5, 8, 100)
-g = {}
-g[n] = 'Hello'
-print(g)
-print(list(n))
+# a = 1, 2, 3
+# b = tuple((1, 2, 3)) # tuple([1, 2, 3]), ()
+# c = tuple(range(5))
+# s = 1, 5, 10, 2, 58, 41, 41, 42
+# print(len(c))
+# print(1 in c)
+# print(c + a, a + c) # (0, 1, 2, 3, 4, 1, 2, 3) (1, 2, 3, 0, 1, 2, 3, 4)
+# print(a * 2) #(0, 1, 2, 3, 4, 1, 2, 3) (1, 2, 3, 0, 1, 2, 3, 4)
+# print(min(c), max(c), sorted(s))
+# n = (1, 5, 8, 100)
+# g = {}
+# g[n] = 'Hello'
+# print(g)
+# print(list(n))
 
-#Create Set +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#Create Set +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ множество
+
+# a = {1, 2, 1, 2, 10, 15, 11}
+# print(a) #{1, 2, 10, 11, 15} убирает дубли
+#
+# b = {'Ho', 'Ho', 'ko', 'hi', 'hi', 'Ho', 'Ho', 'ko', 'hi', 'hi'} #{'Ho', 'ko', 'hi'}
+# print(b)
+#
+# c = set('abrakadabra') #{'Ho', 'ko', 'hi'}
+# print(c)
+#
+# d = set([1, 2, 1, 5, 6, 5])
+# print(d)
+#
+# e = set(range(5))
+# print(e)
+#
+# f = set()
+#
+# z = set((1, 5, 10, 1, 5))
+# print(z)
+#
+# x = {1, 54, 13, 8, 8, 16}
+# x.add(5)
+# print(x)
+#
+# x.update([7, 8, 17])
+# print(x)
+#
+# x.update('boom') #{1, 5, 7, 8, 13, 'o', 'm', 16, 17, 54, 'b'}
+# print(x)
+#
+# x.update(range(3))
+# print(x)
+#
+# x.discard('m') # without error, если повторно вызывать удалять m
+# x.remove('o') # with error, если повторно вызывать удалять o
+# x.pop() # delite random element
+# x.clear() # delite all elements
+# print(x)
+#
+# print(len(a)) # a = {1, 2, 1, 2, 10, 15, 11}
+# print(2 in a)
+#
+# q = {1, 2, 3, 4, 5}
+# w = {8, 2, 3, 4, 6}
+#
+# for i in q:
+#     print(i) # only i
+#
+# print(q - w, '-------')
+# print(w - q, '-------') # change w -= q
+# print(q ^ w, '+++++++')
+# print(q == w, '======')
+# print(q >= b, '>>>>>>')
+#
+# print(q & w) #{2, 3, 4} cross elements
+#
+# print(q.intersection(w)) #{2, 3, 4} cross elements
+#
+# q.intersection_update(w) #{2, 3, 4} cross elements and change q or q&= w
+#
+# print(q, w) #{2, 3, 4} {2, 3, 4, 6, 8} cross elements
+#
+# print(q.union(w)) #{2, 3, 4, 6, 8} or q | w (change q |= w)
+
+# a = input()
+# b = set()
+# while a != ' ':
+#     slova = a.split()
+#     b.update(slova)
+#     a = input()
+# print(b)
+
+# a = set(map(int, input().split()))
+# b = set(map(int, input().split()))
+# print(*sorted(a & b))
+
+# a = set(map(int, input().split()))
+# b = set(map(int, input().split()))
+# print(*sorted(a - b))
+
+# a = input()
+# b = [i for i in a]
+# ye = set()
+#
+# for i in set(b):
+#     if b.count(i) > 1:
+#         if i.isdigit():
+#             ye.update(i)
+# if len(ye) == 0:
+#     print('NO')
+# else:
+#     print(*sorted(ye))
+
+# a = [i for i in input() if i.isdigit()]
+# a = sorted(set(i for i in a if a.count(i) > 1))
+# if len(a) > 0:
+#     print(*a)
+# else:
+#     print('NO')
+# a = [i for i in input()]
+# a = [a[i] for i in range(len(a)) if i == a.index(a[i])]
+# print(''.join(a))
+
+# a = input()
+# b = set(a)
+# for i in a:
+#     if i in b:
+#         print(i, end='')
+#         b.remove(i)
+
+# a = [i for i in input() if i.isdigit()]
+# b = set(a)
+# for i in b:
+#     a.remove(i)
+# print(*a)
+
+a = {'Дили': [], 'Били': [], 'Вили': []}
+b = {}
+for i in iter(input, 'конец'):
+    k, v = i.split(': ')
+    a[k] = a.get(k, []) + [v]
+for i in a:
+    b[i] = b.get(i, len(set(a[i])))
+for k, v in sorted(b.items(), key=lambda para: -para[1]):
+    print(f'Количество уникальных комментаторов у {k} - {v}')
+
+a = {'Дили': set(), 'Били': set(), 'Вили': set()}
+for i in iter(input, 'конец'):
+    name, link = i.split(': ')
+    a[name].add(link)
+for i in a:
+    a[i] = len(a[i])
+for k, v in sorted(a.items(), key=lambda para: -para[1]):
+    print(f'Количество уникальных комментаторов у {k} - {v}')
+
+
+
