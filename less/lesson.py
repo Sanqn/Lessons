@@ -3071,24 +3071,78 @@ import age as age
 #     a.remove(i)
 # print(*a)
 
-a = {'Дили': [], 'Били': [], 'Вили': []}
-b = {}
-for i in iter(input, 'конец'):
-    k, v = i.split(': ')
-    a[k] = a.get(k, []) + [v]
-for i in a:
-    b[i] = b.get(i, len(set(a[i])))
-for k, v in sorted(b.items(), key=lambda para: -para[1]):
-    print(f'Количество уникальных комментаторов у {k} - {v}')
+# a = {'Дили': [], 'Били': [], 'Вили': []}
+# b = {}
+# for i in iter(input, 'конец'):
+#     k, v = i.split(': ')
+#     a[k] = a.get(k, []) + [v]
+# for i in a:
+#     b[i] = b.get(i, len(set(a[i])))
+# for k, v in sorted(b.items(), key=lambda para: -para[1]):
+#     print(f'Количество уникальных комментаторов у {k} - {v}')
+#
+# a = {'Дили': set(), 'Били': set(), 'Вили': set()}
+# for i in iter(input, 'конец'):
+#     name, link = i.split(': ')
+#     a[name].add(link)
+# for i in a:
+#     a[i] = len(a[i])
+# for k, v in sorted(a.items(), key=lambda para: -para[1]):
+#     print(f'Количество уникальных комментаторов у {k} - {v}')
 
-a = {'Дили': set(), 'Били': set(), 'Вили': set()}
-for i in iter(input, 'конец'):
-    name, link = i.split(': ')
-    a[name].add(link)
-for i in a:
-    a[i] = len(a[i])
-for k, v in sorted(a.items(), key=lambda para: -para[1]):
-    print(f'Количество уникальных комментаторов у {k} - {v}')
+# n = set(input())
+# if len(n) % 2 == 0:
+#     print('CHAT WITH HER!')
+# else:
+#     print('CHAT WITH HIM!')
+#
+# print('CHAT WITH HER!' if len(set(input())) % 2 == 0 else 'IGNORE HIM!')
 
+# n = list(map(int, input().split()))
+# m = set(n)
+# for i in m:
+#     if i in n:
+#         n.remove(i)
+# print(len(n))
 
+# print(4 - len(set(input().split())))
+
+# y = int(input()) + 1
+# new_year = []
+# count = y
+# while True:
+#     if len(set(str(count))) == 4:
+#         new_year.append(count)
+#         break
+#     elif len(set(str(count))) != 4:
+#         count += 1
+# print(*new_year)
+
+# y = int(input()) + 1
+# while len(set(str(y))) != 4:
+#     y += 1
+# print(y)
+# n = input()
+# m = set()
+# for i in n:
+#     if i.isalpha():
+#         m.add(i)
+# print(len(m))
+
+# print(len({i for i in input() if i.isalpha()}))
+# import string
+# n = int(input())
+# words = set(input().lower())
+# all_words = set(string.ascii_lowercase)
+# if words == all_words:
+#     print('YES')
+# else:
+#     print('NO')
+
+['NO','YES'] - список к значениям которого можно обратится по индексу например ['NO','YES'][0] выдаст 'NO',
+одновременно с этим в питоне булевы значения фактически представляют целые, при этом False это 0, а True это 1
+print(['NO', 'YES', input()][len(set(input().lower())) == 26])
+
+input()
+print('YES' if len(set(input().lower())) == 26 else 'NO')
 
