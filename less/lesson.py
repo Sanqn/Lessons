@@ -2809,7 +2809,7 @@ from string import ascii_uppercase
 #     else:
 #         print(f'Введите перевод слова {n}')
 #         words[n] = input()
-import age as age
+#import age as age
 
 # a = {
 #     'Mikle': {'age': 1995, 'hobby': 'soccer', 'car': 'BMW'},
@@ -3141,8 +3141,93 @@ import age as age
 
 ## ['NO','YES'] - список к значениям которого можно обратится по индексу например ['NO','YES'][0] выдаст 'NO',
 ## одновременно с этим в питоне булевы значения фактически представляют целые, при этом False это 0, а True это 1
-print(['NO', 'YES', input()][len(set(input().lower())) == 26])
+# print(['NO', 'YES', input()][len(set(input().lower())) == 26])
+#
+# input()
+# print('YES' if len(set(input().lower())) == 26 else 'NO')
 
-input()
-print('YES' if len(set(input().lower())) == 26 else 'NO')
+# def keanu_reeves():
+#     return "YOU'RE BREATHTAKING"
+# print(keanu_reeves())
 
+# def square(n):
+#     print(f'квадрат числа {n} = {n ** 2}')
+# for i in range(1, 11):
+#     square(i)
+#
+# # or
+#
+# def square(n):
+#     return f'квадрат числа {n} = {n ** 2}'
+# for i in range(1, 11):
+#     print(square(i))
+
+# def even(n):
+#     if n % 2 == 0:
+#         print(n, 'Chet')
+#     else:
+#         print(n, 'Nechet')
+# for i in range(1, 11):
+#     even(i)
+
+# def fact(n):
+#     pr = 1
+#     for i in range(2, n + 1):
+#         pr *= i
+#     print(pr)
+# fact(3)
+#
+# def factorial(v):
+#     pr = 1
+#     for i in range(2, v + 1):
+#         pr *= i
+#     return pr
+# print(factorial(3))
+
+# if 5 < 1:
+#     def primer():
+#         print('hello')
+# else:
+#     def primer():
+#         print('Hello')
+# primer()
+
+# def sum(t):
+#     S = 0
+#     for i in range(1, t + 1):
+#         S += i
+#     print(f'Я знаю, что сумма чисел от 1 до {t} равна {S}')
+# sum(int(input()))
+
+# def check_password(s):
+#     sif = 0
+#     fig = 0
+#     sim = 0
+#     up = 0
+#     for i in s:
+#         fig += 1
+#         if i in "!@#$%*":
+#             sim += 1
+#         if i.isdigit():
+#             sif += 1
+#         if i.isupper():
+#             up += 1
+#     if fig >= 10 and sif >= 3 and sim >= 1 and up >= 1:
+#         print('Perfect password')
+#     else:
+#         print('Easy peasy')
+# check_password('qwerty')
+
+# def check_password(s):
+#     num = [i for i in s if i.isdigit()]
+#     up = [i for i in s if i.isupper()]
+#     fig = [i for i in s if i in "!@#$%*"]
+#     print('Perfect password' if len(num) >= 3 and len(up) >= 1 and len(fig) >=1 and len(s) >= 10 else 'Easy peasy')
+# check_password('Qwerty1357!')
+
+def count_letters(n):
+    up = [i for i in n if i.isupper()]
+    lo = [i for i in n if i.islower()]
+    print(f'Количество заглавных символов:  {len(up)}')
+    print(f'Количество строчных символов: {len(lo)}')
+count_letters(input())
