@@ -3225,9 +3225,53 @@ from string import ascii_uppercase
 #     print('Perfect password' if len(num) >= 3 and len(up) >= 1 and len(fig) >=1 and len(s) >= 10 else 'Easy peasy')
 # check_password('Qwerty1357!')
 
-def count_letters(n):
-    up = [i for i in n if i.isupper()]
-    lo = [i for i in n if i.islower()]
-    print(f'Количество заглавных символов:  {len(up)}')
-    print(f'Количество строчных символов: {len(lo)}')
-count_letters(input())
+# def count_letters(n):
+#     up = [i for i in n if i.isupper()]
+#     lo = [i for i in n if i.islower()]
+#     print(f'Количество заглавных символов:  {len(up)}')
+#     print(f'Количество строчных символов: {len(lo)}')
+# count_letters(input())
+
+# import turtle
+#
+# def move(a):
+#     turtle.forward(a)
+#     turtle.left(90)
+#
+# def square(a): # рисует без цвета
+#     for i in range(4):
+#         move(a)
+#
+# def square_color(a, color):
+#     turtle.color(color)
+#     turtle.begin_fill()
+#     square(a)
+#     turtle.end_fill()
+#
+# turtle.speed(2)
+#
+# square_color(120, 'green')
+# turtle.goto(150, 150)
+# square_color(60, 'blue')
+
+import turtle
+
+def move_gor(a, b):
+    turtle.forward(a)
+    turtle.left(90)
+    turtle.forward(b)
+    turtle.left(90)
+
+def move(a, b, color):
+    turtle.color(color)
+    turtle.begin_fill()
+    move_gor(a, b)
+    move_gor(a, b)
+    turtle.end_fill()
+
+turtle.speed(1)
+move(100, 50, 'red')
+turtle.goto(150, 75)
+move(50, 30, 'blue')
+
+
