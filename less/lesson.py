@@ -3254,24 +3254,228 @@ from string import ascii_uppercase
 # turtle.goto(150, 150)
 # square_color(60, 'blue')
 
-import turtle
+# import turtle
+#
+# def move_gor(a, b):
+#     turtle.forward(a)
+#     turtle.left(90)
+#     turtle.forward(b)
+#     turtle.left(90)
+#
+# def move(a, b, color):
+#     turtle.color(color)
+#     turtle.begin_fill()
+#     move_gor(a, b)
+#     move_gor(a, b)
+#     turtle.end_fill()
+#
+# turtle.speed(1)
+# move(100, 50, 'red')
+# turtle.goto(150, 75)
+# move(50, 30, 'blue')
 
-def move_gor(a, b):
-    turtle.forward(a)
-    turtle.left(90)
-    turtle.forward(b)
-    turtle.left(90)
+# def even(n):
+#     return n % 2 == 0
+#
+# for i in range(10):
+#     print(i, even(i))
 
-def move(a, b, color):
-    turtle.color(color)
-    turtle.begin_fill()
-    move_gor(a, b)
-    move_gor(a, b)
-    turtle.end_fill()
+# def factorial(n):
+#     pr = 1
+#     for i in range(2, n + 1):
+#         pr *= i
+#     return pr
+#
+# def sochet(a, b):
+#     return factorial(a)/ (factorial(b) * factorial(a - b))
+# print(sochet(5, 3))
 
-turtle.speed(1)
-move(100, 50, 'red')
-turtle.goto(150, 75)
-move(50, 30, 'blue')
+# def squareabdper(a, b):
+#     return a * b, 2*(a+b)
+#
+# squar, per = squareabdper(4, 7)#возвращает в виде картежа
+# print(squar, per)
+# #или
+# print(squareabdper(4, 7)) #возвращает в виде картежа
+
+# def squareabdper(a, b):
+#     mas = []
+#     mas.append(a*b)
+#     mas.append(2*(a+b))
+#     return mas
+# print(squareabdper(4, 7))
 
 
+# def factorial(x):
+#     pr = 1
+#     for i in range(2, x + 1):
+#         pr *= i
+#     return pr
+
+# def find_duplicate(n):
+#     b = []
+#     for i in n:
+#         if i not in b and n.count(i) > 1:
+#             b.append(i)
+#     return b
+# print(find_duplicate([1, 2, 1, 5, 7, 7, 10, 5, 3, 4]))
+
+# def first_unique_char(f):
+#     b = []
+#     for i in f:
+#         if i not in b and f.count(i) == 1:
+#             b.append(i)
+#     if len(f) == len(b):
+#         return 0
+#     elif len(b) == 0:
+#         return -1
+#     elif b[0] in f:
+#         return f.index(b[0])
+# print(first_unique_char('abracadabra'))
+
+# def first_unique_char(f):
+#     for i in f:
+#         if f.count(i) == 1:
+#             return f.index(i)
+#     return -1
+# print(first_unique_char('abracadabra'))
+
+# def format_namelist(x):
+#     s = []
+#     m = ''
+#     if len(x) == 0:
+#         return ''
+#     elif len(x) == 1:
+#         return x[0]['name']
+#     else:
+#         for i in x:
+#             s.append(i['name'])
+#     if len(s) >= 2:
+#         s.insert(-1, 'и')
+#     for i in range(len(s))[:-3]:
+#         m = m + s[i] + ', '
+#     for i in range(len(s))[-3:]:
+#         m = m + s[i] + ' '
+#     return m
+#
+# print(format_namelist([{'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'}, {'name': 'Homer'}, {'name': 'Marge'}]))
+#
+# def format_namelist(h):
+#     a = []
+#     for i in h:
+#         for j in i.values():
+#             a.append(j)
+#     b = []
+#     s = ''
+#     if len(a)==1:
+#         return a[0]
+#     elif len(a) == 2:
+#         return a[0] + ' и ' + a[1]
+#     elif len(a)>=3:
+#         for j in range(len(a) ):
+#             s = (', '.join(a[:-1])) +' и '+a[-1]
+#         return s
+#     else:
+#         return ''
+# print(format_namelist([{'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'}, {'name': 'Homer'}, {'name': 'Marge'}]))
+
+# def q():
+#     a = 10
+#     #b = 20
+#     print(a, b, 'local')
+# a = 500
+# b = 800
+# q()
+# print(a, b, 'global')
+
+# def s():
+#     # global a
+#     a = 30
+#
+# a = [1, 5, 10]
+# s()
+# print(a)
+
+# def n(x):
+#     return x**2
+# abs = n #global переопределение
+# print(abs(-7), abs(5))
+# def s():
+#     a = 220
+#     c = 'Good'
+#     def r():
+#         nonlocal a
+#         a = 'Joom'
+#         print(a, c)
+#     r()
+#     print(a)
+# a = [1, 2]
+# s()
+
+# MIN_DRIVING_AGE = 18
+#
+# def allowed_driving(name, age):
+#     if age >= MIN_DRIVING_AGE:
+#         print(f'{name} может водить')
+#     else:
+#         print(f'{name} еще рано садиться за руль')
+# print(allowed_driving(input(), int(input())))
+
+
+# def f(a, b):
+#     a = 10
+#     b.append(1000) #можно менять значения в глобальном списке через методы
+#     b[1] = 0
+#     print(a, b, 'local')
+#
+# c = 'lort'
+# d = [1, 5, 20, 7]
+# f(c, d[:]) # чтобы не менялась гловальная переменнная можно добавить ее копию срезом [:]
+# print(c, d, 'global')
+
+# def g(a, b = 200, c = 'unknown'):
+#     print(a, b, c)
+# g(5, 10)
+
+# def append_to_list(value, my_list = []):
+#     my_list.append(value)
+#     print(my_list)
+#
+# append_to_list(77) #[77]
+# append_to_list(78) #[77, 78]
+# append_to_list(287) #[77, 78, 287]
+#
+#
+# def append_to_list(value, my_list = None):
+#     if my_list is None:
+#         my_list = []
+#     my_list.append(value)
+#     print(my_list)
+#
+# append_to_list(77) #[77]
+# append_to_list(78) #[78]
+# append_to_list(287) #[287]
+
+# def append_to_dict(key, value, my_dict = {}):
+#     # if my_list is None:
+#     #     my_list = []
+#     my_dict[key] = value
+#     #or
+#     #my_dict.setdefault(key, value)
+#     print(my_dict)
+#
+# append_to_dict(1, 50) #[1: 50]
+# append_to_dict(2, 70) #[1: 50, 2: 70]
+
+def append_to_dict(key, value, my_dict = None):
+    if my_dict is None:
+        my_dict = {}
+    # my_dict[key] = value
+    #or
+    #my_dict.setdefault(key, value)
+    #or
+    my_dict[key] = my_dict.get(key, value)
+    print(my_dict)
+
+append_to_dict(1, 50) #[1: 50]
+append_to_dict(2, 70) #[1: 50, 2: 70]
