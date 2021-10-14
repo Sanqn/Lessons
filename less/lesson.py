@@ -3467,15 +3467,188 @@ from string import ascii_uppercase
 # append_to_dict(1, 50) #[1: 50]
 # append_to_dict(2, 70) #[1: 50, 2: 70]
 
-def append_to_dict(key, value, my_dict = None):
-    if my_dict is None:
-        my_dict = {}
-    # my_dict[key] = value
-    #or
-    #my_dict.setdefault(key, value)
-    #or
-    my_dict[key] = my_dict.get(key, value)
-    print(my_dict)
+# def append_to_dict(key, value, my_dict = None):
+#     if my_dict is None:
+#         my_dict = {}
+#     # my_dict[key] = value
+#     #or
+#     #my_dict.setdefault(key, value)
+#     #or
+#     my_dict[key] = my_dict.get(key, value)
+#     print(my_dict)
+#
+# append_to_dict(1, 50) #[1: 50]
+# append_to_dict(2, 70) #[1: 50, 2: 70]
 
-append_to_dict(1, 50) #[1: 50]
-append_to_dict(2, 70) #[1: 50, 2: 70]
+
+# a = [2, 7]
+# print(list(range(*a)))
+
+
+# def vok(a, b, c, d):
+#     print(a, b, c, d)
+#
+# vok(1, 2, 3, 4)
+# a = [25, 'Kool', [2, 'John', 15], 10]
+# vok(*a)
+
+# def f(*args):
+#     s = 0
+#     for i in args:
+#         s += i
+#     return s
+# print(f(1, 15, 18, 20, 20))
+
+# def f(**kwargs):
+#     for k, v in kwargs.items():
+#         print(k, v)
+# f(a = 2, b = 8, m = 'Koko')
+
+# a, *b, c = 'No money', 'no honey'
+# print(a, b, c)
+
+# def count_args(*args):
+#     return len(args)
+# print(count_args(1, 'koltor', [1, 2, 8]))
+
+
+# def print_goods(*args):
+#     a = []
+#     for i in args:
+#         if i == str(i) and str(i).isalpha():
+#             a.append(i)
+#     if len(a) == 0:
+#         print('Нет товаров')
+#     else:
+#         for i in range(len(a)):
+#             print(f'{i + 1}. {a[i]}')
+#
+# print(print_goods(1, True, 'Грушечка', '', 'Pineapple', []))
+
+# def info_kwargs(**kwargs):
+#     for k, v in sorted(kwargs.items(), key=lambda x: x[0]):
+#         print(f'{k} = {v}')
+# print(info_kwargs(first_name="John", last_name="Doe", age=33))
+
+# def rec(x):
+#     if x < 4:
+#         print(x)
+#         rec(x + 1)
+#         print(x)
+# rec(1)
+
+# def fact(x):
+#     pr = 1
+#     for i in range(2, x + 1):
+#         pr*= i
+#     return pr
+# print(fact(5))
+
+# def f(n):
+#     if n == 1:
+#         return 1
+#     return f(n - 1)*n
+# print(f(5))
+
+# def fib(n):
+#     if n == 1:
+#         return 0
+#     if n == 2:
+#         return 1
+#     return fib(n - 1) + fib(n - 2)
+# print(fib(7))
+
+# fib1 = 0
+# fib2 = 1
+# n = int(input())
+#
+# for i in range(2, n):
+#     fib1, fib2 = fib2, fib1 + fib2
+# print(fib2)
+
+# def palindrom(s):
+#     if len(s) == 1:
+#         return True
+#     if s[0] != s[-1]:
+#         return False
+#     return palindrom(s[1:-1])
+# print(palindrom('шалаш'))
+
+
+# n = int(input())
+# s = list(map(int, input().split()))
+#
+# def rec(n):
+#     if n > 0:
+#         print(s[n - 1], end=' ')
+#         rec(n - 1)
+# rec(n)
+
+# def fib(n):
+#     if n == 1:
+#         return 0
+#     if n == 2:
+#         return 1
+#     return fib(n - 1) + fib(n - 2)
+#
+# print(fib((int(input())) + 1))
+
+
+# def list_sum_recursive(b):
+#     if len(b) == 0:
+#         return 0
+#     if len(b) == 1:
+#         return b[0]
+#     return b[0] + list_sum_recursive(b[1:])
+#
+# print(list_sum_recursive(list(map(int, input().split()))))
+
+# def list_sum_recursive(b):
+#     if len(b) == 1:
+#         return b[0]
+#     return b[0] + list_sum_recursive(b[1:])
+#
+# print(list_sum_recursive([1, 2, 3]))
+
+# a = [1, 2, 3]
+# i = 0
+# while i < len(a):
+#     print(a[i])
+#     i += 1
+
+# a = [1, 2, 3]
+# pr = 0
+# for i in range(len(a)):
+#     pr = a[i] + pr
+# print(pr)
+
+# def flatten(x):
+#     new = []
+#     for i in x:
+#         if isinstance(i, int):
+#             new.append(i)
+#         else:
+#             new += flatten(i)
+#     return new
+#
+# print(flatten([1, [2,3], [[2], 5], 6]))
+
+# def flatten(x):
+#     new = []
+#     for i in x:
+#         if isinstance(i, list):
+#             new.extend(flatten(i))
+#         else:
+#             new.append(i)
+#     return new
+#
+# print(flatten([1, [2,3], [[2], 5], 6]))
+
+def flatten(x):
+    if not x:
+        return []
+    if isinstance(x[0], list):
+        return flatten(x[0]) + flatten(x[1:])
+    return x[0] + flatten(x[1:])
+
+print(flatten([1, [2, 3], [[2], 5], 6]))
