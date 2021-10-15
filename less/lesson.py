@@ -3644,11 +3644,36 @@ from string import ascii_uppercase
 #
 # print(flatten([1, [2,3], [[2], 5], 6]))
 
-def flatten(x):
-    if not x:
-        return []
-    if isinstance(x[0], list):
-        return flatten(x[0]) + flatten(x[1:])
-    return x[0] + flatten(x[1:])
+# def flatten(x):
+#     if not x:
+#         return []
+#     if isinstance(x[0], list):
+#         return flatten(x[0]) + flatten(x[1:])
+#     return x[0] + flatten(x[1:])
+#
+# print(flatten([1, [2, 3], [[2], 5], 6]))
 
-print(flatten([1, [2, 3], [[2], 5], 6]))
+# def sum(n):
+#     if n == 1:
+#         return 1
+#     return n + sum(n - 1)
+# print(sum(3))
+
+# def pal(n):
+#     if len(n) == 1:
+#         return True
+#     return n[0] == n[-1] and pal(n[1:-1])
+# print(pal('шалаш'))
+
+# def sum_list(n):
+#     if len(n) == 0:
+#         return 0
+#     return n[0] + sum_list(n[1:])
+# print(sum_list([1, 2, 3, 4]))
+
+def max_list(n):
+    if len(n) == 1:
+        return n[0]
+    return max(max_list(n[1:]), n[0])
+print(max_list([1, 2000, 3, 500]))
+
