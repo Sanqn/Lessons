@@ -3663,17 +3663,127 @@ from string import ascii_uppercase
 #     if len(n) == 1:
 #         return True
 #     return n[0] == n[-1] and pal(n[1:-1])
-# print(pal('шалаш'))
+#     # return ш == ш and аплпа
+#     # return а == а and плп
+#     # return п == п and л
+# print(pal('шаплпаш'))
 
 # def sum_list(n):
 #     if len(n) == 0:
 #         return 0
 #     return n[0] + sum_list(n[1:])
+#     # return 1 + [2, 3, 4]
+#     # return 2 + [3, 4]
+#     # return 3 + [4]
+#     # return 4 + []
 # print(sum_list([1, 2, 3, 4]))
 
-def max_list(n):
-    if len(n) == 1:
-        return n[0]
-    return max(max_list(n[1:]), n[0])
-print(max_list([1, 2000, 3, 500]))
 
+# def max_list(n):
+#     if len(n) == 1:
+#         return n[0]
+#     return max(max_list(n[1:]), n[0])
+# print(max_list([1, 2000, 3, 500]))
+
+# a = 'ifkfi'
+# count = 0
+# for i in a:
+#     if len(a) <= 1:
+#         print(a)
+#         break
+#     if a[0] == a[-1]:
+#         count += 1
+#     a = a.replace(a[0], '').replace(a[-1], '')
+# print(count)
+
+# def rec(n):
+#     if len(n) == 1 or len(n) == 2:
+#         return n
+#     return n[0] + '(' + rec(n[1:-1]) + ')' + n[-1]
+#     #return h + '(' + rec(n[ell]) + ')' + o
+#     # return e + '(' + rec(n[ell]) + ')' + l
+#     #return e + '(' + rec(n[l]) + ')' + l
+# print(rec('helo'))
+
+# def rec(a, x):
+#     if x == 0:
+#         return 1
+#     if x % 2 == 0:
+#         return rec(a, x//2) * rec(a, x//2)
+#     else:
+#         return rec(a, x - 1) * a
+# print(rec(3, 2))
+
+# def rec(a, level = 1):
+#     print(*a, 'level', level)
+#     for i in a:
+#         if isinstance(i, list):
+#             rec(i, level + 1)
+# print(rec([1, 2,[4,5,[78, [1]]], [4, 8], 1]))
+
+# a, b = map(int, input().split())
+# n = list(map(int, input().split()))
+# m = list(map(int, input().split()))
+# c = []
+# i = 0
+# f = 0
+# while i < a and f < b:
+#     if n[i] < m[f]:
+#         c.append(n[i])
+#         i += 1
+#     else:
+#         c.append(m[f])
+#         f += 1
+# while i < a:
+#     c.append(n[i])
+#     i += 1
+# while f < b:
+#     c.append(m[f])
+#     f += 1
+# print(c)
+
+# функция merge_two_list должна объединить два списка
+# def merge_two_list(a, b):
+#     i = j = 0
+#     c = []
+#     while len(a) > i and len(b) > j:
+#         if a[i] < b[j]:
+#             c.append(a[i])
+#             i += 1
+#         else:
+#             c.append(b[j])
+#             j += 1
+#     while i < len(a):
+#         c.append(a[i])
+#         i += 1
+#     while j < len(b):
+#         c.append(b[j])
+#         j += 1
+#     return c
+# # print(merge_two_list(a = [6, 2, 19], b = [5, 10, 7, 11]))
+# # функция merge_sort должна выполнить сортировку
+# def merge_sort(s):
+#     if len(s) == 1:
+#         return s
+#     midle = len(s) // 2
+#     s_left = merge_sort(s[:midle])
+#     s_right = merge_sort(s[midle:])
+#     #print(s_left, s_right)
+#     return merge_two_list(s_left, s_right)
+#
+#
+# print(merge_sort([6, 2, 19, 5, 10, 7, 11]))
+
+def quick_sort(s):
+    if len(s) <= 1:
+        return s
+    elem = s[0]
+    left = list(filter(lambda x: x < elem, s))
+    #left = [i for i in s if i < elem]
+    center = [i for i in s if i == elem]
+    right = list(filter(lambda x: x > elem, s))
+    #right = [i for i in s if i > elem]
+    return quick_sort(left) + center + quick_sort(right)
+n = int(input())
+spis = list(map(int, input().split()))
+print(quick_sort(spis))
