@@ -97,12 +97,14 @@
 # print(f'{h}:{m//10}{m%10}:{s//10}{s%10}')
 
 # n = int(input())
-# # k = 0
-# # for i in [100, 20, 10, 5]:
-# #     k = k + n // i
-# #     n = n % i
-# #
-# # print(k + n)
+# k = 0
+# for i in [100, 20, 10, 5]:
+#     k = k + n // i
+#
+#     n = n % i
+#
+#
+# print(k + n)
 
 # n = int(input())
 # print(n - n % 2 + 2)
@@ -3773,17 +3775,56 @@ from string import ascii_uppercase
 #
 #
 # print(merge_sort([6, 2, 19, 5, 10, 7, 11]))
+# import time
+# start = time.localtime()
+# def quick_sort(s):
+#     if len(s) <= 1:
+#         return s
+#     elem = s[0]
+#     left = list(filter(lambda x: x < elem, s))
+#     #left = [i for i in s if i < elem]
+#     center = [i for i in s if i == elem]
+#     right = list(filter(lambda x: x > elem, s))
+#     #right = [i for i in s if i > elem]
+#     return quick_sort(left) + center + quick_sort(right)
+#
+# print(quick_sort([16, 19, 2, 12, 20, 15, 20, 15]))
+# end = time.localtime()
+# print(end.tm_sec - start.tm_sec)
 
-def quick_sort(s):
-    if len(s) <= 1:
-        return s
-    elem = s[0]
-    left = list(filter(lambda x: x < elem, s))
-    #left = [i for i in s if i < elem]
-    center = [i for i in s if i == elem]
-    right = list(filter(lambda x: x > elem, s))
-    #right = [i for i in s if i > elem]
-    return quick_sort(left) + center + quick_sort(right)
-n = int(input())
-spis = list(map(int, input().split()))
-print(quick_sort(spis))
+# import time
+# start = time.localtime()
+# def sort(a):
+#     for i in range(len(a)):
+#         for j in range(len(a) - 1):
+#             if a[j] > a[j + 1]:
+#                 a[j], a[j + 1] = a[j + 1], a[j]
+#     return a
+# print(sort([16, 19, 2, 12, 20, 15, 20, 15]))
+# end = time.localtime()
+# print(end.tm_sec - start.tm_sec)
+# import os
+#
+# def doc(path, level = 1):
+#     print('level=', level, 'content', os.path.isdir(path))
+#     for i in os.listdir(path): # return list of doc
+#         if os.path.isdir(path + '\\' + i):
+#             print('Спускаемся', path + '\\' + i)
+#             doc(path + '\\' + i, level + 1)
+#             print('Возвращаемся', path)
+#         #print(path + '\\' + i, os.path.isdir(path + '\\' + i)) #isdir find folder, isfile find file
+#
+# print(doc('D:\\фото'))
+
+import os
+
+def new_doc(folder, level = 1):
+    print('level=', level, 'content', os.path.isdir(folder))
+    for i in os.listdir(folder):
+        if os.path.isdir(folder + '\\' + i):
+            print('Спускаемся', folder + '\\' + i)
+            new_doc(folder + '\\' + i, level + 1)
+            print('Возвращаемся', folder)
+print(new_doc('D:\\progs'))
+
+
