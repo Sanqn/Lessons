@@ -3432,7 +3432,7 @@ from string import ascii_uppercase
 #
 # c = 'lort'
 # d = [1, 5, 20, 7]
-# f(c, d[:]) # чтобы не менялась гловальная переменнная можно добавить ее копию срезом [:]
+# f(c, d[:]) # чтобы не менялась глобальная переменнная можно добавить ее копию срезом [:]
 # print(c, d, 'global')
 
 # def g(a, b = 200, c = 'unknown'):
@@ -3703,9 +3703,9 @@ from string import ascii_uppercase
 #         return n
 #     return n[0] + '(' + rec(n[1:-1]) + ')' + n[-1]
 #     #return h + '(' + rec(n[ell]) + ')' + o
-#     # return e + '(' + rec(n[ell]) + ')' + l
-#     #return e + '(' + rec(n[l]) + ')' + l
-# print(rec('helo'))
+#     # return e + '(' + rec(n[l]) + ')' + l
+#     #return '' + '(' + rec(n[l]) + ')' + ''
+# print(rec('hello'))
 
 # def rec(a, x):
 #     if x == 0:
@@ -3818,13 +3818,24 @@ from string import ascii_uppercase
 
 import os
 
-def new_doc(folder, level = 1):
-    print('level=', level, 'content', os.path.isdir(folder))
-    for i in os.listdir(folder):
-        if os.path.isdir(folder + '\\' + i):
-            print('Спускаемся', folder + '\\' + i)
-            new_doc(folder + '\\' + i, level + 1)
-            print('Возвращаемся', folder)
-print(new_doc('D:\\progs'))
+# def new_doc(folder,level = 1, name = 'База'):
+#     #print('level=', level, 'content', os.path.isdir(folder))
+#     for i in os.listdir(folder):
+#         if os.path.isdir(folder + '\\' + i):
+#             if i == name:
+#                 print('Name is', folder + '\\' + i, '------------------------------------------------')
+#             #print('Спускаемся', folder + '\\' + i)
+#             new_doc(folder + '\\' + i, level + 1)
+#             #print('Возвращаемся', folder)
+# print(new_doc('D:\\progs'))
 
+def rec(x):
+    if len(x) == 1:
+        if x != '(':
+            return x + x
+        return '()'
+    if x[0] != '(':
+        return x[0] + rec(x[1:]) + x[0]
+    return '(' + rec(x[1:]) + ')'
+print(rec('he(ll((o('))
 
