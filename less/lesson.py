@@ -3829,13 +3829,153 @@ import os
 #             #print('Возвращаемся', folder)
 # print(new_doc('D:\\progs'))
 
-def rec(x):
-    if len(x) == 1:
-        if x != '(':
-            return x + x
-        return '()'
-    if x[0] != '(':
-        return x[0] + rec(x[1:]) + x[0]
-    return '(' + rec(x[1:]) + ')'
-print(rec('he(ll((o('))
+# def rec(x):
+#     if len(x) == 1:
+#         if x != '(':
+#             return x + x
+#         return '()'
+#     if x[0] != '(':
+#         return x[0] + rec(x[1:]) + x[0]
+#     return '(' + rec(x[1:]) + ')'
+# print(rec('he(ll((o('))
 
+
+# per = lambda a, b, c: a + b + c
+# print(per(1, 2, 3))
+
+# a = {1: 'Ron', 2: 'Gorillas', 3: 'monkey'}
+#
+# for key, val in sorted(a.items(), key= lambda x: x[1]):
+#     print(key, val)
+
+# a = [10, 524, 16, 2, 7, 25578, 311, 11]
+#
+# a.sort(key= lambda x: x % 10) # сортировка по последней цифре
+# print(a)
+
+# def line(a, b):
+#     return lambda x: x * a + b
+#
+# flag = line(2, 5)
+# print(flag(3))
+
+
+# adding_10 = lambda x: x + 10
+# a = int(input())
+# print(adding_10(a))
+
+# starts_with = lambda x: True if x[0] == 'W' else False
+# print(starts_with('War'))
+
+# import datetime
+# now = datetime.datetime.now()
+# get_year = lambda now: now.year
+# get_month = lambda now: now.month
+# get_day = lambda now: now.day
+# print(get_year(now))
+# print(get_month((now)))
+# print(get_year((now)))
+
+
+# a = lambda **kwargs: sum(kwargs.values())
+# print(a(one=1, two=2, three=3))
+
+# a, b = map(int, input().split())
+# print(list(map((lambda x: x**x), range(a, b + 1)))) #[1, 4, 27, 256, 3125]
+
+# g = 'grey'
+# def colors():
+#     y = 'yellow'
+#
+#     def red():
+#         nonlocal y
+#         r = 'red'
+#         print(r, g, p, y)
+#         y = 'New color'
+#     p = 'purpul'
+#     g = 'black'
+#     def blue():
+#         b = 'blue'
+#         print(b, g, p, y)
+#
+#     red()
+#     blue()
+#
+# colors()
+
+# def mine_fun(name):
+#     def loc_fun():
+#         print('Hello', name)
+#     loc_fun()
+# mine_fun('Lock')
+# mine_fun('Joomba')
+
+# def mine_fun(name):
+#     def loc_fun():
+#         print('Hello', name)
+#     return loc_fun
+# a = mine_fun('San')
+# a()
+# b = mine_fun('Konny')
+# b()
+
+# def adder(value):  # value 2
+#     def inner(a): # a 2
+#         print(value * a)
+#     return inner
+# a2 = adder(2)
+# a2(2) # in inner(2)
+
+# def counter():
+#     count = 0
+#     def inner():
+#         nonlocal count
+#         count += 1
+#         return count
+#     return inner
+# a = counter()
+# a()
+
+# def multiply(value):
+#     def inner(a):
+#         return value * a
+#     return inner
+# f_2 = multiply(2)
+# f_2(15)
+
+# def counter(n):
+#     count = n
+#     def inner():
+#         nonlocal count
+#         count += 1
+#         return count
+#     return inner
+#
+# l, b = map(int, input().split())
+# a = counter(l - 1)
+# print(list(map(lambda x: x**a(), range(l, b + 1))))
+
+# l, b = map(int, input().split())
+# print(list(map(lambda x: x**x, range(l, b + 1))))
+
+
+# def counter(n):
+#     count = n
+#     def inner():
+#         nonlocal count
+#         count += 1
+#         return count
+#     return inner
+# a, b = map(int, input().split())
+# for i in range(a, b + 1):
+#     enter = counter(i - 1)
+#     print(enter() ** (enter() -1), end=' ')
+
+
+# numbers = 'one', 'two', 'three'
+# funcs = []
+# for n in numbers:
+#     funcs.append(lambda x = n: print(x))
+# for f in funcs:
+#     f()
+print(list(map(lambda x: x.upper(), ['cat', 'dog', 'cow'])))
