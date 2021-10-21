@@ -3971,6 +3971,17 @@ import os
 #     enter = counter(i - 1)
 #     print(enter() ** (enter() -1), end=' ')
 
+# def func(n):
+#     def f():
+#         print(n)
+#     return f
+#
+# numbers = 'one', 'two', 'three'
+# new_list = []
+# for i in numbers:
+#     new_list.append(func(i))
+# for z in new_list:
+#     z()
 
 # numbers = 'one', 'two', 'three'
 # funcs = []
@@ -3978,4 +3989,7 @@ import os
 #     funcs.append(lambda x = n: print(x))
 # for f in funcs:
 #     f()
+
 print(list(map(lambda x: x.upper(), ['cat', 'dog', 'cow'])))
+
+
