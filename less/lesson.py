@@ -3990,6 +3990,79 @@ import os
 # for f in funcs:
 #     f()
 
-print(list(map(lambda x: x.upper(), ['cat', 'dog', 'cow'])))
+# print(list(map(lambda x: x.upper(), ['cat', 'dog', 'cow'])))
+
+# def avarage_namber():
+#     nambers = []
+#     def inner(namber):
+#         nambers.append(namber)
+#         print(nambers)
+#         return sum(nambers) / len(nambers)
+#     return inner
+#
+# d = avarage_namber()
+# for i in range(1, 5 + 1):
+#     print(d(i))
+
+# def avarage_namber():
+#     summ = 0
+#     count = 0
+#     def inner(namber):
+#         nonlocal summ
+#         nonlocal count
+#         summ += namber
+#         print(summ)
+#         count += 1
+#         print(count)
+#         return summ / count
+#     return inner
+#
+# d = avarage_namber()
+# for i in range(1, 5 + 1):
+#     print(d(i))
+
+
+# def avarage_namber():
+#     nambers = []
+#     def inner(namber):
+#         nambers.append(namber)
+#         print(nambers)
+#         return sum(nambers) / len(nambers)
+#     return inner
+#
+# a = avarage_namber()
+# a(2)
+# a(5)
+# print(a(7))
+
+# from datetime import datetime
+#
+# def timer():
+#     start = datetime.now()
+#     def inner():
+#         return datetime.now() - start
+#     return inner
+# d = timer()
+# print(d())
+
+def add(a, b):
+    return a + b
+
+def counter(func):
+    count = 0
+    def inner(*args, **kwargs):
+        nonlocal count
+        count += 1
+        print(f'function {func.__name__} repeat {count} times')
+        return func(*args, **kwargs)
+    return inner
+c = counter(add)
+print(c(5, 10))
+#function add repeat 1 times
+#15
+print(c(22, 1120))
+#function add repeat 2 times
+#1142
+
 
 
