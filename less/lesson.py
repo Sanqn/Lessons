@@ -4045,8 +4045,27 @@ import os
 # d = timer()
 # print(d())
 
-def add(a, b):
-    return a + b
+# def add(a, b):
+#     return a + b
+#
+# def counter(func):
+#     count = 0
+#     def inner(*args, **kwargs):
+#         nonlocal count
+#         count += 1
+#         print(f'function {func.__name__} repeat {count} times')
+#         return func(*args, **kwargs)
+#     return inner
+# c = counter(add) # add without ()
+# print(c(5, 10))
+# #function add repeat 1 times
+# #15
+# print(c(22, 1120))
+# #function add repeat 2 times
+# #1142
+
+def mult(a, b, c):
+    return a * b * c
 
 def counter(func):
     count = 0
@@ -4056,13 +4075,9 @@ def counter(func):
         print(f'function {func.__name__} repeat {count} times')
         return func(*args, **kwargs)
     return inner
-c = counter(add)
-print(c(5, 10))
-#function add repeat 1 times
-#15
-print(c(22, 1120))
-#function add repeat 2 times
-#1142
+z = counter(mult) # mult without ()
+print(z(5, 2, 3))
+print(z(15, 18, 3))
 
 
 
