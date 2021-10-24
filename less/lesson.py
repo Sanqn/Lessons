@@ -4064,20 +4064,67 @@ import os
 # #function add repeat 2 times
 # #1142
 
-def mult(a, b, c):
-    return a * b * c
+# def mult(a, b, c):
+#     return a * b * c
+#
+# def counter(func):
+#     count = 0
+#     def inner(*args, **kwargs):
+#         nonlocal count
+#         count += 1
+#         print(f'function {func.__name__} repeat {count} times')
+#         return func(*args, **kwargs)
+#     return inner
+# z = counter(mult) # mult without ()
+# print(z(5, 2, 3))
+# print(z(15, 18, 3))
 
-def counter(func):
-    count = 0
+# def sum(a, b):
+#     return a + b
+#
+# def decorator(func):
+#
+#     def inner(*args, **kwargs):
+#         return func(*args, **kwargs)
+#     return inner
+#
+# sum = decorator(sum)
+# print(sum(10, 15))
+
+# def decorator(func):
+#
+#     def inner(*args, **kwargs):
+#         print('Wow ....')
+#         func(*args, **kwargs)
+#         print('Bay ....')
+#     return inner
+#
+# def fio(name, surname, age):
+#     print('hello', name, surname, age)
+#
+# fio = decorator(fio)
+# fio('Loki', 'Nootik', 20)
+
+def hader(func):
+
     def inner(*args, **kwargs):
-        nonlocal count
-        count += 1
-        print(f'function {func.__name__} repeat {count} times')
-        return func(*args, **kwargs)
+        print('<h1>')
+        func(*args, **kwargs)
+        print('</h1>')
     return inner
-z = counter(mult) # mult without ()
-print(z(5, 2, 3))
-print(z(15, 18, 3))
 
+def table(func):
+    def inner(*args, **kwargs):
+        print('<table>')
+        func(*args, **kwargs)
+        print('</table>')
+    return inner
 
+@table
+@hader #fio = table(hader(fio))
+def fio(name, surname, age):
+    print('hello', name, surname, age)
+
+#fio = table(hader(fio))
+fio('Loki', 'Nootik', 20)
 
