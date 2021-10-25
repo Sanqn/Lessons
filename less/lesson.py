@@ -4105,26 +4105,116 @@ import os
 # fio = decorator(fio)
 # fio('Loki', 'Nootik', 20)
 
-def hader(func):
+# def hader(func):
+#
+#     def inner(*args, **kwargs):
+#         print('<h1>')
+#         func(*args, **kwargs)
+#         print('</h1>')
+#     return inner
+#
+# def table(func):
+#     def inner(*args, **kwargs):
+#         print('<table>')
+#         func(*args, **kwargs)
+#         print('</table>')
+#     return inner
+#
+# @table
+# @hader #fio = table(hader(fio))
+# def fio(name, surname, age):
+#     print('hello', name, surname, age)
+#
+# #fio = table(hader(fio))
+# fio('Loki', 'Nootik', 20)
+# from functools import wraps
+#
+# def hader(func):
+#
+#     @wraps(func) # оборачивает функцию mult вместо inner
+#     def inner(*args, **kwargs):
+#         print('<h1>')
+#         func(*args, **kwargs)
+#         print('</h1>')
+#     return inner
+# @hader # name = hader(name)
+# def name(name):
+#     print(name)
+# name('Rokki')
 
-    def inner(*args, **kwargs):
-        print('<h1>')
-        func(*args, **kwargs)
-        print('</h1>')
-    return inner
+# @hader
+# def mult(a, b):
+#     """
+#     function multiply and return a * b
+#     :param a:
+#     :param b:
+#     :return:
+#     """
+#     print(a * b)
+# mult(10, 20)
+# print(mult.__name__) # показывает имя функции
+# print(help(mult)) # показывает коментарий к функции
 
-def table(func):
-    def inner(*args, **kwargs):
-        print('<table>')
-        func(*args, **kwargs)
-        print('</table>')
-    return inner
+# def print_given(*args, **kwargs):
+#     for i in args:
+#         print(i, type(i))
+#
+#     for k, v in kwargs.items():
+#         print(k, v, type(v))
+#
+# print_given(1, 2, 3, [1, 2, 3], 'one', 'two', 'three', two = 2, one = 1, three = 3)
 
-@table
-@hader #fio = table(hader(fio))
-def fio(name, surname, age):
-    print('hello', name, surname, age)
+# def spis(a, b, *args):
+#     print(a + b, args)
+#
+# spis(2, 2, 1, 2, 3)
 
-#fio = table(hader(fio))
-fio('Loki', 'Nootik', 20)
+# a, b, *other = [1, 2, 3, 4, 5]
+# print(a, b, other) #1 2 [3, 4, 5]
 
+# a, b, *other = input().split()
+# print(float(a), float(b), sep='\n')
+# for i in other:
+#     print(float(i))
+
+# print(*map(float, input().split()), sep='\n')
+# print((lambda x, y: x + y)(2, 5))
+# print(list(map(lambda x: x.upper(), ['cat', 'dog'])))
+# xs = [7, 95, 60, 20, 121]
+# index_max = max((0, 1, 2, 3, 4), key=lambda i: xs[i])
+# print(index_max)
+# xs = [7, 95, 60, 20, 121]
+# print(xs.index(max(xs)))
+
+number_names = {
+0: 'Zero', 1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five',
+6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten',
+11: 'Eleven', 12: 'Twelve', 13: 'Thirteen', 14: 'Fourteen',
+15: 'Fifteen', 16: 'Sixteen', 17: 'Seventeen', 18: 'Eighteen',
+19: 'Nineteen'
+}
+
+# def sort_digit(a):
+#     for k, v in sorted(number_names.items(), key=lambda x: x[1]):
+#         for i in a:
+#             if i == k:
+#                 print(k, end=' ')
+#
+# a = list(map(int, input().split()))
+# sort_digit(a)
+
+##or
+
+#print(*sorted([int(num) for num in input().split()], key=lambda n: number_names[n]))
+
+# lst = [('candy','30','100'), ('apple','10','200'), ('baby','20','300')]
+# print(*sorted(lst, key=lambda x: x[1]))
+
+# ids = ['id1', 'id100', 'id2', 'id22', 'id3', 'id30']
+# print(*sorted(ids, key=lambda x: x[2:])) # id1 id100 id2 id22 id3 id30 (sort by digit)
+
+# a = {1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'}
+# print(sorted(a.items(), key=lambda x: x[1])) #[(5, 'A'), (2, 'B'), (3, 'B'), (1, 'D'), (4, 'E')]
+
+a = {1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'}
+print(sorted(a)) #[1, 2, 3, 4, 5]
