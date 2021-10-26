@@ -4127,6 +4127,7 @@ import os
 #
 # #fio = table(hader(fio))
 # fio('Loki', 'Nootik', 20)
+
 # from functools import wraps
 #
 # def hader(func):
@@ -4186,13 +4187,13 @@ import os
 # xs = [7, 95, 60, 20, 121]
 # print(xs.index(max(xs)))
 
-number_names = {
-0: 'Zero', 1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five',
-6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten',
-11: 'Eleven', 12: 'Twelve', 13: 'Thirteen', 14: 'Fourteen',
-15: 'Fifteen', 16: 'Sixteen', 17: 'Seventeen', 18: 'Eighteen',
-19: 'Nineteen'
-}
+# number_names = {
+# 0: 'Zero', 1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five',
+# 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten',
+# 11: 'Eleven', 12: 'Twelve', 13: 'Thirteen', 14: 'Fourteen',
+# 15: 'Fifteen', 16: 'Sixteen', 17: 'Seventeen', 18: 'Eighteen',
+# 19: 'Nineteen'
+# }
 
 # def sort_digit(a):
 #     for k, v in sorted(number_names.items(), key=lambda x: x[1]):
@@ -4216,5 +4217,71 @@ number_names = {
 # a = {1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'}
 # print(sorted(a.items(), key=lambda x: x[1])) #[(5, 'A'), (2, 'B'), (3, 'B'), (1, 'D'), (4, 'E')]
 
-a = {1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'}
-print(sorted(a)) #[1, 2, 3, 4, 5]
+# a = {1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'}
+# print(sorted(a)) #[1, 2, 3, 4, 5]
+
+# def make_gtetter(phrase):
+#     prefix = phrase + ', '
+#     def greetter(name):
+#         return prefix + name
+#     return greetter
+# name_1 = make_gtetter('Hello')
+# print(name_1('boss'))
+
+#h(x) = f(g(x))
+
+# def composition(f, g):
+#
+#     def h(*x):
+#         return f(g(*x))
+#     return h
+# n = composition(sum, lambda x, y, z: (x**2, y**3, z**4))
+# print(n(2, 3, 9))
+
+# from datetime import datetime
+#
+# def timer():
+#     start = datetime.now()
+#     def inner():
+#         return datetime.now() - start
+#     return inner
+# d = timer()
+# print(d())
+
+def introduce(func):
+
+    def wrapper(*args, **kwargs):
+        print(func.__name__)
+        return func(*args, **kwargs)
+    return wrapper
+
+@introduce
+def identity(x):
+    return x
+print(identity(42))
+
+
+
+# from functools import wraps
+#
+# def hader(func):
+#
+#     @wraps(func) # оборачивает функцию mult вместо inner
+#     def inner(*args, **kwargs):
+#         print('<h1>')
+#         func(*args, **kwargs)
+#         print('</h1>')
+#     return inner
+# @hader # mult = hader(mult)
+#
+# def mult(a, b):
+#     """
+#     function multiply and return a * b
+#     :param a:
+#     :param b:
+#     :return:
+#     """
+#     print(a * b)
+# mult(10, 20)
+# print(mult.__name__) # показывает имя функции
+# print(help(mult)) # показывает коментарий к функции
