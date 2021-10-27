@@ -4248,40 +4248,41 @@ import os
 # d = timer()
 # print(d())
 
-def introduce(func):
+# def introduce(func):
+#
+#     def wrapper(*args, **kwargs):
+#         print(func.__name__)
+#         return func(*args, **kwargs)
+#
+#     return wrapper
+#
+# @introduce
+# def identity(x):
+#     return x * 2
+# print(identity(42))
+from time import time
 
-    def wrapper(*args, **kwargs):
-        print(func.__name__)
+def timed(func):
+    def inner(*args, **kwargs):
+        tmp = time()
+        func(*args, **kwargs)
+        print(func.__name__, 'exicutd time =', time() - tmp)
         return func(*args, **kwargs)
+    return inner
+
+def memoised(func):
+
+    mamory = {}
+    def wrapper(*args, **kwargs):
+        key = (args, tuple(sorted(kwargs.items())))
+        if key not in mamory:
+            mamory[key] = func(*args, **kwargs)
+        return mamory[key]
     return wrapper
-
-@introduce
-def identity(x):
-    return x
-print(identity(42))
-
-
-
-# from functools import wraps
-#
-# def hader(func):
-#
-#     @wraps(func) # оборачивает функцию mult вместо inner
-#     def inner(*args, **kwargs):
-#         print('<h1>')
-#         func(*args, **kwargs)
-#         print('</h1>')
-#     return inner
-# @hader # mult = hader(mult)
-#
-# def mult(a, b):
-#     """
-#     function multiply and return a * b
-#     :param a:
-#     :param b:
-#     :return:
-#     """
-#     print(a * b)
-# mult(10, 20)
-# print(mult.__name__) # показывает имя функции
-# print(help(mult)) # показывает коментарий к функции
+@timed
+@memoised
+def colatz2(n):
+    while n != 1:
+        print(n)
+        n = (3*n + 1) if n % 2 != 0 else (n // 2)
+colatz2(5246464)
