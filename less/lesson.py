@@ -4369,43 +4369,87 @@ from time import time
 #         return func(*args, **kwargs)
 #
 #     return inner
+# from functools import wraps
+#
+# def memoized(maxsize=None):
+#
+#     def other_func(func):
+#         memory = {}
+#         count = 0
+#         @wraps(func)
+#         def wrapper(*args, **kwargs):
+#             nonlocal count
+#             key = (args, tuple(sorted(kwargs.items())))
+#             if maxsize is None:
+#                 if key not in memory:
+#                     memory[key] = func(*args, **kwargs)
+#                 return memory[key]
+#             elif key not in memory and count != maxsize:
+#                 memory[key] = func(*args, **kwargs)
+#                 count += 1
+#             return memory[key]
+#
+#         return wrapper
+#
+#     return other_func
+#
+#
+# @memoized(maxsize=None)
+# def sum_of_two(a, b):
+#     print(a, b, end='; ')
+#     return a + b
+#
+# print(sum_of_two(2, 0), '\n')
+# print(sum_of_two(2, 0), '\n')
+#
+# print(sum_of_two(4, 2), '\n')
+# print(sum_of_two(4, 2), '\n')
+#
+# print(sum_of_two(5, 0), '\n')
+# print(sum_of_two(5, 0), '\n')
+#
+# print(sum_of_two(4, 2))
+
+
+# from functools import wraps
+#
+# def parameterized(init_deco):
+#     def param_deco(*args, **kwargs):
+#         def res_deco(func):
+#             return init_deco(func, *args, **kwargs)
+#         return res_deco
+#     return param_deco
+#
+# @parameterized
+# def introduce(func, n, newline=True):
+#     @wraps(func)
+#     def inner(*args, **kwargs):
+#         print(('\n' if newline else ' ').join([func.__name__]*n))
+#         return func(*args, **kwargs)
+#     return inner
+
+# @introduce(4)
+# def identity(x):
+#     return x
+# print(identity(42))
+
 from functools import wraps
 
-def memoized(maxsize=None):
-
-    def other_func(func):
-        memory = {}
-        count = 0
+def decorator(res_inner):
+    def res_deco(func):
         @wraps(func)
-        def wrapper(*args, **kwargs):
-            nonlocal count
-            key = (args, tuple(sorted(kwargs.items())))
-            if maxsize is None:
-                if key not in memory:
-                    memory[key] = func(*args, **kwargs)
-                return memory[key]
-            elif key not in memory and count != maxsize:
-                memory[key] = func(*args, **kwargs)
-                count += 1
-            return memory[key]
+        def inner(*args, **kwargs):
+            return res_inner(func, *args, **kwargs)
+        return inner
+    return res_deco
 
-        return wrapper
+@decorator
+def introduce(func, *args, **kwargs):
+    print(func.__name__)
+    return func(*args, **kwargs)
 
-    return other_func
+@introduce
+def identity(x):
+    return x
 
-
-@memoized(maxsize=None)
-def sum_of_two(a, b):
-    print(a, b, end='; ')
-    return a + b
-
-print(sum_of_two(2, 0), '\n')
-print(sum_of_two(2, 0), '\n')
-
-print(sum_of_two(4, 2), '\n')
-print(sum_of_two(4, 2), '\n')
-
-print(sum_of_two(5, 0), '\n')
-print(sum_of_two(5, 0), '\n')
-
-print(sum_of_two(4, 2))
+print(identity(31415))
