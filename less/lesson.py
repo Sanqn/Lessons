@@ -2370,9 +2370,8 @@
 # n = int(input())
 # a = [i for i in range(1, n + 1)]
 # print(a)
-
+from doctest import debug
 from string import ascii_uppercase
-
 
 # n = int(input())
 # a = [ascii_uppercase[i] for i in range(n)]
@@ -2465,7 +2464,7 @@ from string import ascii_uppercase
 # vector = [vector[i][j] for i in range(len(vector)) for j in range((len(vector[0])))]
 # print(vector)
 
-#Creqte Dict +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Creqte Dict +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # b = {}
 # print(b)
@@ -2784,7 +2783,7 @@ from string import ascii_uppercase
 #         print(*b[mon])
 #     else:
 #         print('Нет данных')
-#или
+# или
 
 # for _ in range(int(input())):
 #     print(*sorted(b.get(input(), ["Нет данных"])))
@@ -2811,7 +2810,7 @@ from string import ascii_uppercase
 #     else:
 #         print(f'Введите перевод слова {n}')
 #         words[n] = input()
-#import age as age
+# import age as age
 
 # a = {
 #     'Mikle': {'age': 1995, 'hobby': 'soccer', 'car': 'BMW'},
@@ -2938,7 +2937,7 @@ from string import ascii_uppercase
 # info_user = {info[0]: info for info in users}
 # print(info_user[1])
 
-#Create Tuple+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Create Tuple+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # a = 1, 2, 3
 # b = tuple((1, 2, 3)) # tuple([1, 2, 3]), ()
@@ -2955,7 +2954,7 @@ from string import ascii_uppercase
 # print(g)
 # print(list(n))
 
-#Create Set +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ множество
+# Create Set +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ множество
 
 # a = {1, 2, 1, 2, 10, 15, 11}
 # print(a) #{1, 2, 10, 11, 15} убирает дубли
@@ -4206,7 +4205,7 @@ import os
 
 ##or
 
-#print(*sorted([int(num) for num in input().split()], key=lambda n: number_names[n]))
+# print(*sorted([int(num) for num in input().split()], key=lambda n: number_names[n]))
 
 # lst = [('candy','30','100'), ('apple','10','200'), ('baby','20','300')]
 # print(*sorted(lst, key=lambda x: x[1]))
@@ -4228,7 +4227,7 @@ import os
 # name_1 = make_gtetter('Hello')
 # print(name_1('boss'))
 
-#h(x) = f(g(x))
+# h(x) = f(g(x))
 
 # def composition(f, g):
 #
@@ -4262,27 +4261,151 @@ import os
 # print(identity(42))
 from time import time
 
-def timed(func):
-    def inner(*args, **kwargs):
-        tmp = time()
-        func(*args, **kwargs)
-        print(func.__name__, 'exicutd time =', time() - tmp)
-        return func(*args, **kwargs)
-    return inner
+# def timed(func):
+#     def inner(*args, **kwargs):
+#         tmp = time()
+#         func(*args, **kwargs)
+#         print(func.__name__, 'exicutd time =', time() - tmp)
+#         return func(*args, **kwargs)
+#     return inner
+#
+# def memoised(func):
+#
+#     mamory = {}
+#     def wrapper(*args, **kwargs):
+#         key = (args, tuple(sorted(kwargs.items())))
+#         if key not in mamory:
+#             mamory[key] = func(*args, **kwargs)
+#         return mamory[key]
+#     return wrapper
+# @timed
+# @memoised
+# def colatz2(n):
+#     while n != 1:
+#         print(n)
+#         n = (3*n + 1) if n % 2 != 0 else (n // 2)
+# colatz2(5246464)
 
-def memoised(func):
 
-    mamory = {}
-    def wrapper(*args, **kwargs):
-        key = (args, tuple(sorted(kwargs.items())))
-        if key not in mamory:
-            mamory[key] = func(*args, **kwargs)
-        return mamory[key]
-    return wrapper
-@timed
-@memoised
-def colatz2(n):
-    while n != 1:
-        print(n)
-        n = (3*n + 1) if n % 2 != 0 else (n // 2)
-colatz2(5246464)
+# def flip(func):
+#     def inner(*args, **kwargs):
+#         #args = args[::-1]
+#         return func(*args[::-1], **kwargs)
+#     return inner
+# @flip
+# def div(x, y, show=False):
+#     res = x / y
+#     if show:
+#         print(res)
+#     return res
+# div(2, 4, show=True)
+
+# def introduce_on_debug(func):
+#     def inner(*args, **kwargs):
+#         if debug:
+#             print(func.__name__)
+#             return func(*args, **kwargs)
+#         return func(*args, **kwargs)
+#     return inner
+# @introduce_on_debug
+# def identity(x):
+#     return x
+# identity(239)
+# from functools import wraps
+#
+# def optional_introduce(func):
+#     @wraps(func)
+#     def inner(*args, introduce=False, **kwargs):
+#         if introduce:
+#             print(func.__name__)
+#             return func(*args, **kwargs)
+#         return func(*args, **kwargs)
+#     return inner
+# @optional_introduce
+# def identity(x):
+#     return x
+# print(identity(42, introduce=True))
+
+
+# from functools import wraps
+#
+# def introduce(n):
+#     def optional_introduce(func):
+#         @wraps(func)
+#         def inner(*args, **kwargs):
+#             print((func.__name__ + '\n')*n)
+#             return func(*args, **kwargs)
+#         return inner
+#     return optional_introduce
+# @introduce(4)
+# def identity(x):
+#     return x
+# print(identity(42))
+
+# from functools import wraps
+#
+# def bucket(*n, **kn):
+#
+#     def introduce(func):
+#         @wraps(func)
+#         def inner(*args, **kwargs):
+#             print(f'({n}, {kn})')
+#             return func(*args, **kwargs)
+#         return inner
+#     return introduce
+# @bucket()
+# def identity(x):
+#     return x
+# print(identity(42))
+
+# from time import time
+#
+#
+# def timed(func):
+#     def inner(*args, **kwargs):
+#         tmp = time()
+#         func(*args, **kwargs)
+#         print(func.__name__, 'exicutd time =', time() - tmp)
+#         return func(*args, **kwargs)
+#
+#     return inner
+from functools import wraps
+
+def memoized(maxsize=None):
+
+    def other_func(func):
+        memory = {}
+        count = 0
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            nonlocal count
+            key = (args, tuple(sorted(kwargs.items())))
+            if maxsize is None:
+                if key not in memory:
+                    memory[key] = func(*args, **kwargs)
+                return memory[key]
+            elif key not in memory and count != maxsize:
+                memory[key] = func(*args, **kwargs)
+                count += 1
+            return memory[key]
+
+        return wrapper
+
+    return other_func
+
+
+@memoized(maxsize=None)
+def sum_of_two(a, b):
+    print(a, b, end='; ')
+    return a + b
+
+print(sum_of_two(2, 0), '\n')
+print(sum_of_two(2, 0), '\n')
+
+print(sum_of_two(4, 2), '\n')
+print(sum_of_two(4, 2), '\n')
+
+print(sum_of_two(5, 0), '\n')
+print(sum_of_two(5, 0), '\n')
+
+print(sum_of_two(4, 2))
