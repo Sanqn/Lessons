@@ -4433,23 +4433,65 @@ from time import time
 #     return x
 # print(identity(42))
 
+# from functools import wraps
+#
+# def decorator(res_inner):
+#     def res_deco(func):
+#         @wraps(func)
+#         def inner(*args, **kwargs):
+#             return res_inner(func, *args, **kwargs)
+#         return inner
+#     return res_deco
+#
+# @decorator
+# def introduce(func, *args, **kwargs):
+#     print(func.__name__)
+#     return func(*args, **kwargs)
+#
+# @introduce
+# def identity(x):
+#     return x
+#
+# print(identity(31415))
+
+# from functools import partial
+#
+# def con(n, a):
+#     for i in a:
+#         if i % n == 0:
+#             print(i)
+# con_class = partial(con, a = range(101))
+# con_class(11)
+
+# from functools import partial
+# from functools import wraps
+# def introduce(func = None, num = 1):
+#     if func is None:
+#         return partial(introduce, num = num)
+#     @wraps(func)
+#     def wrapper(*args, **kwargs):
+#         print((func.__name__ + ' ') * num)
+#         return func(*args, **kwargs)
+#
+#     return wrapper
+#
+# @introduce(num = 5)
+# def identity(x):
+#     return x * 2
+# print(identity(42))
+
+from functools import partial
 from functools import wraps
 
-def decorator(res_inner):
-    def res_deco(func):
-        @wraps(func)
-        def inner(*args, **kwargs):
-            return res_inner(func, *args, **kwargs)
-        return inner
-    return res_deco
-
-@decorator
-def introduce(func, *args, **kwargs):
-    print(func.__name__)
-    return func(*args, **kwargs)
-
-@introduce
+def bucket(func = None, *n, **kn):
+    if func is None:
+        return partial(bucket, **kn)
+    @wraps(func)
+    def inner(*args, **kwargs):
+        print(f'{kn}')
+        return func(*args, **kwargs)
+    return inner
+@bucket
 def identity(x):
     return x
-
-print(identity(31415))
+print(identity(42))
