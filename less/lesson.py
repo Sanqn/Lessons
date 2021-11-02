@@ -4261,6 +4261,7 @@ import os
 # print(identity(42))
 from time import time
 
+
 # def timed(func):
 #     def inner(*args, **kwargs):
 #         tmp = time()
@@ -4480,18 +4481,89 @@ from time import time
 #     return x * 2
 # print(identity(42))
 
+# from functools import partial
+# from functools import wraps
+#
+# def bucket(func = None, *n, **kn):
+#     if func is None:
+#         return partial(bucket, **kn)
+#     @wraps(func)
+#     def inner(*args, **kwargs):
+#         print(f'{kn}')
+#         return func(*args, **kwargs)
+#     return inner
+# @bucket
+# def identity(x):
+#     return x
+# print(identity(42))
+
+# def call(arg):
+#
+#     def actual_deco(func):
+#         return func(arg)
+#     return actual_deco
+# n = 5
+# @call('la')
+# def printfew(string):
+#     n = 3
+#     print(string * n)
+
+# from operator import attrgetter as attribute
+#
+# @len
+# @attribute('__name__')
+# def twenty_four():
+#     pass
+# print(twenty_four)
+
+# def check(*preconditios):
+#     def work_dek(func):
+#         def inner(*args, **kwargs):
+#             args_name = func.__code__.co_varnames
+#             environment = dict(zip(args_name, args))
+#             environment.update(kwargs)
+#
+#             for cond, msq in preconditios:
+#                 if not eval(cond, environment):
+#                     raise ValueError(msq)
+#             return func(*args, **kwargs)
+#
+#         return inner
+#
+#     return work_dek
+#
+#
+# @check(('all(xs[i] <= xs[i + 1] for i in range(len(xs)-1))',
+#         'The data is not sorted'),
+#        ('x != 0',
+#         'Can not seek for zeros for same reason'))
+# def binsearch(x, xs):
+#     pass
+#
+#
+# binsearch(2, [1, 2, 3])
+
 from functools import partial
 from functools import wraps
 
-def bucket(func = None, *n, **kn):
-    if func is None:
-        return partial(bucket, **kn)
-    @wraps(func)
-    def inner(*args, **kwargs):
-        print(f'{kn}')
+def apply(*args, **kwargs):
+    def dec(func):
         return func(*args, **kwargs)
-    return inner
-@bucket
-def identity(x):
-    return x
-print(identity(42))
+    return dec
+
+@apply(2, 3)
+def multiply(x, y):
+    return x * y
+
+print(multiply, type(multiply))
+
+# def call(arg):
+#
+#     def actual_deco(func):
+#         return func(arg)
+#     return actual_deco
+# n = 5
+# @call('la')
+# def printfew(string):
+#     n = 3
+#     print(string * n)
