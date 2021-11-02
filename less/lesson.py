@@ -4557,13 +4557,3 @@ def multiply(x, y):
 
 print(multiply, type(multiply))
 
-# def call(arg):
-#
-#     def actual_deco(func):
-#         return func(arg)
-#     return actual_deco
-# n = 5
-# @call('la')
-# def printfew(string):
-#     n = 3
-#     print(string * n)
