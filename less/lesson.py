@@ -2370,8 +2370,6 @@
 # n = int(input())
 # a = [i for i in range(1, n + 1)]
 # print(a)
-from doctest import debug
-from string import ascii_uppercase
 
 # n = int(input())
 # a = [ascii_uppercase[i] for i in range(n)]
@@ -3815,8 +3813,6 @@ from string import ascii_uppercase
 #
 # print(doc('D:\\фото'))
 
-import os
-
 # def new_doc(folder,level = 1, name = 'База'):
 #     #print('level=', level, 'content', os.path.isdir(folder))
 #     for i in os.listdir(folder):
@@ -4259,7 +4255,6 @@ import os
 # def identity(x):
 #     return x * 2
 # print(identity(42))
-from time import time
 
 
 # def timed(func):
@@ -4543,17 +4538,150 @@ from time import time
 #
 # binsearch(2, [1, 2, 3])
 
-from functools import partial
-from functools import wraps
+# def apply(*args, **kwargs):
+#     def dec(func):
+#         return func(*args, **kwargs)
+#     return dec
+#
+# @apply(2, 3)
+# def multiply(x, y):
+#     return x * y
+#
+# print(multiply, type(multiply))
 
-def apply(*args, **kwargs):
-    def dec(func):
-        return func(*args, **kwargs)
-    return dec
+# from patterns import patterns
+#
+# @patterns
+# def product():
+#     if []: 1
+#     if [x] + xs: x * product(xs)
+#
+# print(product([1, 2, 3, 4, 5]))
 
-@apply(2, 3)
-def multiply(x, y):
-    return x * y
+# def product(value):
+#
+#     if value == []:
+#         return 1
+#     if isinstance(value, list) and len(value) >= 1:
+#         x, xs = value[0], value[1:]
+#         return x * product(xs)
+# print(product([1, 2, 3, 4]))
 
-print(multiply, type(multiply))
+# n = int(input())
+# x = list(map(int, input().split()))
+#
+# # def rec(x):
+# #     if len(x) == 1:
+# #         return x
+# #     return rec(x[1:]) + [x[0]]
+# # print(*rec(x))
+#
+# def rec(n):
+#     if n > 0:
+#         print(x[n - 1], end=' ')
+#         rec(n - 1)
+# rec(n)
+
+# def palin(n):
+#     if len(n) == 1:
+#         return True
+#     if n[0] != n[-1]:
+#         return False
+#     return palin(n[1:-1])
+# print(palin('ifkf'))
+
+# def mult(n):
+#     if len(n) == 0:
+#         return 0
+#     if len(n) == 1:
+#         return n[0]
+#     return n[0] * mult(n[1:])
+# print(mult([1, 2, 3]))
+
+# n = [5, 2, 9, 5, 1, 4, 16, 17]
+#
+# for i in range(len(n)):
+#     for y in range(len(n) - 1):
+#         if n[y] > n[y + 1]:
+#             n[y], n[y + 1] = n[y + 1], n[y]
+#
+# print(n)
+
+# import math as m #можно создать псевдоним (m)
+#from math import factorial as fact # можно дать имени модуля псивдоним
+# from math import * # импорт всех имен из модуля (не желательно так делать, могут перезатерется имена своих функций)
+
+
+# def say_hello(name):
+#     print('Hello', name)
+#
+# def summa(*args):
+#     return sum(args)
+#
+# def fac(n):
+#     if n == 0:
+#         return 1
+#     return n * fac(n - 1)
+#
+#
+# def fib(n):
+#     if n == 0:
+#         return 0
+#     if n == 1:
+#         return 1
+#     return fib(n - 1) + fib(n - 2)
+#
+# my_str = 'Hihihihi'
+#
+# num_1 = 2
+# num_2 = 3
+#
+# import calendar
+#
+# c = calendar.TextCalendar()
+# print(c.formatyear(2021, 5))
+
+# from less.dir.import_my_name import factor
+# #import sys
+# #import pprint
+#
+# print(factor(5))
+# #pprint.pprint(sys.path)
+
+#work with file ----------------------------------------------------------------
+
+# file = open('text11.txt', 'a', encoding='utf-8')
+#     # 'r'       open for reading (default)
+#     # 'w'       open for writing, truncating the file first
+#     # 'x'       create a new file and open it for writing
+#     # 'a'       open for writing, appending to the end of the file if it exists
+#     # 'b'       binary mode
+#     # 't'       text mode (default)
+#     # '+'       open a disk file for updating (reading and writing)
+#     # 'U'       universal newline mode (deprecated)
+# file1 = open(r'C:\Users\Admin\PycharmProjects\Lessons\less\text11.txt', encoding='utf-8')
+# print(file.read(5)) # func 'read()' take argument, amount symbols
+# print(file.read(5))
+# file.seek(0) #returns cursor to 0 position
+# print(file.read(5))
+#
+# print(file1.readline()) #read one line
+# print(file1.readline())
+# for row in file:
+#     print(row)
+#     for letter in row:
+#         print(letter)
+# s = file.readlines() # create list
+# print(s)
+# one_list = []
+# for row in file:
+#     if '\n' in row:
+#         one_list.append(row[:-2])
+#     else:
+#         one_list.append(row)
+# print(one_list)
+
+# print(file.write(' Bye Bye'))
+# file.close()
+
 
