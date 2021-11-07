@@ -3805,7 +3805,7 @@
 # def doc(path, level = 1):
 #     print('level=', level, 'content', os.path.isdir(path))
 #     for i in os.listdir(path): # return list of doc
-#         if os.path.isdir(path + '\\' + i):
+#         if os.path.isdir(path + '\\' + i): #os.path.isdirfile (является ли путь файлом.)
 #             print('Спускаемся', path + '\\' + i)
 #             doc(path + '\\' + i, level + 1)
 #             print('Возвращаемся', path)
@@ -4608,7 +4608,7 @@
 # print(n)
 
 # import math as m #можно создать псевдоним (m)
-#from math import factorial as fact # можно дать имени модуля псивдоним
+# from math import factorial as fact # можно дать имени модуля псивдоним
 # from math import * # импорт всех имен из модуля (не желательно так делать, могут перезатерется имена своих функций)
 
 
@@ -4648,7 +4648,7 @@
 # print(factor(5))
 # #pprint.pprint(sys.path)
 
-#work with file ----------------------------------------------------------------
+# work with file ----------------------------------------------------------------
 
 # file = open('text11.txt', 'a', encoding='utf-8')
 #     # 'r'       open for reading (default)
@@ -4684,4 +4684,154 @@
 # print(file.write(' Bye Bye'))
 # file.close()
 
+# def file_read(file_name):
+#     print((open(file_name, encoding='utf-8')).read())
+#
+# file_read('text11.txt')
 
+# def create_file_with_numbers(n):
+#     file = open(f'range_{n}.txt', 'x+')
+#     for i in range(1, n + 1):
+#         file.write(str(i) + '\n')
+#     print(file.read())
+
+# def create_file_with_numbers(n):
+#     open(f'range_{n}.txt', 'w').writelines('\n'.join(map(str, range(1, n + 1))))
+#
+# create_file_with_numbers(8)
+
+# from string import punctuation
+#
+# def longest_word_in_file(file_name):
+#     file = open(file_name, 'r', encoding='utf-8')
+#     s = file.read()
+#     ot = punctuation
+#     # for i in s:
+#     #     if i in ot:
+#     #         s = s.replace(i, '')
+#     # s = s.split()
+#     # l = []
+#     # z = {}
+#     # for i in s:
+#     #     z[i] = z.get(i, len(i))
+#     # for k, v in sorted(z.items(), key=lambda x: x[1]):
+#     #     l.append(k)
+#     # return l[-1]
+#     words = [*map(lambda x: x.strip(ot), s.split())]
+#     return max(words[::-1], key = lambda x: len(x))
+#
+# print(longest_word_in_file('text11.txt'))
+
+
+# from string import punctuation
+# n = 'fsgs, sgsgs, gsgsg $ gssg! gsgsg'
+# word = [*map(lambda x: x.strip(punctuation), n.split())]
+# print(word)
+# print(max(word[::-1], key=lambda x: len(x)))
+
+# def number(files):
+#     file = (open(files)).read()
+#     s = [*map(lambda x: x.strip('\n'), file.split())]
+#     count = 0
+#     k = []
+#     for i in s:
+#         if len(i) == 3:
+#             count += 1
+#     print(count)
+#     # for i in s:
+#     #     if len(i) == 2:
+#     #         k.append(int(i))
+#     # print(sum(k))
+#     print(sum(map(int, filter(lambda x: len(x)==2, s))))
+
+# number(r"C:\Users\Admin\Downloads\numbers.txt")
+
+
+# s = open(r"C:\Users\Admin\Downloads\numbers.txt").read().split()
+# print(s)
+# print(len(list(filter(lambda x: len(x) == 4, s))))
+# print(sum(map(lambda x: int(x) if len(x) == 3 else 0, s)))
+# print(sum(map(int, filter(lambda x: len(x) == 3, s))))
+
+# a = [('john', 20, 'a'), ('lokki', 115, 'c'), ('nokia', 2, 'b')]
+# print(sorted(a, key=lambda x: x[0]))
+
+import os
+from datetime import datetime
+
+# if not os.path.isdir("folder"):
+#      os.mkdir("folder") # создать пустой каталог (папку)
+# print("Текущая деректория:", os.getcwd())# вывести текущую директорию
+# os.chdir("folder") # изменение текущего каталога на 'folder'
+# print("Текущая директория изменилась на folder:", os.getcwd()) # вывод текущей папки
+#
+# os.makedirs("nested1/nested2") # сделать несколько вложенных папок
+# #os.chdir("..") # вернуться в предыдущую директорию
+# print("Текущая деректория:", os.getcwd())
+# # создать новый текстовый файл
+# text_file = open("text.txt", "a+", encoding='utf-8')
+# # запить текста в этот файл
+# text_file.write("Это текстовый файл")
+# text_file.write(f'currtn time: {datetime.now()}')
+# print(text_file.read())
+# os.chdir("..")
+# os.removedirs("folder/nested1/nested2")
+# os.remove("folder/text.txt") # удалить этот файл
+# os.rmdir("folder") # удалить папку
+
+# def find_filenme(path, name = 'numbers.txt'):
+#     findname= []
+#     s = []
+#     for dirpath, dirnames, filenames in os.walk(path):
+#         #перебрать каталоги
+#         for dirname in dirnames:
+#             #print("Каталог:", os.path.join(dirpath, dirname))
+#             s.append(os.path.join(dirpath, dirname))
+#         #перебрать файлы
+#         for filename in filenames:
+#             if filename == name:
+#                 findname.append(os.path.join(dirpath, filename))
+#                 #print("Файл:", os.path.join(dirpath, filename),'++++++++++++++++++++++++++++++++++++++++')
+#                 newname = open(os.path.join(dirpath, filename), 'a+', encoding='utf-8')
+#                 newname.write('Я тебя нашел')
+#     print(s)
+#     print(*findname)
+#     print(os.stat(*findname))
+# find_filenme("C:\\Users\\Admin")
+import json
+from random import randint
+from datetime import datetime
+
+str_json = """{
+    "response": {
+        "count": 265448488,
+        "items": [{
+            "first_name": "Micke",
+            "id": 4564646,
+            "last_name": "Jordon",
+            "can_access_closed": true,
+            "is_closed": false,
+            "photo_50": "https://ggr-97...gggsgsgs1"
+        }, {
+            "first_name": "Tom",
+            "id": 7864456,
+            "last_name": "Cruse",
+            "can_access_closed": true,
+            "is_closed": false,
+            "photo_50": "https://ggr-12...gggsgsgs1"
+        }]
+    }
+}"""
+
+data = json.loads(str_json)
+print(data['response']['items'])
+for item in data['response']['items']:
+    del item['id']
+    item['like'] = randint(100, 500)
+    item['now_time'] = datetime.now().strftime('%d/%m/%y')
+#     for k, v in item.items():
+#         print(k, '=', v)
+# new_json = json.dumps(data, indent=1)
+# print(new_json)
+with open('my.json', 'w') as file:
+    json.dump(data, file)
