@@ -4925,8 +4925,29 @@ from string import punctuation
 # c = (i for i in range(10000000000))
 # for i in c:
 #     print(i)
-n = (i ** 2 for i in range(5))
-print(list(n))
+# n = (i ** 2 for i in range(5))
+# print(list(n))
 
+# def genf():
+#     s = 7
+#     for i in list(range(5)):
+#         yield i
+#         print(s)
+#         s += 10
+#
+# g = genf()
+# print(next(g))
+# print(next(g))
+# print(next(g))
+# print(next(g))
+
+def fact(n):
+    pr = 1
+    for i in range(1, n + 1):
+        pr *= i
+        yield pr # выдает по одному значению и не сохраняет весь список в памяти
+
+for i in fact(10):
+    print(i)
 
 
