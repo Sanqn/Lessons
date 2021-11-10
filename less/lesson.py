@@ -5019,5 +5019,31 @@ from string import punctuation
 # # for i in a:
 # #     print(len(list(filter(i, numbers))), end=' ')
 
-days = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve']
-print(*sorted(list(filter(lambda x: len(x) == 4 or x[0] == 'S', days))), sep='\n')
+# days = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve']
+# print(*sorted(list(filter(lambda x: len(x) == 4 or x[0] == 'S', days))), sep='\n')
+
+# class zip(object):+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#     """
+#     zip(*iterables, strict=False) --> Yield tuples until an input is exhausted.
+#
+#        >>> list(zip('abcdefg', range(3), range(4)))
+#        [('a', 0, 0), ('b', 1, 1), ('c', 2, 2)]
+#
+#     The zip object yields n-length tuples, where n is the number of iterables
+#     passed as positional arguments to zip().  The i-th element in every tuple
+#     comes from the i-th iterable argument to zip().  This continues until the
+#     shortest argument is exhausted.
+#
+#     If strict is true and one of the arguments is exhausted before the others,
+#     raise a ValueError.
+#     "
+
+a = [5, 8, 6, 7]
+b = [100, 200, 350, 150]
+c = 'abnc'
+# rez = list(zip(a, b, c))
+# print(sorted(rez, key=lambda x: x[0]))
+rez = zip(a, b, c) # выводт, как и yield только один раз (чтобы можно было ободить много раз, обернуть в list)
+# print(list(rez)) # [(5, 100, 'a'), (8, 200, 'b'), (6, 350, 'n'), (7, 150, 'c')]
+col1, col2, col3 = zip(*rez)
+print(col1, col2, col3) #(5, 8, 6, 7) (100, 200, 350, 150) ('a', 'b', 'n', 'c') unpack again
