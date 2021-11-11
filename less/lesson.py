@@ -5038,12 +5038,76 @@ from string import punctuation
 #     raise a ValueError.
 #     "
 
-a = [5, 8, 6, 7]
-b = [100, 200, 350, 150]
-c = 'abnc'
-# rez = list(zip(a, b, c))
-# print(sorted(rez, key=lambda x: x[0]))
-rez = zip(a, b, c) # выводт, как и yield только один раз (чтобы можно было ободить много раз, обернуть в list)
-# print(list(rez)) # [(5, 100, 'a'), (8, 200, 'b'), (6, 350, 'n'), (7, 150, 'c')]
-col1, col2, col3 = zip(*rez)
-print(col1, col2, col3) #(5, 8, 6, 7) (100, 200, 350, 150) ('a', 'b', 'n', 'c') unpack again
+# a = [5, 8, 6, 7]
+# b = [100, 200, 350, 150]
+# c = 'abnc'
+# # rez = list(zip(a, b, c))
+# # print(sorted(rez, key=lambda x: x[0]))
+# rez = zip(a, b, c) # выводт, как и yield только один раз (чтобы можно было ободить много раз, обернуть в list)
+# # print(list(rez)) # [(5, 100, 'a'), (8, 200, 'b'), (6, 350, 'n'), (7, 150, 'c')]
+# col1, col2, col3 = zip(*rez)
+# print(col1, col2, col3) #(5, 8, 6, 7) (100, 200, 350, 150) ('a', 'b', 'n', 'c') unpack again
+
+# employee_numbers = [2, 9, 18, 28]
+# employee_names = ["Дима", "Марина", "Андрей", "Никита"]
+#
+# for name, number in list(zip(employee_names, employee_numbers)):
+# 	print(name, number)
+#
+# rez = zip(employee_names, employee_numbers)
+# col1, col2 = zip(*rez)
+# print(list(col1), col2)
+
+#sort(method'You can use only with list.sort') vs sorted(function) ==============++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# a = [5, 10, 15, 0, 1, 5]
+# b = 'hi how are you'
+# c = ('hi', 'how', 'are', 'you')
+# a.sort()
+# for i in a:
+#     print(i)
+# print(sorted(c, reverse=False)) # always return list
+# print(sorted(c, reverse=True))
+
+#argument key in sort ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# 1. func inset
+# 2. func creation
+# 3. methods (lower, upper)
+# 4. lambda
+
+# def f(x):
+#     return x % 10, x // 10 % 10
+#
+# b = [500, 25, 18, 100, 37, 18, 27, 52, 3, 524]
+# print(sorted(b, key=f))
+# print(sorted(b, key=lambda x: (x % 10, x // 10 % 10)))
+
+# a = [500, 25, 18, -100, 25, 18, -25, -52]
+# print(sorted(a, key=abs))
+
+# s = ['GGG', 'ggg', 'DDDDD', 'dd', 'mmmmmm', 'JJJ']
+# print(sorted(s))
+# print(sorted(s, key=str.lower))
+
+# s = ['GGG 1', 'ggg 78', 'zzzzz 12', 'dd 78', 'mmmmmm 1', 'JJJ 8']
+# print(sorted(s, key=lambda x: (int(x.split()[1]), x.split()[0].lower()[::-1])))
+
+# subject_marks = [('English', 88), ('Science', 90), ('Maths', 97), ('Physics', 93),('History', 82)]
+# # a = sorted(subject_marks, key=lambda x: x[1])
+# # for i in a:
+# #     print(*i)
+# [print(*i) for i in sorted(subject_marks, key=lambda x: x[1])]
+
+# subject_marks = [('English', 88), ('Science', 90), ('Maths', 97),
+#                  ('Physics', 93), ('History', 82), ('French', 78),
+#                  ('Art', 58), ('Chemistry', 76), ('Programming', 91)]
+# [print(*i) for i in sorted(subject_marks, key=lambda x: x[1])[::-1]]
+
+subject_marks = [('English', 88), ('Science', 90), ('Maths', 88),
+                 ('Physics', 93), ('History', 78), ('French', 78),
+                 ('Art', 78), ('Chemistry', 88), ('Programming', 91)]
+[print(*i) for i in sorted(subject_marks, key=lambda x: (-x[1], x[0]))]
+
+
+
+
