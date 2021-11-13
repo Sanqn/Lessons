@@ -2935,7 +2935,7 @@
 # info_user = {info[0]: info for info in users}
 # print(info_user[1])
 
-# Create Tuple+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#Create Tuple+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # a = 1, 2, 3
 # b = tuple((1, 2, 3)) # tuple([1, 2, 3]), ()
@@ -2951,6 +2951,19 @@
 # g[n] = 'Hello'
 # print(g)
 # print(list(n))
+# n = list(n)
+# print(n)
+# n = tuple(n)
+# print(n)
+
+# my_tuple = (-214, 181, -139, 448, -664, -66, 213, 832, 717, -462, -924, -706, -85, -244, -222, -340, -482, -518, -781, 759, -593, 905, -354, -377, -141, -742, 383, -381, 109, -639, -480, -810, -686, 892, -612, 696, 993, 791, 631, -493, -218, -829, -275, 619, -628, -241, -565, -835, -69, 747, 711, -252, -811, -407, -153, 904, 933, -254, 307, -493, -419, -109, -543, 155, -127, 613, -452, -459, 856, 562, 333, -66, -77, -598, -779, -278, 867, 321, -20, -415, -357, 735, -906, -14, -370, 453, -630, -736, -830, -917, 32, 422, -895, 198, 284, 472, -986, -964, -73, 29)
+# print(min(my_tuple), max(my_tuple))
+# my_tuple = (-214, 181, -139, 448, -664, -66, 213, 832, 717, -462, -924, -706, -85, -244, -222, -340, -482, -518, -781, 759, -593, 905, -354, -377, -141, -742, 383, -381, 109, -639, -480, -810, -686, 892, -612, 696, 993, 791, 631, -493, -218, -829, -275, 619, -628, -241, -565, -835, -69, 747, 711, -252, -811, -407, -153, 904, 933, -254, 307, -493, -419, -109, -543, 155, -127, 613, -452, -459, 856, 562, 333, -66, -77, -598, -779, -278, 867, 321, -20, -415, -357, 735, -906, -14, -370, 453, -630, -736, -830, -917, 32, 422, -895, 198, 284, 472, -986, -964, -73, 29)
+# new_tuple = []
+# for i in list(my_tuple):
+#     if i % 2 != 0:
+#         new_tuple.append(i)
+# print(sum(new_tuple)/len(new_tuple))
 
 # Create Set +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ множество
 
@@ -5103,10 +5116,131 @@ from string import punctuation
 #                  ('Art', 58), ('Chemistry', 76), ('Programming', 91)]
 # [print(*i) for i in sorted(subject_marks, key=lambda x: x[1])[::-1]]
 
-subject_marks = [('English', 88), ('Science', 90), ('Maths', 88),
-                 ('Physics', 93), ('History', 78), ('French', 78),
-                 ('Art', 78), ('Chemistry', 88), ('Programming', 91)]
-[print(*i) for i in sorted(subject_marks, key=lambda x: (-x[1], x[0]))]
+# subject_marks = [('English', 88), ('Science', 90), ('Maths', 88),
+#                  ('Physics', 93), ('History', 78), ('French', 78),
+#                  ('Art', 78), ('Chemistry', 88), ('Programming', 91)]
+# [print(*i) for i in sorted(subject_marks, key=lambda x: (-x[1], x[0]))]
+
+# heroes = {
+#     'Spider-man': 80,
+#     'Jaks': 35,
+#     'Conor': 53,
+#     'Wonder_woman': 78,
+#     'Iron_man': 23,
+#     'Alaska': 37,
+#     'Flash': 37,
+#     'Hulk': 47
+# }
+# for i in sorted(heroes.items(), key=lambda x: (x[1], x[0])):
+#     print(i)
+
+# models = [{'make': 'Nokia', 'model': 216, 'color': 'Black'},
+#           {'make': 'Mi Max', 'model': 2, 'color': 'Gold'},
+#           {'make': 'Samsung', 'model': 7, 'color': 'Blue'},
+#           {'make': 'Apple', 'model': 10, 'color': 'Silver'},
+#           {'make': 'Oppo', 'model': 9, 'color': 'Red'},
+#           {'make': 'Huawei', 'model': 4, 'color': 'Grey'},
+#           {'make': 'Honor', 'model': 3, 'color': 'Black'}]
+# for i in sorted(models, key=lambda x: x['color']):
+#     print(f'Производитель: {i["make"]}, модель: {i["model"]}, цвет: {i["color"]}')
+
+# d = {}
+# for i in iter(input, 'конец'):
+#     k, v = i.split(': ')
+#     d[k] = d.setdefault(k, int(v))
+# [print(i[0]) for i in sorted(d.items(), key=lambda x: -x[1])]
+
+# d = {}
+# n = int(input())
+# for i in range(n):
+#     a = input()
+#     d[a] = d.get(a, 0) + 1
+# print(*sorted(d.items(), key=lambda x: -x[1])[0], sep=', ')
+# print(*sorted(d.items(), key=lambda x: -x[1])[-1], sep=', ')
+
+# d = {}
+# n = int(input())
+# for i in range(n):
+#     k, v = input().split()
+#     d.setdefault(v, []).append(k)
+# a = int(input())
+# for i in range(a):
+#     c = input()
+#     if c in d:
+#         print(*d[c])
+#     else:
+#         print('Неизвестный номер')
+
+# d = {}
+# for i in range(int(input())):
+#     a = input().split()
+#     d.setdefault(a[2], []).append(a[0])
+# for i in range(int(input())):
+#     c = input()
+#     if c in d:
+#         print(*sorted(d[c]))
+#     else:
+#         print('Нет данных')
+
+# d = {}
+# for i in iter(input, 'конец'):
+#     name, digit = i.split(', ')
+#     d.setdefault(name, []).append(int(digit))
+# l = {}
+# for k, v in d.items():
+#     l.setdefault(k, (sum(v)/len(v)))
+# for i in sorted(l.items(), key=lambda x: (-x[1], x[0])):
+#     print(*i)
+
+# countries = {
+#     "Sweden": ["Stockholm", "Göteborg", "Malmö"],
+#     "Norway": ["Oslo", "Bergen", "Trondheim"],
+#     "England": ["London", "Birmingham", "Manchester"],
+#     "Germany": ["Berlin", "Hamburg", "Munich"],
+#     "France": ["Paris", "Marseille", "Toulouse"]
+# }
+#
+# city = 'Paris'
+# a = []
+# for i in countries:
+#     if city in countries[i]:
+#         a.append(i)
+# if a:
+#     print(f'INFO: {city} is a city in {a[0]}')
+# else:
+#      print(f'ERROR: Country for {city} not found')
+
+# a = ([i for i in countries if city in countries[i]])
+# if a:
+#     print('INFO: {} is a city in {}'.format(city, *a))
+# else:
+#      print(f'ERROR: Country for {city} not found')
+
+# print('Здравствуйте,{surname} {name}'.format(name = input(), surname = input()))
+
+#function isinstance()+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+str_st = ''
+inter_int = 0
+li_list = []
+fl_float = 0
+
+a = [3, 4, 'Hello', [3, 4], ' world', 5, 8, 10.5, 11.2, [7]]
+
+for i in a:
+    if isinstance(i, int):
+        inter_int += i
+    elif isinstance(i, str):
+        str_st += i
+    elif isinstance(i, list):
+        li_list.append(i)
+    elif isinstance(i, (int, float)):
+        fl_float += i
+
+print(str_st)
+print(inter_int)
+print(li_list)
+print(fl_float)
 
 
 
