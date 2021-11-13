@@ -5056,14 +5056,14 @@ from string import punctuation
 # c = 'abnc'
 # # rez = list(zip(a, b, c))
 # # print(sorted(rez, key=lambda x: x[0]))
-# rez = zip(a, b, c) # выводт, как и yield только один раз (чтобы можно было ободить много раз, обернуть в list)
+# rez = zip(a, b, c) # выводт, как и yield только один раз (чтобы можно было обойти много раз, обернуть в list)
 # # print(list(rez)) # [(5, 100, 'a'), (8, 200, 'b'), (6, 350, 'n'), (7, 150, 'c')]
 # col1, col2, col3 = zip(*rez)
 # print(col1, col2, col3) #(5, 8, 6, 7) (100, 200, 350, 150) ('a', 'b', 'n', 'c') unpack again
 
 # employee_numbers = [2, 9, 18, 28]
 # employee_names = ["Дима", "Марина", "Андрей", "Никита"]
-#
+# print(list(zip(employee_names, employee_numbers)))
 # for name, number in list(zip(employee_names, employee_numbers)):
 # 	print(name, number)
 #
@@ -5220,28 +5220,137 @@ from string import punctuation
 
 #function isinstance()+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-str_st = ''
-inter_int = 0
-li_list = []
-fl_float = 0
+# str_st = ''
+# inter_int = 0
+# li_list = []
+# fl_float = 0
+#
+# a = [3, 4, 'Hello', [3, 4], ' world', 5, 8, 10.5, 11.2, [7]]
+#
+# for i in a:
+#     if isinstance(i, int):
+#         inter_int += i
+#     elif isinstance(i, str):
+#         str_st += i
+#     elif isinstance(i, list):
+#         li_list.append(i)
+#     elif isinstance(i, (int, float)):
+#         fl_float += i
+#
+# print(str_st)
+# print(inter_int)
+# print(li_list)
+# print(fl_float)
 
-a = [3, 4, 'Hello', [3, 4], ' world', 5, 8, 10.5, 11.2, [7]]
+# function all and any ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-for i in a:
-    if isinstance(i, int):
-        inter_int += i
-    elif isinstance(i, str):
-        str_st += i
-    elif isinstance(i, list):
-        li_list.append(i)
-    elif isinstance(i, (int, float)):
-        fl_float += i
+# def all(*args, **kwargs):  # real signature unknown
+#     """
+#     Return True if bool(x) is True for all values x in the iterable.
+#
+#     If the iterable is empty, return True.
+#     """
+#     pass
+#
+#
+# def any(*args, **kwargs):  # real signature unknown
+#     """
+#     Return True if bool(x) is True for any x in the iterable.
+#
+#     If the iterable is empty, return False.
+#     """
+#     pass
 
-print(str_st)
-print(inter_int)
-print(li_list)
-print(fl_float)
+# a = ['hello', 'world', 'jim']
+# b = {'a': 'Hello', 'b': 'world', 'c': 'jim'}
+# c = ['hello', 1, '']
+# print(all(a), all(b))
+# print(any(c))
 
+# n = 99
+# condition1 = n % 2 == 0
+# condition2 = n > 100
+# condition3 = n < 1000
+# print(all([condition1, condition2, condition3]))
+# print(any([condition1, condition2, condition3]))
 
+# seven callable objects+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# def callable(i_e_, some_kind_of_function):  # real signature unknown; restored from __doc__
+#     """
+#     Return whether the object is callable (i.e., some kind of function).
+#
+#     Note that classes are callable, as are instances of classes with a
+#     __call__() method.
+#     """
+#     pass
+# #1
+# a = [10, 11, 12]
+# print(callable(len))
+# print(callable(10))
+# print(callable(int))
+# #2
+# print(callable(a.sort))
+# #3
+# def f():
+#     print('hello')
+# print(callable(f), 'function')
+# f()
+# d = lambda : 'hi'
+# print(d())
+# print(callable(d))
+# #4
+# class Cat:
+#     pass
+# bob = Cat()
+# print(callable(Cat))
 
+# from collections import Counter+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+from collections import Counter
+# a = 'abracadabra'
+# print(Counter(a))
+# words = ['Micke', 'Noriv', 'Colet', 'Micke', 'Colet']
+# name = Counter(words)
+# print(name) #Counter({'Micke': 2, 'Colet': 2, 'Noriv': 1})
+# print(name['Micke'])
+# # d = {}
+# # for i in words:
+# #     d[i] = d.get(i, 0) + 1
+# # print(d)
+# for i in name.elements():
+#     print(i)
 
+# c = Counter('ABCABC')
+# print(sorted(c.elements())) #['A', 'A', 'B', 'B', 'C', 'C']
+
+# # Knuth's example for prime factors of 1836:  2**2 * 3**3 * 17**1
+# prime_factors = Counter({2: 2, 3: 3, 17: 1})
+# print(list(prime_factors.elements()))
+# product = 1
+# for factor in prime_factors.elements():     # loop over factors
+#     product *= factor                       # and multiply them
+# print(product)
+
+# c = Counter('ABCABC')
+# n = Counter(c)
+# print(c)
+# print(sorted(c.elements())) #['A', 'A', 'B', 'B', 'C', 'C']
+# for i in n.elements():
+#     print(i)
+
+# words = ['Noriv', 'Micke', 'Colet', 'Micke', 'Micke', 'Colet']
+# c = Counter('ABCABC')
+# name = Counter(words) #Counter({'Micke': 3, 'Colet': 2, 'Noriv': 1})
+# print(name.most_common()) #[('Micke', 3), ('Colet', 2), ('Noriv', 1)]
+
+r = Counter()
+for i in [1, 1, 1, 2, 2, 8, 8, 8, 8, 4, 5, 5, 5]:
+    r[i] += 1
+print(r)
+
+d= {}
+for i in [1, 1, 1, 1, 2, 2, 8, 8, 8, 8, 4]:
+    d[i] = d.get(i, 0) + 1
+d = Counter(d)
+print(d)
+print(r + d)
+print(r - d)
