@@ -2935,7 +2935,7 @@
 # info_user = {info[0]: info for info in users}
 # print(info_user[1])
 
-#Create Tuple+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Create Tuple+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # a = 1, 2, 3
 # b = tuple((1, 2, 3)) # tuple([1, 2, 3]), ()
@@ -5071,7 +5071,7 @@ from string import punctuation
 # col1, col2 = zip(*rez)
 # print(list(col1), col2)
 
-#sort(method'You can use only with list.sort') vs sorted(function) ==============++++++++++++++++++++++++++++++++++++++++++++++++++++
+# sort(method'You can use only with list.sort') vs sorted(function) ==============++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # a = [5, 10, 15, 0, 1, 5]
 # b = 'hi how are you'
@@ -5082,7 +5082,7 @@ from string import punctuation
 # print(sorted(c, reverse=False)) # always return list
 # print(sorted(c, reverse=True))
 
-#argument key in sort ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# argument key in sort ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # 1. func inset
 # 2. func creation
 # 3. methods (lower, upper)
@@ -5218,7 +5218,7 @@ from string import punctuation
 
 # print('Здравствуйте,{surname} {name}'.format(name = input(), surname = input()))
 
-#function isinstance()+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# function isinstance()+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # str_st = ''
 # inter_int = 0
@@ -5375,7 +5375,7 @@ from collections import Counter
 # print(z)
 # print(r + z)
 
-#defaultdict++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# defaultdict++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # class defaultdict(dict):
 #     """
@@ -5388,6 +5388,7 @@ from collections import Counter
 #     passed to the dict constructor, including keyword arguments.
 #     """
 from collections import defaultdict
+
 
 # r = defaultdict(int)
 # print(r)
@@ -5426,9 +5427,64 @@ from collections import defaultdict
 #     r[k] += v
 # print(r) #defaultdict(<class 'int'>, {'yellow': 4, 'blue': 6, 'red': 1})
 
-s = 'mississippi'
-sum_letrers = defaultdict(int)
-for i in s:
-    sum_letrers[i] += 1
-print(sum_letrers)
+# s = 'mississippi'
+# sum_letrers = defaultdict(int)
+# for i in s:
+#     sum_letrers[i] += 1
+# print(sum_letrers)
+
+# d_int = defaultdict(int, a=10, b=12, c=13)
+# print(d_int)
+#
+# kwargs = {'a': 10, 'b': 12, 'c': 13}
+# c_int = defaultdict(int, **kwargs)
+# print(c_int)
+
+# def delete_nth(array, n):
+#     nwe_list = []
+#     counter = defaultdict(int)
+#
+#     for i in array:
+#         if counter[i] < n:
+#             nwe_list.append(i)
+#             counter[i] += 1
+#     return nwe_list
+#
+# x = [1, 2, 3, 1, 2, 1, 2, 3]
+# print(delete_nth(x, n=2))
+
+#namedtuple++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+from collections import namedtuple
+
+point = (3, 5)
+person = ('Megan', 'Jones', '1987-08-21', 'Bolivia')
+Person = namedtuple('Person', 'name surname age country')
+z = Person('Megan', 'Jones', '1987-08-21', 'Bolivia')
+print(z)
+print(z._asdict())
+print(z._replace(name= 'Mickle'))
+
+
+points = (...)
+persons = [
+    ('Maurice', 'Gambinuce', '1974-06-25', 'Cataloni'),
+    ('Guce', 'linuce', '2005-06-30', 'Canada'),
+    ('John', 'Laredere', '1961-01-01', 'Hurgada'),
+    ('Sasha', 'Grey', '2000-07-21', 'Russia'),
+    ('Kenedy', 'Middle', '1987-08-21', 'USA'),
+    ('Anthony', 'Lyons', '2009-12-10', 'Estonia'),
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
 
