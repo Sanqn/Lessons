@@ -5342,15 +5342,93 @@ from collections import Counter
 # name = Counter(words) #Counter({'Micke': 3, 'Colet': 2, 'Noriv': 1})
 # print(name.most_common()) #[('Micke', 3), ('Colet', 2), ('Noriv', 1)]
 
-r = Counter()
-for i in [1, 1, 1, 2, 2, 8, 8, 8, 8, 4, 5, 5, 5]:
-    r[i] += 1
-print(r)
+# r = Counter()
+# for i in [1, 1, 1, 2, 2, 8, 8, 8, 8, 4, 5, 5, 5]:
+#     r[i] += 1
+# print(r)
+#
+# d= {}
+# for i in [1, 1, 1, 1, 2, 2, 8, 8, 8, 8, 4]:
+#     d[i] = d.get(i, 0) + 1
+# d = Counter(d)
+# print(d)
+# print(r + d)
+# print(r - d)
 
-d= {}
-for i in [1, 1, 1, 1, 2, 2, 8, 8, 8, 8, 4]:
-    d[i] = d.get(i, 0) + 1
-d = Counter(d)
-print(d)
-print(r + d)
-print(r - d)
+# a = [1, 1, 1, 1, 2, 2, 8, 8, 8, 8, 4]
+# m = (max(a) + 1) * [0]
+# for i in a:
+#     m[i] += 1
+# for i in range(len(m)):
+#     if m[i] != 0:
+#         print(str(i) * m[i], end=' ')
+# from collections import Counter
+# a = [1, 1, 1, 1, 2, 2, 8, 8, 8, 8, 4]
+# b = [1, 1, 1, 1, 2, 2, 8, 8, 8, 8, 4, 5, 6, 5, 7]
+# r = Counter()
+# z = Counter()
+# for i in a:
+#     r[i] += 1
+# for i in b:
+#     z[i] += 1
+# print(r)
+# print(z)
+# print(r + z)
+
+#defaultdict++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# class defaultdict(dict):
+#     """
+#     defaultdict(default_factory=None, /, [...]) --> dict with default factory
+#
+#     The default factory is called without arguments to produce
+#     a new value when a key is not present, in __getitem__ only.
+#     A defaultdict compares equal to a dict with the same items.
+#     All remaining arguments are treated the same as if they were
+#     passed to the dict constructor, including keyword arguments.
+#     """
+from collections import defaultdict
+
+# r = defaultdict(int)
+# print(r)
+# print(r['a'])
+# print(r['a'])
+# print(r)
+
+# b = defaultdict(list)
+# print(b)
+# print(b[1])
+# print(b)
+# b[1].append(7)
+# b[1].append(8)
+# b['a'].append('Hello')
+# print(b)
+# b.default_factory = lambda: [1, 2, 3]
+# print(b[3])
+# print(b)
+# b.default_factory = lambda: 'hello'
+# print(b['z'])
+# print(b)
+
+# s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
+# r = defaultdict(list)
+# r_uniq = defaultdict(set)
+# for k, v in s:
+#     r[k].append(v)
+#     r_uniq[k].add(v)
+# print(r) #defaultdict(<class 'list'>, {'yellow': [1, 3], 'blue': [2, 4], 'red': [1]})
+# print(r_uniq)
+
+
+# s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
+# r = defaultdict(int)
+# for k, v in s:
+#     r[k] += v
+# print(r) #defaultdict(<class 'int'>, {'yellow': 4, 'blue': 6, 'red': 1})
+
+s = 'mississippi'
+sum_letrers = defaultdict(int)
+for i in s:
+    sum_letrers[i] += 1
+print(sum_letrers)
+
