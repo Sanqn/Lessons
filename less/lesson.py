@@ -196,26 +196,40 @@
 # СТРОКИ И СТРЕЗЫ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 # a = 'Hello hi'
-# print(a[-1])
-# print(a[1:-2])
-# print(a[:-1:2])
-# print(a[::-1])
-# print(a[::-2])
+# # print(a[-1])
+# # print(a[1:-2])
+# # print(a[:-1:2])
+# # print(a[::-1])
+# # print(a[::-2])
+#
+# # a = input()
+# print(a[-1] + a[:-1]) # iHello h
 
-# a = input()
-# print(a[-1] + a[:-1])
+# a = int(input())
+# print(f'{a} сек - это {a // 60} мин. {a % 60} сек.')
+
+# a, b = map(int, input().split())
+#
+# print(f'Разрешение экрана: {a} x {b}.')
+# print(f'Общее количество пикселей = {a * b}.')
+
+# x = int(input())
+# y = int(input())
+# z = int(input())
+# print(f'Vector A({x}, {y}, {z})')
+# print(f'Vector B({x + 5}, {y + 5}, {z + 5})')
 
 # МЕТОДЫ СТРОК!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 # a = 'Fuck you'
-# a = a.lower()
-# b = a.upper()
-# c = a.count('u', 1, 8) # поиск символа, начинаем с и заканичаем по индкес
+# a = a.lower() # FUCK YOU
+# b = a.upper() # fuck you
+# c = a.count('u', 1, 8) # поиск символа, начинаем с u заканичаем по индкес
 # v = a.index('u') #ищет индекс на котором находится смвол, если нет, то ошибка и выкидывает
-# g = a.replace('u', 'uuu') # заменяет символ на любой другой включая и пробел
+# print(a.replace('u', 'uuu')) # заменяет  все символы в тексте на любой другой включая и пробел
 # print(a)
 # print(b)
-# print(c)
+# print(c) # 2
 # print(a.find('k')) # исчет позицию на которой находиться символ, если нет, то указывает -1 и не выкидывает
 # print(a.rfind('k')) # исчет позицию на которой находиться символ начиная справа
 # print(v)
@@ -224,14 +238,14 @@
 # print('1235879'.isdigit())# если есть цифры
 #
 # e = '111'
-# print(e.rjust(8, '0'))
-# print(e.ljust(8, '/'))
+# print(e.rjust(8, '0')) # 00000111
+# print(e.ljust(8, '/')) # 111/////
 #
 # f = 'Buy a car'
-# print(f.split('a'))# делает список по пробелу, в () можно указать по чем разбивать текст
-# print('-'.join(f))
+# print(f.split())# ['Buy', 'a', 'car'] делает список по пробелу, в () можно указать по чем разбивать текст
+# print('-'.join(f)) # B-u-y- -a- -c-a-r
 # n = '    join me \n'
-# print(n.strip())# удаляет пробелы и переносы lstrip(удаляет слева знаки), rstrip(справа)
+# print(n.strip())# join me удаляет пробелы и переносы lstrip(удаляет слева знаки), rstrip(справа)
 
 # a = input().upper().replace('A', '').replace('O', '').replace('Y', '').replace('E', '').replace('U', '').replace('I', '').lower().replace('', '.')
 # print(a.rstrip('.'))
@@ -256,8 +270,8 @@
 #     print(f'Dear {sex[gender]} {name} {sername} your balance is {age}')
 
 # print(f'Hello {input().upper()}. You are {int(input())} years old.')
-# a = int(input())
-# b = int(input())
+# a = int(input('input digit'))
+# b = int(input('input digit'))
 # print(f'{a} / {b} = {a/b}',
 #       f'{a} // {b} = {a//b}',
 #       f'{a} % {b} = {a%b}', sep='\n')
@@ -267,6 +281,11 @@
 # print(777 in my_list)
 
 # t_july = [30, 50, 60, 10, 15]
+# i = 0
+# while i < len(t_july):
+#     print(t_july[i])
+#     i += 1
+
 #
 # for i in range(len(t_july)):
 #     print(t_july[i], i + 1)
@@ -691,7 +710,258 @@
 #     X *= 1.15
 #     day += 1
 # print(day)
+# n = int(input())
+# s = 0
+# count = 0
+# while True:
+#     x = int(input())
+#     s += x
+#     count += 1
+#     if s == n:
+#         print('Довольно!')
+#         print(s)
+#         print(count)
+#         break
+#     elif s > n:
+#         print('Довольно!')
+#         print(s - x)
+#         print(count - 1)
+#         break
 
+# n = int(input())
+# s = n
+# i = 0
+# l = 0
+# z = 0
+# m = []
+# while n > 0:
+#     i += 1
+#     n -= 1
+#     l += i
+#     if z <= s:
+#         z += l
+#         m.append(z)
+# for i in m:
+#     if len(m) == 1 and i == 1:
+#         print(1)
+#     else:
+#         print(len(m) - 1)
+#         break
+
+# n, m = map(int, input().split())
+# s = list(map(int, input().split()))
+# d = list(map(int, input().split()))
+# c = s + d
+# # for i in c:
+# #     for j in range(0, len(c) - 1):
+# #         if c[j] > c[j + 1]:
+# #             c[j], c[j + 1] = c[j + 1], c[j]
+# # print(*c)
+#
+# k = [0] * (max(c) + 1)
+# s = []
+# for i in c:
+#     k[i] += 1
+# for i in range(0, len(k)):
+#     if k[i] != 0:
+#         print((str(i) + ' ') * k[i], end='')
+
+# n = int(input())
+# s = sorted(list(map(int, input().split())))
+# m = int(input())
+# d = sorted(list(map(int, input().split())))
+# # k = min(list((n, m)))
+# i = 0
+# count = 0
+# while s and d:
+#     if abs(s[0] - d[0]) <= 1:
+#         count += 1
+#         s.pop(0)
+#         d.pop(0)
+#     elif s[0] > d[0]:
+#         d.pop(0)
+#     else:
+#         s.pop(0)
+# print(count)
+#     if s[i] in d:
+#         count += 1
+#         d.remove(s[i])
+#         s.pop(i)
+#     elif s[i] + 1 in d:
+#         count += 1
+#         d.remove(s[i] + 1)
+#         s.pop(i)
+#     else:
+#         s.pop(i)
+#     k -= 1
+# print(count)
+
+# n = int(input())
+# s = n
+# i = 0
+# while s > 0:
+#     s -= 1
+#     i += 1
+#     if n % i == 0:
+#         if i == 1:
+#             continue
+#         print(i)
+#         break
+
+
+# n = int(input())
+# m = int(input())
+#
+# for i in range(n, m + 1):
+#     if i == 777:
+#         break
+#     elif i%2==0 or i%3 ==0:
+#         continue
+#     else:
+#         print(i)
+
+# n = int(input())
+# m = int(input())
+# i = n - 1
+# while m >= n:
+#     n += 1
+#     i += 1
+#     if i == 777:
+#         break
+#     elif i % 2 ==0 or i % 3 == 0:
+#         continue
+#     else:
+#         print(i)
+
+# i = 0
+# while i < 5:
+#     if i == 5:
+#         break
+#     print(i)
+#     i += 1
+# else:
+#     print("Конец")
+
+# a = input()
+# count = 0
+# i = 0
+# while i < len(a):
+# # for i in a:
+#     if a[i] == 'a' or a[i] == 'e':
+#         print('Ага! Нашлась')
+#         break
+#     else:
+#         count += 1
+#         print(f'Текущая буква: {a[i]}')
+#         i += 1
+# if len(a) == count:
+#     print('Распечатали все буквы')
+
+# x = ['2', '7', '11', '7']
+# print(x)
+# y = 9
+# print(y)
+# s = []
+# for i in range(0, len(x)):
+#     for j in range(1, len(x)):
+#         if int(x[i]) + int(x[j]) == y:
+#             s.append(i)
+#             s.append(j)
+# print(s[0:2])
+
+# import os
+# s = ['aca','cba']
+# print(os.path.commonprefix(s))
+#
+# or
+
+# n = min((word for word in s if word), key=len)
+# s.remove(n)
+# m = []
+# for i in s:
+#     for k in i:
+#         for j in range(len(n)):
+#             if n[j] == k:
+#                 m.append(k)
+#
+# d = []
+# for i in m:
+#     if m.count(i) > 1:
+#         if i not in d:
+#             d.append(i)
+# if len(d) == 1:
+#     print('')
+# else:
+#     print(''.join(d))
+
+# s = ['flower', 'flow', 'flight']
+# n = min((word for word in s if word), key=len)
+# s.remove(n)
+#
+# spis = []
+#
+# for i in range(len(s)):
+#     for j in range(len(n)):
+#         if n[j] != s[i][j]:
+#             spis.append(j)
+#
+# print(n[:min(spis)])
+
+# s = list(input())
+# n = {1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L', 90: 'XC', 100: 'C', 400: 'CD', 500: 'D', 900: 'CM', 1000: 'M'}
+# c = []
+# while len(s) > 0:
+#     if len(s) == 1:
+#         c.append(s[0])
+#         s.remove(s[0])
+#         break
+#     for i in s[0]:
+#         for j in s[1:]:
+#             if i + j == 'IV' or i + j =='IX' or i + j =='XL' or i + j =='XC' or i + j =='CD' or i + j =='CM':
+#                 c.append((i+j))
+#                 s.remove(i)
+#                 s.remove(j)
+#                 break
+#             else:
+#                 c.append(i)
+#                 s.remove(i)
+#                 break
+# count = 0
+# for i in range(len(c)):
+#     for k, v in n.items():
+#         if c[i] == v:
+#             count += k
+# print(count)
+
+
+# s = input()
+# values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+# # IIICCDCMMM
+# prev = values[s[0]]
+# result = 0
+# for c in s:
+#     current = values[c]
+#     if current > prev:
+#         result -= prev * 2
+#     result += current
+#     prev = current
+# print(result)
+
+# s = input()
+# d = {'CM':900, 'M':1000, 'CD':400, 'D':500, 'XC':90, 'C':100, 'XL':40, 'L':50, 'IX':9, 'X':10, 'IV':4, 'V':5, 'I':1}
+# num = 0
+#
+# for k, v in d.items():
+#     if k in s:
+#         num += s.count(k) * v
+#         s = s.replace(k, '')
+# print(num)
+
+# x = int(input())
+# if str(x)[0] == '-':
+#     print(int('-' + (str(x)[1:])[::-1]))
+# else:
+#     print(int(str(x)[::-1]))
 
 # n, m = map(int, input().split())
 # print(n, m)
@@ -1745,6 +2015,29 @@
 #         print(a[i][j], end=' ')
 #     print()
 # print(a)
+# a = [int(i) for i in input().split(',')]
+# n = sorted(a)
+# s = sorted(a)[::-1]
+# if a == n or a == s:
+#     print(True)
+# else:
+#     print(False)
+
+# import numpy as np
+#
+# def monotonic(a):
+#     dx = np.diff(a)
+#     return np.all(dx <= 0) or np.all(dx >= 0)
+# print(monotonic([int(i) for i in input().split(',')]))
+
+# a = [int(i) for i in input().split(',')]
+# print(sorted(a, key=lambda x: x%2!=0))
+# s = [i for i in a if i % 2 == 0]
+# for i in a:
+#     if i not in s:
+#         s.append(i)
+# print(s)
+
 
 # a = [[2, 4, 6, 1],
 #      [5, 15, 11, 8],
@@ -3754,7 +4047,7 @@
 #     f += 1
 # print(c)
 
-# функция merge_two_list должна объединить два списка
+#функция merge_two_list должна объединить два списка
 # def merge_two_list(a, b):
 #     i = j = 0
 #     c = []
@@ -3772,8 +4065,8 @@
 #         c.append(b[j])
 #         j += 1
 #     return c
-# # print(merge_two_list(a = [6, 2, 19], b = [5, 10, 7, 11]))
-# # функция merge_sort должна выполнить сортировку
+# # # print(merge_two_list(a = [6, 2, 19], b = [5, 10, 7, 11]))
+# # # функция merge_sort должна выполнить сортировку
 # def merge_sort(s):
 #     if len(s) == 1:
 #         return s
@@ -4012,6 +4305,7 @@
 # for i in range(1, 5 + 1):
 #     print(d(i))
 
+
 # def avarage_namber():
 #     summ = 0
 #     count = 0
@@ -4202,7 +4496,7 @@
 # 15: 'Fifteen', 16: 'Sixteen', 17: 'Seventeen', 18: 'Eighteen',
 # 19: 'Nineteen'
 # }
-
+#
 # def sort_digit(a):
 #     for k, v in sorted(number_names.items(), key=lambda x: x[1]):
 #         for i in a:
@@ -4211,9 +4505,9 @@
 #
 # a = list(map(int, input().split()))
 # sort_digit(a)
-
-##or
-
+#
+# ##or
+#
 # print(*sorted([int(num) for num in input().split()], key=lambda n: number_names[n]))
 
 # lst = [('candy','30','100'), ('apple','10','200'), ('baby','20','300')]
@@ -4237,6 +4531,7 @@
 # print(name_1('boss'))
 
 # h(x) = f(g(x))
+
 
 # def composition(f, g):
 #
@@ -4663,7 +4958,7 @@
 
 # work with file ----------------------------------------------------------------
 
-# file = open('text11.txt', 'a', encoding='utf-8')
+# file = open('text11.txt', 'a+', encoding='utf-8')
 #     # 'r'       open for reading (default)
 #     # 'w'       open for writing, truncating the file first
 #     # 'x'       create a new file and open it for writing
@@ -4673,7 +4968,7 @@
 #     # '+'       open a disk file for updating (reading and writing)
 #     # 'U'       universal newline mode (deprecated)
 # file1 = open(r'C:\Users\Admin\PycharmProjects\Lessons\less\text11.txt', encoding='utf-8')
-# print(file.read(5)) # func 'read()' take argument, amount symbols
+# print(file.read()) # func 'read()' take argument, amount symbols
 # print(file.read(5))
 # file.seek(0) #returns cursor to 0 position
 # print(file.read(5))
@@ -4687,7 +4982,7 @@
 # s = file.readlines() # create list
 # print(s)
 # one_list = []
-# for row in file:
+# for row in file.read():
 #     if '\n' in row:
 #         one_list.append(row[:-2])
 #     else:
@@ -4707,10 +5002,10 @@
 #     for i in range(1, n + 1):
 #         file.write(str(i) + '\n')
 #     print(file.read())
-
-# def create_file_with_numbers(n):
-#     open(f'range_{n}.txt', 'w').writelines('\n'.join(map(str, range(1, n + 1))))
 #
+# # def create_file_with_numbers(n):
+# #     open(f'range_{n}.txt', 'w').writelines('\n'.join(map(str, range(1, n + 1))))
+# #
 # create_file_with_numbers(8)
 
 # from string import punctuation
@@ -4756,7 +5051,7 @@
 #     #         k.append(int(i))
 #     # print(sum(k))
 #     print(sum(map(int, filter(lambda x: len(x)==2, s))))
-
+#
 # number(r"C:\Users\Admin\Downloads\numbers.txt")
 
 
@@ -4768,9 +5063,9 @@
 
 # a = [('john', 20, 'a'), ('lokki', 115, 'c'), ('nokia', 2, 'b')]
 # print(sorted(a, key=lambda x: x[0]))
-
-import os
-from datetime import datetime
+# import collections
+# import os
+# from datetime import datetime
 
 # if not os.path.isdir("folder"):
 #      os.mkdir("folder") # создать пустой каталог (папку)
@@ -4795,26 +5090,29 @@ from datetime import datetime
 # def find_filenme(path, name = 'numbers.txt'):
 #     findname= []
 #     s = []
+#
 #     for dirpath, dirnames, filenames in os.walk(path):
 #         #перебрать каталоги
-#         for dirname in dirnames:
-#             #print("Каталог:", os.path.join(dirpath, dirname))
-#             s.append(os.path.join(dirpath, dirname))
-#         #перебрать файлы
+#         # for dirname in dirnames:
+#         #     print("Каталог:", os.path.join(dirpath, dirname))
+#         #     s.append(os.path.join(dirpath, dirname))
+#     #     #перебрать файлы
 #         for filename in filenames:
 #             if filename == name:
 #                 findname.append(os.path.join(dirpath, filename))
 #                 #print("Файл:", os.path.join(dirpath, filename),'++++++++++++++++++++++++++++++++++++++++')
 #                 newname = open(os.path.join(dirpath, filename), 'a+', encoding='utf-8')
-#                 newname.write('Я тебя нашел')
-#     print(s)
+#                 newname.write(' Я тебя нашел')
+#     # print(s)
 #     print(*findname)
-#     print(os.stat(*findname))
+#     # print(os.stat(*findname))
 # find_filenme("C:\\Users\\Admin")
-import json
-from random import randint
-from datetime import datetime
 
+
+# import json
+# from random import randint
+# from datetime import datetime
+#
 # str_json = """{
 #     "response": {
 #         "count": 265448488,
@@ -4848,10 +5146,10 @@ from datetime import datetime
 # print(new_json)
 # with open('my.json', 'w') as file:
 #     json.dump(data, file, indent=3)
-
+#
 # with open('my.json', 'r') as file:
-#     data = json.load(file)
-# print(data)
+#     data1 = json.load(file)
+# print(data1)
 
 # with open(r'C:\Users\Admin\Downloads\manager_sales.json', 'r') as file:
 #     data = json.load(file)
@@ -4866,9 +5164,11 @@ from datetime import datetime
 #     print(*k, v)
 
 # a = []
+# print(data)
 # for item in data:
 #     a.append((item['manager']['first_name'], item['manager']['last_name'], len(item['cars']), sum([pric['price'] for pric in item['cars']])))
 # print(*(sorted(a, key=lambda x: x[3])[-1]))
+# print(a)
 
 # with open(r'C:\Users\Admin\Downloads\group_people.json', 'r') as file:
 #     data = json.load(file)
@@ -4891,7 +5191,7 @@ from datetime import datetime
 # with open(r'C:\Users\Admin\Downloads\group_people.json', 'r') as f:
 #     groups = json.load(f)
 # print(*max(map(convert, groups), key = lambda x: x[1]))
-from string import punctuation
+# from string import punctuation
 
 # with open(r'C:\Users\Admin\Downloads\Alphabet.json', 'r') as file:
 #     data = json.load(file)
@@ -5304,13 +5604,14 @@ from string import punctuation
 # bob = Cat()
 # print(callable(Cat))
 
-# from collections import Counter+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-from collections import Counter
+# # from collections import Counter+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# from collections import Counter
 # a = 'abracadabra'
 # print(Counter(a))
 # words = ['Micke', 'Noriv', 'Colet', 'Micke', 'Colet']
 # name = Counter(words)
 # print(name) #Counter({'Micke': 2, 'Colet': 2, 'Noriv': 1})
+# print(list(name.elements()))
 # print(name['Micke'])
 # # d = {}
 # # for i in words:
@@ -5320,6 +5621,7 @@ from collections import Counter
 #     print(i)
 
 # c = Counter('ABCABC')
+# print(c) #Counter({'A': 2, 'B': 2, 'C': 2})
 # print(sorted(c.elements())) #['A', 'A', 'B', 'B', 'C', 'C']
 
 # # Knuth's example for prime factors of 1836:  2**2 * 3**3 * 17**1
@@ -5364,6 +5666,7 @@ from collections import Counter
 #         print(str(i) * m[i], end=' ')
 # from collections import Counter
 # a = [1, 1, 1, 1, 2, 2, 8, 8, 8, 8, 4]
+# print(Counter(a))
 # b = [1, 1, 1, 1, 2, 2, 8, 8, 8, 8, 4, 5, 6, 5, 7]
 # r = Counter()
 # z = Counter()
@@ -5386,8 +5689,8 @@ from collections import Counter
 #     A defaultdict compares equal to a dict with the same items.
 #     All remaining arguments are treated the same as if they were
 #     passed to the dict constructor, including keyword arguments.
-#     """
-from collections import defaultdict
+# #     """
+# from collections import defaultdict
 
 
 # r = defaultdict(int)
@@ -5419,6 +5722,11 @@ from collections import defaultdict
 #     r_uniq[k].add(v)
 # print(r) #defaultdict(<class 'list'>, {'yellow': [1, 3], 'blue': [2, 4], 'red': [1]})
 # print(r_uniq)
+#
+# z = {}
+# for k, v in s:
+#     z.setdefault(k, set()).add(v)
+# print(z)
 
 
 # s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
@@ -5432,6 +5740,13 @@ from collections import defaultdict
 # for i in s:
 #     sum_letrers[i] += 1
 # print(sum_letrers)
+#
+# soi= {}
+# s = 'mississippi'
+# for i in s:
+#     soi[i] = soi.get(i, 0) + 1
+# print(soi)
+
 
 # d_int = defaultdict(int, a=10, b=12, c=13)
 # print(d_int)
@@ -5454,32 +5769,406 @@ from collections import defaultdict
 # print(delete_nth(x, n=2))
 
 #namedtuple++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-from collections import namedtuple
+# from collections import namedtuple
+# #
+# # point = (3, 5)
+# # person = ('Megan', 'Jones', '1987-08-21', 'Bolivia')
+# Person = namedtuple('Person', 'name surname age country')
+# z = Person('Megan', 'Jones', '1987-08-21', 'Bolivia')
+# print(z) #Person(name='Megan', surname='Jones', age='1987-08-21', country='Bolivia')
+# print(z._asdict()) #{'name': 'Megan', 'surname': 'Jones', 'age': '1987-08-21', 'country': 'Bolivia'}
+# print(z._replace(name= 'Mickle')) #Person(name='Mickle', surname='Jones', age='1987-08-21', country='Bolivia')
+#
+#
+# points = (...)
+# persons = [
+#     ('Maurice', 'Gambinuce', '1974-06-25', 'Cataloni'),
+#     ('Guce', 'linuce', '2005-06-30', 'Canada'),
+#     ('John', 'Laredere', '1961-01-01', 'Hurgada'),
+#     ('Sasha', 'Grey', '2000-07-21', 'Russia'),
+#     ('Kenedy', 'Middle', '1987-08-21', 'USA'),
+#     ('Anthony', 'Lyons', '2009-12-10', 'Estonia'),
+# ]
+# from collections import namedtuple
+# import json
+#
+# Car = namedtuple('Car', 'color mileage')
+# my_car = Car('red', 3812.4)
+# print(my_car)
+# ElectricCar = namedtuple('ElectricCar', Car._fields + ('charge',))
+# my_ElectricCar = ElectricCar('red', 3812.4, 45.8)
+# print(my_ElectricCar)
+#
+# data = json.dumps(my_ElectricCar._asdict())
+# print(data)
+# a = Car._make(['blue', 4515.8])
+# print(a)
 
-point = (3, 5)
-person = ('Megan', 'Jones', '1987-08-21', 'Bolivia')
-Person = namedtuple('Person', 'name surname age country')
-z = Person('Megan', 'Jones', '1987-08-21', 'Bolivia')
-print(z)
-print(z._asdict())
-print(z._replace(name= 'Mickle'))
+# d1 = {
+#    'test': 'baum',
+#    'alter': 0,
+#    'voegel': ('amsel')
+# }
+# d2 = {
+#    'test': 'grosserbaum',
+#    'alter': 3,
+#    'voegel': ('meise')
+# }
+# # new_d = {'d1': d1, 'd2': d2}
+# # new_list = [d1, d2]
+# # new_tuple = (d1, d2)
+# # print(new_d)
+# # print(new_list)
+# # print(new_tuple)
+# new_dict = {}
+# for k, v in d1.items():
+#     new_dict.setdefault(k, []).append(v)
+# for k, v in d2.items():
+#     new_dict.setdefault(k, []).append(v)
+# print(new_dict)
+
+# def Rental_car_cost(n):
+#     if n < 3:
+#         return n * 40
+#     elif n >= 7:
+#         return n * 40 - 50
+#     elif n >= 3:
+#         return n * 40 - 20
+#
+# Rental_car_cost(1)
+# Rental_car_cost(4)
+# Rental_car_cost(7)
+# Rental_car_cost(8)
+
+# def median(arr):
+#     l = len(arr)
+#     s = sorted(arr)
+#     if l % 2 == 0:
+#         return (s[l//2 - 1] + s[l//2])/2
+#     else:
+#         return s[l//2]
+#
+#
+# print(median([1, 2, 3]))
+
+# import math
+# print(math.trunc(82.55))
+# def to_next5(n):
+#     n = int(math.ceil(n / 5)) * 5
+#     return n
+#
+# print(to_next5(-2))
+
+#
+# def fusc(n):
+#     assert type(n) == int and n >= 0
+#     if n == 0:
+#         return 0
+#     if n == 1:
+#         return 1
+#     if n % 2 == 0:
+#         return fusc(n//2)
+#     else:
+#         return fusc(n//2) + fusc(n - n//2)
+# print(fusc(85))
 
 
-points = (...)
-persons = [
-    ('Maurice', 'Gambinuce', '1974-06-25', 'Cataloni'),
-    ('Guce', 'linuce', '2005-06-30', 'Canada'),
-    ('John', 'Laredere', '1961-01-01', 'Hurgada'),
-    ('Sasha', 'Grey', '2000-07-21', 'Russia'),
-    ('Kenedy', 'Middle', '1987-08-21', 'USA'),
-    ('Anthony', 'Lyons', '2009-12-10', 'Estonia'),
-]
+# def row_sum_odd_numbers(n):
+#         return n**3
+#
+# print(row_sum_odd_numbers(13))
+
+# def f(n):
+#     if n == 0:
+#         return None
+#     if isinstance(n, int) and n >= 0:
+#         pr = 0
+#         for i in range(1, n + 1):
+#             pr += i
+#         return pr
+#     return None
+# print(f(0))
+
+# def f(n):
+#     return sum(range(1, n + 1)) if isinstance(n, int) and n > 0 else None
+#
+# print(f(0))
+
+
+# def consecutive_ducks(n):
+#     return  True if ((n&(n - 1)) and n) else False
+#
+# print(consecutive_ducks(15))
+
+# def consecutive_ducks(n):
+#     s = 1
+#     while s < n:
+#         s+= s
+#     return s!= n
+#
+# print(consecutive_ducks(28))
+
+
+# def printer_error(s):
+#     test = 'abcdefghijklm'
+#     return f'{len([i for i in s if i not in test])}/{len(s)}'
+# print(printer_error("aaaxbbbbyyhwawiwjjjwwm"))
+#
+# alex
+# aaleex
+
+# name = input()
+# typed = input()
+#
+# a = {}
+# b = {}
+#
+# for i in typed:
+#     a[i] = a.get(i, 0) + 1
+# for i in name:
+#     b[i] = b.get(i, 0) + 1
+#
+# n = []
+# for k, v in b.items():
+#     if a[k] < v:
+#         n.append(a[k])
+#
+# if n:
+#     print(False)
+# else:
+#     print(True)
+# sex = {'f': 'Miss', 'm': 'Mr'}
+#
+# people = [['Lok', 'Fork', 25, 'm'],
+#         ['Dora', 'King', 95, 'f'],
+#         ['Mikki', 'Kolder', 15, 'f'],
+#         ['Sara', 'Obramova', 27, 'f']
+# ]
+#
+# for name, surname, age, gender in people:
+#     print(f'{sex[gender]} {name} {surname} your age is {age}')
+#
+
+# n = int(input())
+# if str(n) == str(n)[::-1] and n != 0:
+#     print(True)
+# else:
+#     print(False)
+
+
+# n = list(input())
+# a = ','.join(n)
+# b = a.replace(',', '')
+# for i in range(len(b)):
+#     b = b.replace('{}', '')
+#     b = b.replace('[]', '')
+#     b = b.replace('()', '')
+#     if len(b) == 0:
+#         break
+# if len(b) == 0:
+#     print(True)
+# else:
+#     print(False)
+
+
+
+# x = input().split(',')
+# y = input().split(',')
+# a = []
+# for i in x:
+#     if i.isdigit():
+#         a.append(int(i))
+# for i in y:
+#     if i.isdigit():
+#         a.append(int(i))
+# print(sorted(a))
+
+# nums = list(map(int, input().split(',')))
+# print(list(set(nums)))
+
+
+# a = list(map(int, input().split(',')))
+# b = int(input())
+# for i in range(0, 1):
+#     a.append(b)
+# print(list(set(sorted(a))).index(b))
+
+# s = input().split()
+# if len(s) > 1:
+#     print(len(s[-1]))
+# else:
+#     print('0')
+
+
+
+# n1 = int(input(), 2)
+# n2 = int(input(), 2)
+# print(n1)
+# print(n2)
+# a = n1 + n2
+# print(bin(a)[2:])
+
+# prise = list(map(int, input().split(',')))
+# prise1 = sorted(prise)
+# prise_min = prise.index(prise1[0])
+# prise_max = max(prise[prise_min:])
+# if prise[prise_min] >= prise_max:
+#     print('0')
+# else:
+#     print(prise_max - prise[prise_min])
+# 7,3,4,2,1,1,8,1,5,1,9
+
+# prise = list(map(int, input().split(',')))
+#
+# if prise == sorted(prise):
+#     print(prise[-1] - prise[0])
+#
+# if prise != sorted(prise):
+#     ob = []
+#     for i in range(0, len(prise)):
+#         if len(prise) == 0:
+#             break
+#         for j in range(0, len(prise) - 1):
+#             if prise[j] < prise[j + 1]:
+#                 ob.append((prise[j + 1] - prise[j]))
+#                 a = prise[j]
+#                 b = prise[j + 1]
+#                 prise.remove(a)
+#                 prise.remove(b)
+#                 break
+#             else:
+#                 c = prise[j]
+#                 prise.remove(c)
+#                 break
+#     if sum(ob) == 0 or len(ob) == 0:
+#         print('0')
+#     else:
+#         print(sum(ob))
 
 
 
 
+# prise = list(map(int, input().split(',')))
+# ob = {}
+# for i in range(0, len(prise)):
+#     for j in range(prise.index(prise1[0]) + 1, len(prise)):
+#         if prise[j] > prise_min:
+#             ob[prise_min] = ob.get(prise_min, prise[j])
+#             a = prise_min
+#             b = prise[j]
+#             prise.remove(a)
+#             prise.remove(b)
+#             break
+# sum_in = 0
+# for k, v in ob.items():
+#     sum_in += (v - k)
+# print(sum_in)
+
+# prise = list(map(int, input().split(',')))
+# d = 0
+# for i in range(len(prise) - 1):
+#     if prise[i] < prise[i + 1]:
+#         d+= (prise[i + 1] - prise[i])
+# print(d)
+
+# 2,7,11,15
+# 9
+
+# x = list(map(int, input().split(',')))
+# target = int(input())
+# s = []
+# for i in range(0, len(x)):
+#     for j in range(0, len(x)):
+#         if x[i] + x[j] == target and x[i] < x[j]:
+#             s.append(i + 1)
+#             s.append(j + 1)
+# print(s[:2])
 
 
+# x = list(map(int, input().split(',')))
+# n = {}
+# for i in range(len(x)):
+#     n[x[i]] = n.get(x[i], 0) + 1
+# m = []
+# for n in sorted(n.items(), key=lambda x: (x[1], x[0])):
+#     m.append(n[0])
+# print(m[-1])
+
+# x = list(map(int, input().split(',')))
+# m = []
+# for i in range(len(x)):
+#     if x.count(x[i]) > 1:
+#         m.append(x[i])
+# if len(m):
+#     print(True)
+# else:
+#     print(False)
+
+# x = list(map(int, input().split(',')))
+# n = int(input())
+# s = 0
+# for i in range(0, len(x) - n):
+#     for j in range(0, len(x) - (1 + n)):
+#         if x[j] == x[j + (n + 1)]:
+#             s += 1
+#             break
+#         continue
+# if s:
+#     print(True)
+# else:
+#     print(False)
+
+# x = list(map(int, input().split(',')))
+# n = (len(x) + 1) * [0]
+# for i in x:
+#     n[i] += 1
+# for i in range(len(n)):
+#     if n[i] == 0:
+#         print(i)
+
+# x = list(map(int, input().split(',')))
+# print(*[i for i in range(len(x) + 1) if i not in x])
+
+
+# x = list(map(int, input().split(',')))
+# n, m = [], []
+# for i in range(len(x)):
+#     if x[i] == 0:
+#         n.append(x[i])
+#     else:
+#         m.append(x[i])
+# print(m + n)
+
+# x = list(map(int, input().split(',')))
+#
+# for i in range(x.count(0)):
+#     x.remove(0)
+#     x.append(0)
+# print(x)
+# x = list(map(str, input().split(',')))
+# print(x[::-1])
+# x = input()
+# a = list(x)
+# b = []
+# c = ['a', 'e', 'i', 'o', 'u']
+# for i in a[::-1]:
+#     if i in c:
+#         b.append(i)
+# for i in range(len(a)):
+#     if a[i] in c:
+#         for j in range(len(b)):
+#             a[i] = b[j]
+#             b.remove(b[j])
+#             break
+# print(''.join(a))
+
+
+def single_digit(n):
+    while n > 9:
+        n = bin(n).count('1')
+    return n
+
+print(single_digit(1234444123))
 
 
 
