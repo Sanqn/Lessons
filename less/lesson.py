@@ -6170,7 +6170,7 @@ def single_digit(n):
 
 print(single_digit(1234444123))
 
-
+print(bin(16).count('1'))
 
 
 
