@@ -6163,15 +6163,105 @@
 # print(''.join(a))
 
 
-def single_digit(n):
-    while n > 9:
-        n = bin(n).count('1')
-    return n
+# def single_digit(n):
+#     while n > 9:
+#         n = bin(n).count('1')
+#     return n
+#
+# print(single_digit(1234444123))
+#
+# print(bin(16).count('1'))
 
-print(single_digit(1234444123))
+# a = input()
+# f = open(a, 'r', encoding='utf-8')
+# text = f.read()
+# print(text)
 
-print(bin(16).count('1'))
+# a = 'text1.txt'
+# f = open(a, 'r')
+# text = f.readlines()
+# print(sum([int(i.split('\n')[0]) for i in text]))
 
+# sheet, mean = input(), input()
+
+# f = open(sheet, 'r', encoding='utf-8')
+# m = open(mean, 'r', encoding='utf-8')
+# text_m = m.read().split('\n')
+# didg_m = int(*text_m)
+# text = f.read().split('\n')
+# k = [int(j) for i in text for j in i if j.isdigit()]
+# print(sum(k)/len(k))
+# print('OK' if sum(k)/len(k) == didg_m else 'ERROR')
+
+import os.path
+
+# a = 'tmp/dir/re.txt'
+#
+# if os.path.isfile(a):
+#     with open(a, 'r', encoding='utf-8') as f:
+#         print('CONNECT:')
+#         print(*f.readlines())
+# else:
+#     if os.path.isdir(a):
+#         print('ERROR:')
+#         print('Это каталог, а не файл')
+#     else:
+#         if not os.path.isfile(a):
+#             print('ERROR:')
+#             print('Файл не существует')
+
+
+# with open('text.txt', 'w', encoding='utf-8') as f:
+#     text = 'Привет незнакомый человек\n'
+#     text1 = 'Попробуем\n'
+#     f.writelines([text, text1])
+#
+# with open('text.txt', 'a', encoding='utf-8') as f:
+#     text = 'Хренушки'
+#     f.write(text)
+# with open('text.txt', 'r', encoding='utf-8') as r:
+#     text = r.read()
+#     print(text)
+#
+# a = input()
+# with open('output.txt', 'w', encoding='utf-8') as f:
+#     text = a
+#     f.write(text)
+
+# event = "git fetch origin"
+# file_name = "tmp/git1_log.txt"
+# if os.path.isfile(file_name):
+#     numbers = 1
+#     with open(file_name, 'r') as r:
+#         text = r.readlines()
+#         for i in text:
+#             if 'event' in i:
+#                 numbers +=1
+#     with open(file_name, 'r') as f:
+#         te = f.readlines()
+#         with open(file_name, 'w') as j:
+#             j.write(f"event {numbers} - '{event}'\n")
+#             j.writelines(te)
+# elif not os.path.isfile(file_name):
+#     with open(file_name, 'w') as j:
+#         j.write(f"event 1 - '{event}'\n")
+
+# import os.path
+#
+# event = "git fetch origin"
+# file_name = "tmp/git_log.txt"
+# if os.path.isfile(file_name):
+#     with open(file_name, 'r') as f:
+#         event_n = int(f.readline().split(' ')[1])
+#         f.seek(0)
+#         text = f.read()
+# else:
+#     event_n = 0
+#     text = ""
+#
+# with open(file_name, 'w') as f_out:
+#     f_out.write(f"event {event_n + 1} - '{event}'\n")
+#     f_out.write(text)
 
 
 
