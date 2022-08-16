@@ -1991,8 +1991,9 @@
 ## [[12, 14, 16, 11], [15, 25, 21, 18], [17, 23, 19, 22]]
 # a = [[2, 4, 6, 1],
 #      [5, 15, 11, 8],
-#      [7, 13, 9, 12]
-# ]
+#      [7, 13, 9, 12],
+#      [6, 11, 4, 34]
+#      ]
 #
 # for j in range(len(a[0])):
 #     for i in range(len(a)):
@@ -4047,7 +4048,7 @@
 #     f += 1
 # print(c)
 
-#функция merge_two_list должна объединить два списка
+# функция merge_two_list должна объединить два списка
 # def merge_two_list(a, b):
 #     i = j = 0
 #     c = []
@@ -5768,7 +5769,7 @@
 # x = [1, 2, 3, 1, 2, 1, 2, 3]
 # print(delete_nth(x, n=2))
 
-#namedtuple++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# namedtuple++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # from collections import namedtuple
 # #
 # # point = (3, 5)
@@ -5971,7 +5972,6 @@
 #     print(False)
 
 
-
 # x = input().split(',')
 # y = input().split(',')
 # a = []
@@ -5998,7 +5998,6 @@
 #     print(len(s[-1]))
 # else:
 #     print('0')
-
 
 
 # n1 = int(input(), 2)
@@ -6044,8 +6043,6 @@
 #         print('0')
 #     else:
 #         print(sum(ob))
-
-
 
 
 # prise = list(map(int, input().split(',')))
@@ -6263,7 +6260,43 @@ import os.path
 #     f_out.write(f"event {event_n + 1} - '{event}'\n")
 #     f_out.write(text)
 
+# def zmeyka(n, m):
+#     count = 1
+#     new_li = []
+#     for i in range(n):
+#         mi = []
+#         mimi = []
+#         for j in range(m):
+#             if i % 2 == 0:
+#                 mi.append(count)
+#                 count += 1
+#             else:
+#                 mimi.append(count)
+#                 count += 1
+#         if mi:
+#             new_li.append(mi)
+#         elif mimi:
+#             new_li.append(mimi[::-1])
+#     for i in new_li:
+#         print(i)
+#
+# zmeyka(5, 5)
 
-
-
-
+# a, b = map(int, input().split())
+#
+# n = [[0] * a for _ in range(b)]
+#
+# i, j, d = 0, 0, 0
+#
+# move = ((0, 1,), (1, 0,), (0, -1,), (-1, 0),)
+# for k in range(1, a * b + 1):
+#     n[i][j] = k
+#     for l in range(4):
+#         newD = (l + d) % 4
+#         di, dj = move[newD]
+#         newI, newJ = i + di, j + dj
+#         if 0 <= newI < a and 0 <= newJ < b and n[newI][newJ] == 0:
+#             i, j, d = newI, newJ, newD
+#             break
+# for row in n:
+#     print(*row)
