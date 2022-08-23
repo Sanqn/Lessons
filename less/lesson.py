@@ -6300,3 +6300,209 @@ import os.path
 #             break
 # for row in n:
 #     print(*row)
+
+# def test(a, links, file):
+#     print('Загружаем', links)
+#     print('Запускаем файл', file)
+#     print(a, 'a')
+#     return list(links)
+#
+# # def test2(get_sting):
+#     # values = get_sting.split('-')
+#     # tests, *links = values
+#     # if tests == 'test':
+#     #     test(links)
+#
+# def test2(get_string):
+#     values = get_string.split('-')
+#     match values:
+#         case test23, *links, file:
+#             test(test23, links, file)
+#
+#
+#
+# test2('test-html//goood.com-html//goood1.com-html//goood2.com-file.text')
+
+# def main(data_string):
+#     values = data_string.split("~")
+#     match values:
+#         case name, "1" | "2" as access, request:
+#             print(f"Пользователь {name} получил доступ к функции {request} с правами {access}")
+#         case _:
+#             print("Неудача")
+#
+#
+# main("Daniil~1~load")
+# def test(data):
+#     match data:
+#         case str(3):
+#             print('min digit')
+#         case 5:
+#             print("it's 5")
+#         case _:
+#             print(data, type(data))
+#             print('Other')
+#
+#
+# test('3')
+
+# a = 6804
+# for _ in range(10):
+#     if a == 6174:
+#         break
+#     else:
+#         sort_a = sorted(list(str(a)))
+#         sort_a_for = int(''.join(sort_a))
+#         sort_a_rew = int(''.join(sort_a[::-1]))
+#         if sort_a_for > sort_a_rew:
+#             a = sort_a_for - sort_a_rew
+#             print(a)
+#         else:
+#             a = sort_a_rew - sort_a_for
+#             print(a)
+
+
+# def kaprekar_step(L):
+#     a = sorted(L)
+#     a = [str(i) for i in a]
+#     sort_a_for = int(''.join(a))
+#     print(sort_a_for)
+#     sort_a_rew = int(''.join(a[::-1]))
+#     print(sort_a_rew)
+#     if sort_a_for > sort_a_rew:
+#         a = sort_a_for - sort_a_rew
+#     else:
+#         a = sort_a_rew - sort_a_for
+#     return a
+#
+# print(kaprekar_step([6, 8, 0, 4]))
+
+
+# def kaprekar_loop(n):
+#     a = n
+#     if a != 6174:
+#         print(a)
+#     for _ in range(10):
+#         if n == 6174:
+#             print(n)
+#             break
+#         else:
+#             sort_a = sorted(list(str(n)))
+#             sort_a_for = int(''.join(sort_a))
+#             sort_a_rew = int(''.join(sort_a[::-1]))
+#             n = sort_a_rew - sort_a_for
+#             if n != 6174:
+#                 print(n)
+#
+#
+# kaprekar_loop(6854)
+
+# def numerics(n):
+#     return [i for i in str(n)]
+#
+#
+# def kaprekar_step(L):
+#     x = [i for i in sorted(numerics(L))]
+#     return int(''.join(x[::-1])) - int(''.join(x))
+#
+#
+# def kaprekar_loop(n):
+#     print(n)
+#     while n != 6174:
+#         return kaprekar_loop(kaprekar_step(n))
+#
+#
+# kaprekar_loop(6854)
+
+# from decimal import *
+# getcontext().prec = 50
+#
+# def luka(L0, L1, n):
+#     for _ in range(n):
+#         L0, L1 = L1, L0 + L1
+#     return Decimal(L0) / Decimal(L1)
+#
+#
+# L0, L1, n = list(map(int, input().split()))
+# print(luka(Decimal(L0), Decimal(L1), n))
+
+# def luka(L0, L1, n):
+#     for _ in range(n):
+#         L0, L1 = L1, L0 + L1
+#     return L0
+#
+# L0, L1, n = list(map(int, input().split()))
+# print(luka(L0, L1, n))
+
+# def luka(n):
+#     L1, L0 = 1, 2
+#     for _ in range(n):
+#         L0, L1 = L1, L0 + L1
+#     return L0
+#
+#
+# import time
+
+
+# def suoer_l(n):
+#     for i in (6, 5, 4, 3, 2, 1):
+#         if n % i == 0:
+#             n //= i
+#             b = luka(n)
+#             return {1: b,
+#                     2: b ** 2 - 2 * (-1) ** n,
+#                     3: b ** 3 - 3 * (-1) ** n * b,
+#                     4: b ** 4 - 4 * (-1) ** n * b ** 2 + 2,
+#                     5: b ** 5 - 5 * (-1) ** n * b ** 3 + 5 * b,
+#                     6: b ** 6 - 6 * (-1) ** n * b ** 4 + 9 * b ** 2 - 2 * (-1) ** n}[i]
+#
+#
+# print(suoer_l(36))
+# def lucas(n):
+#     a = 2
+#     b = 1
+#     if n == 0:
+#         return a
+#     elif n == 1:
+#         return b
+#     else:
+#         for _ in range(n - 1):
+#             a, b = b, a + b
+#         return b
+#
+#
+# def super_L(n):
+#     for i in (6, 5, 4, 3, 2, 1):
+#         if n % i == 0:
+#             n //= i
+#             b = lucas(n)
+#             return {1: b,
+#                     2: b ** 2 - 2 * (-1) ** n,
+#                     3: b ** 3 - 3 * (-1) ** n * b,
+#                     4: b ** 4 - 4 * (-1) ** n * b ** 2 + 2,
+#                     5: b ** 5 - 5 * (-1) ** n * b ** 3 + 5 * b,
+#                     6: b ** 6 - 6 * (-1) ** n * b ** 4 + 9 * b ** 2 - 2 * (-1) ** n}[i]
+
+# a = "['mix', 'extra', '', 'x-files', 'xyz', 'xapple', 'apple']"
+# L = (a[1:-1]).replace("'", '').split(', ')
+# print(L)
+# print(eval(a))
+# print(eval("5 + 7 * 9"))
+# a = int(input())
+# if a == 0:
+#     print('Division by zero!')
+# else:
+#     b = int(input())
+#     print(round(b/a, 1))
+# a = []
+# while True:
+#     i = input()
+#     if i == 'The End':
+#         break
+#     else:
+#         a.append(int(i))
+# print(sum(a))
+# a = 0
+# for i in iter(input, 'The end'):
+#     a += int(i)
+# print(a)
