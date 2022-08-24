@@ -6189,8 +6189,10 @@
 # k = [int(j) for i in text for j in i if j.isdigit()]
 # print(sum(k)/len(k))
 # print('OK' if sum(k)/len(k) == didg_m else 'ERROR')
-
+import asyncio
+import datetime
 import os.path
+
 
 # a = 'tmp/dir/re.txt'
 #
@@ -6527,25 +6529,82 @@ import os.path
 #     print()
 
 # parser foreign language
-def parse_file(parsfile):
-    try:
-        with open(parsfile, 'r', encoding='utf-8') as f:
-            while True:
-                line = f.readline()
-                if not line:
-                    break
-                a = line.strip().split('\t')
-                en = a[0].split(' ; ')
-                ru = a[1].split(' ; ')
-                for i in range(len(en)):
-                    for j in range(len(ru)):
-                        with open('Englishs.txt', 'a', encoding='utf-8') as en_t:
-                            en_t.writelines(f"{en[i]}\n")
-                        with open('Russian.txt', 'a', encoding='utf-8') as ru_t:
-                            ru_t.writelines(f"{ru[j]}\n")
-    except Exception as e:
-        print('Error', e)
+# def parse_file(parsfile):
+#     try:
+#         with open(parsfile, 'r', encoding='utf-8') as f:
+#             while True:
+#                 line = f.readline()
+#                 if not line:
+#                     break
+#                 a = line.strip().split('\t')
+#                 en = a[0].split(' ; ')
+#                 ru = a[1].split(' ; ')
+#                 for i in range(len(en)):
+#                     for j in range(len(ru)):
+#                         with open('Englishs.txt', 'a', encoding='utf-8') as en_t:
+#                             en_t.writelines(f"{en[i]}\n")
+#                         with open('Russian.txt', 'a', encoding='utf-8') as ru_t:
+#                             ru_t.writelines(f"{ru[j]}\n")
+#     except Exception as e:
+#         print('Error', e)
+#
+#
+# parsfile = 'PythonTest_1.txt'
+# parse_file(parsfile)
+# import time
+#
+#
+# async def fun(l):
+#     for i in range(l):
+#         print(i**50)
+#         t = time.time()
+#         await asyncio.sleep(1)
+#         print(t, 'ttttttttttttttttt')
+#     return t
+#
+#
+# async def testrt(n):
+#     now = time.time()
+#     print(now, 'nownownowwo')
+#     a = await fun(n)
+#     cor_t = a - now
+#     print(cor_t)
+#
+# asyncio.run(testrt(20))
+#
+#
+# async def ticker(delay, to):
+#     for i in range(to):
+#         yield (i, delay)
+#         await asyncio.sleep(delay)
+#
+#
+# async def run(k):
+#     # пример асинхронного for
+#     async for i in ticker(k, 10):
+#         print(i)
+#
+#
+# loop = asyncio.get_event_loop()
+# try:
+#     loop.run_until_complete(asyncio.gather(run(0.5), run(1)))
+# finally:
+#     loop.close()
+# print(time.strftime('%X'))
 
+import time
+from datetime import datetime
+import pytz
 
-parsfile = 'PythonTest_1.txt'
-parse_file(parsfile)
+print(time.strftime("%X"))
+print(datetime.now().strftime("%H:%M:%S"))
+print(datetime.now().time())
+print(time.strftime("%H:%M:%S", time.localtime()))
+
+tz_NY = pytz.timezone('America/New_York')
+datetime_NY = datetime.now(tz_NY)
+print("NY time:", datetime_NY.strftime("%H:%M:%S"))
+
+print(datetime.fromtimestamp(time.time()))
+a = time.time()
+print(datetime.fromtimestamp(a).strftime("%H:%M:%S"))
