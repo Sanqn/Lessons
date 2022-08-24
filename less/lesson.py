@@ -6592,19 +6592,20 @@ import os.path
 #     loop.close()
 # print(time.strftime('%X'))
 
-import time
-from datetime import datetime
-import pytz
+# import time
+# from datetime import datetime
+# import pytz
+#
+# print(time.strftime("%X"))
+# print(datetime.now().strftime("%H:%M:%S"))
+# print(datetime.now().time())
+# print(time.strftime("%H:%M:%S", time.localtime()))
+#
+# tz_NY = pytz.timezone('America/New_York')
+# datetime_NY = datetime.now(tz_NY)
+# print("NY time:", datetime_NY.strftime("%H:%M:%S"))
+#
+# print(datetime.fromtimestamp(time.time()))
+# a = time.time()
+# print(datetime.fromtimestamp(a).strftime("%H:%M:%S"))
 
-print(time.strftime("%X"))
-print(datetime.now().strftime("%H:%M:%S"))
-print(datetime.now().time())
-print(time.strftime("%H:%M:%S", time.localtime()))
-
-tz_NY = pytz.timezone('America/New_York')
-datetime_NY = datetime.now(tz_NY)
-print("NY time:", datetime_NY.strftime("%H:%M:%S"))
-
-print(datetime.fromtimestamp(time.time()))
-a = time.time()
-print(datetime.fromtimestamp(a).strftime("%H:%M:%S"))
