@@ -6506,3 +6506,46 @@ import os.path
 # for i in iter(input, 'The end'):
 #     a += int(i)
 # print(a)
+
+# print(*[i for i in input().split() if i.isalpha()], sep='\n')
+
+# numb = int(input())
+# a = []
+# for i in range(numb - 1, 1, -1):
+#     if (numb % i == 0):
+#         a.append(i)
+# print(min(a))
+
+
+# print(*[i ** 3 for i in range(1, abs(int(input())))], sep='\n')
+
+# a = 9
+#
+# for i in range(1, a + 1):
+#     for j in range(1, a + 1):
+#         print(i*j, end=' ')
+#     print()
+
+# parser foreign language
+def parse_file(parsfile):
+    try:
+        with open(parsfile, 'r', encoding='utf-8') as f:
+            while True:
+                line = f.readline()
+                if not line:
+                    break
+                a = line.strip().split('\t')
+                en = a[0].split(' ; ')
+                ru = a[1].split(' ; ')
+                for i in range(len(en)):
+                    for j in range(len(ru)):
+                        with open('Englishs.txt', 'a', encoding='utf-8') as en_t:
+                            en_t.writelines(f"{en[i]}\n")
+                        with open('Russian.txt', 'a', encoding='utf-8') as ru_t:
+                            ru_t.writelines(f"{ru[j]}\n")
+    except Exception as e:
+        print('Error', e)
+
+
+parsfile = 'PythonTest_1.txt'
+parse_file(parsfile)
