@@ -6608,4 +6608,30 @@ import os.path
 # print(datetime.fromtimestamp(time.time()))
 # a = time.time()
 # print(datetime.fromtimestamp(a).strftime("%H:%M:%S"))
+import time
 
+
+# async def main():
+#     start_time = time.time()
+#     print('hello')
+#     await asyncio.sleep(1)
+#     print('world')
+#     end_time = time.time()
+#     print(end_time - start_time)
+#
+# asyncio.run(main())
+async def get_name(t, what_say):
+    await asyncio.sleep(t)
+    print(what_say)
+
+async def main():
+    task1 = asyncio.create_task(get_name(1, 'Hi'))
+    task2 = asyncio.create_task(get_name(3, 'man'))
+    print('Time start', time.strftime('%X'))
+    # await get_name(1, 'Hi')
+    # await get_name(3, 'man')
+    await task1
+    await task2
+    print('Time end', time.strftime('%X'))
+
+asyncio.run(main())
