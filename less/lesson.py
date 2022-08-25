@@ -6610,7 +6610,6 @@ import os.path
 # print(datetime.fromtimestamp(a).strftime("%H:%M:%S"))
 import time
 
-
 # async def main():
 #     start_time = time.time()
 #     print('hello')
@@ -6741,4 +6740,71 @@ import time
 #         print('timeout!')
 #
 # asyncio.run(main())
+#
+# async def handle_echo(reader, writer):
+#     data = await reader.read(100)
+#     message = data.decode()
+#     addr = writer.get_extra_info('peername')
+#
+#     print(f"Received {message!r} from {addr!r}")
+#
+#     print(f"Send: {message!r}")
+#     writer.write(data)
+#     await writer.drain()
+#
+#     print("Close the connection")
+#     writer.close()
+#
+# async def main():
+#     server = await asyncio.start_server(
+#         handle_echo, '127.0.0.1', 8888)
+#
+#     addrs = ', '.join(str(sock.getsockname()) for sock in server.sockets)
+#     print(f'Serving on {addrs}')
+#
+#     async with server:
+#         await server.serve_forever()
+#
+# asyncio.run(main())
 
+import urllib.parse
+import sys
+
+
+async def print_http_headers(url):
+    url = urllib.parse.urlsplit(url)  # SplitResult(scheme='https', netloc='docs.python.org',
+    # path='/3.10/library/asyncio-stream.html', query='', fragment='')
+    print(url, '====================================')
+    if url.scheme == 'https':
+        reader, writer = await asyncio.open_connection(
+            url.hostname, 443, ssl=True)
+        print(url.hostname, 'hostnamehostnamehostname')
+        print(reader, 'readerreaderreader')
+        print(writer, 'writerwriterwriter')
+    else:
+        reader, writer = await asyncio.open_connection(
+            url.hostname, 80)
+
+    query = (
+        f"HEAD {url.path or '/'} HTTP/1.0\r\n"
+        f"Host: {url.hostname}\r\n"
+        f"\r\n"
+    )
+
+    writer.write(query.encode('latin-1'))
+    while True:
+        line = await reader.readline()
+        print(line, 'linelinelinelinelinelinelinelinelinelinelinelinelinelinelinelineline')
+        if not line:
+            break
+
+        line = line.decode('latin1').rstrip()
+        if line:
+            print(f'HTTP header> {line}')
+
+    # Ignore the body, close the socket
+    writer.close()
+
+
+url = 'https://docs.python.org/3.10/library/asyncio-stream.html'
+asyncio.run(print_http_headers(url))
