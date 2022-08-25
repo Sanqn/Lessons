@@ -6190,9 +6190,9 @@
 # print(sum(k)/len(k))
 # print('OK' if sum(k)/len(k) == didg_m else 'ERROR')
 import asyncio
+import concurrent
 import datetime
 import os.path
-
 
 # a = 'tmp/dir/re.txt'
 #
@@ -6620,18 +6620,125 @@ import time
 #     print(end_time - start_time)
 #
 # asyncio.run(main())
-async def get_name(t, what_say):
-    await asyncio.sleep(t)
-    print(what_say)
+# async def get_name(t, what_say):
+#     await asyncio.sleep(t)
+#     print(what_say)
+#
+# async def main():
+#     task1 = asyncio.create_task(get_name(1, 'Hi'))
+#     task2 = asyncio.create_task(get_name(3, 'man'))
+#     print('Time start', time.strftime('%X'))
+#     # await get_name(1, 'Hi')
+#     # await get_name(3, 'man')
+#     await task1
+#     await task2
+#     print('Time end', time.strftime('%X'))
+#
+# asyncio.run(main())
 
-async def main():
-    task1 = asyncio.create_task(get_name(1, 'Hi'))
-    task2 = asyncio.create_task(get_name(3, 'man'))
-    print('Time start', time.strftime('%X'))
-    # await get_name(1, 'Hi')
-    # await get_name(3, 'man')
-    await task1
-    await task2
-    print('Time end', time.strftime('%X'))
+# import concurrent.futures
+# from multiprocessing import freeze_support
+#
+#
+# def blocking_io():
+#     # File operations (such as logging) can block the
+#     # event loop: run them in a thread pool.
+#     with open('PythonTest_1.txt', 'r', encoding='utf-8') as f:
+#         return f.readlines(500)
+#
+#
+# def cpu_bound():
+#     # CPU-bound operations will block the event loop:
+#     # in general it is preferable to run them in a
+#     # process pool.
+#     return sum(i * i for i in range(10 ** 7))
+#
+#
+# async def main():
+#     loop = asyncio.get_running_loop()
+#
+#     ## Options:
+#
+#     # 1. Run in the default loop's executor:
+#     result = await loop.run_in_executor(
+#         None, blocking_io)
+#     print('default thread pool', result)
+#
+#     # 2. Run in a custom thread pool:
+#     with concurrent.futures.ThreadPoolExecutor() as pool:
+#         result = await loop.run_in_executor(
+#             pool, blocking_io)
+#         print('custom thread pool', result)
+#
+#     # 3. Run in a custom process pool:
+#     with concurrent.futures.ProcessPoolExecutor() as pool:
+#         result = await loop.run_in_executor(
+#             pool, cpu_bound)
+#         print('custom process pool', result)
+#
+#
+# if __name__ == '__main__':
+#     asyncio.run(main())
 
-asyncio.run(main())
+# import datetime
+#
+# async def display_date():
+#     loop = asyncio.get_running_loop()
+#     end_time = loop.time() + 5.0
+#     while True:
+#         print(datetime.datetime.now())
+#         if (loop.time() + 1.0) >= end_time:
+#             break
+#         await asyncio.sleep(1)
+#
+# asyncio.run(display_date())
+# async def display_date():
+#     for i in range(5):
+#         print(datetime.datetime.now().strftime('%X'))
+#         await asyncio.sleep(1)
+#
+# asyncio.run(display_date())
+
+# async def factorial(name, number):
+#     f = 1
+#     for i in range(2, number + 1):
+#         print(f"Task {name} factorial {number} current {i}")
+#         await asyncio.sleep(1)
+#         f *= i
+#     print(f"Task {name} factorial{number} = {f}")
+#     return f
+#
+#
+# # async def main():
+# #     L = await asyncio.gather(
+# #         factorial('A', 3),
+# #         factorial('B', 4),
+# #         factorial('C', 5)
+# #     )
+# #     print(L)
+# async def main():
+#     task1 = asyncio.create_task(factorial('A', 3))
+#     task2 = asyncio.create_task(factorial('B', 4))
+#     task3 = asyncio.create_task(factorial('C', 5))
+#
+#     print(await task1)
+#     print(await task2)
+#     print(await task3)
+#
+# asyncio.run(main())
+
+
+# async def eternity():
+#     # Sleep for one hour
+#     await asyncio.sleep(2)
+#     print('yay!')
+#
+# async def main():
+#     # Wait for at most 1 second
+#     try:
+#         await asyncio.wait_for(eternity(), timeout=1.0)
+#     except asyncio.TimeoutError:
+#         print('timeout!')
+#
+# asyncio.run(main())
+
