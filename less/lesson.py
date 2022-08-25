@@ -6610,6 +6610,7 @@ import os.path
 # print(datetime.fromtimestamp(a).strftime("%H:%M:%S"))
 import time
 
+
 # async def main():
 #     start_time = time.time()
 #     print('hello')
@@ -6742,6 +6743,8 @@ import time
 # asyncio.run(main())
 #
 # async def handle_echo(reader, writer):
+#     print(reader, 'readerreaderv')
+#     print(writer, 'writerwriterwriter')
 #     data = await reader.read(100)
 #     message = data.decode()
 #     addr = writer.get_extra_info('peername')
@@ -6767,44 +6770,85 @@ import time
 #
 # asyncio.run(main())
 
-import urllib.parse
-import sys
+# import urllib.parse
+# import sys
+#
+#
+# async def print_http_headers(url):
+#     url = urllib.parse.urlsplit(url)  # SplitResult(scheme='https', netloc='docs.python.org',
+#     # path='/3.10/library/asyncio-stream.html', query='', fragment='')
+#     print(url, '====================================')
+#     if url.scheme == 'https':
+#         reader, writer = await asyncio.open_connection(
+#             url.hostname, 443, ssl=True)
+#         print(url.hostname, 'hostnamehostnamehostname')
+#         print(reader, 'readerreaderreader')
+#         print(writer, 'writerwriterwriter')
+#     else:
+#         reader, writer = await asyncio.open_connection(
+#             url.hostname, 80)
+#
+#     query = (
+#         f"HEAD {url.path or '/'} HTTP/1.0\r\n"
+#         f"Host: {url.hostname}\r\n"
+#         f"\r\n"
+#     )
+#
+#     writer.write(query.encode('latin-1'))
+#     while True:
+#         line = await reader.readline()
+#         print(line, 'linelinelinelinelinelinelinelinelinelinelinelinelinelinelinelineline')
+#         if not line:
+#             break
+#
+#         line = line.decode('latin1').rstrip()
+#         if line:
+#             print(f'HTTP header> {line}')
+#
+#     # Ignore the body, close the socket
+#     writer.close()
+#
+#
+# url = 'https://docs.python.org/3.10/library/asyncio-stream.html'
+# asyncio.run(print_http_headers(url))
+
+# def factorial(n, k):
+#     if n == 0 or n == 1:
+#         return 1
+#     else:
+#         if n > 0:
+#             return n * factorial(n - k, k)
+#         else:
+#             return 1
+# print(factorial(1, 10))
+
+# def bin1(n, s=2):
+#     a = set()
+#     for _ in range(int(n/s)):
+#         n = n//s
+#         a.add(n)
+#     p = [int(1) if i == 0 else str(i % s) for i in list(a)][::-1]
+#     print(p)
+# bin1(19, 2)
+
+# def bin1(n, s=2):
+#     a = []
+#     for _ in range(int(n / s)):
+#         if n // s == 0:
+#             a.append(str(n % s))
+#             break
+#         else:
+#             a.append(str(n % s))
+#             n = n // s
+#     print(''.join(a[::-1]))
+#
+#
+# bin1(8, 3)
 
 
-async def print_http_headers(url):
-    url = urllib.parse.urlsplit(url)  # SplitResult(scheme='https', netloc='docs.python.org',
-    # path='/3.10/library/asyncio-stream.html', query='', fragment='')
-    print(url, '====================================')
-    if url.scheme == 'https':
-        reader, writer = await asyncio.open_connection(
-            url.hostname, 443, ssl=True)
-        print(url.hostname, 'hostnamehostnamehostname')
-        print(reader, 'readerreaderreader')
-        print(writer, 'writerwriterwriter')
-    else:
-        reader, writer = await asyncio.open_connection(
-            url.hostname, 80)
+def translate(a, n=2):
+    if not a:
+        return ''
+    return translate(a // n, n) + str(a % n)
 
-    query = (
-        f"HEAD {url.path or '/'} HTTP/1.0\r\n"
-        f"Host: {url.hostname}\r\n"
-        f"\r\n"
-    )
-
-    writer.write(query.encode('latin-1'))
-    while True:
-        line = await reader.readline()
-        print(line, 'linelinelinelinelinelinelinelinelinelinelinelinelinelinelinelineline')
-        if not line:
-            break
-
-        line = line.decode('latin1').rstrip()
-        if line:
-            print(f'HTTP header> {line}')
-
-    # Ignore the body, close the socket
-    writer.close()
-
-
-url = 'https://docs.python.org/3.10/library/asyncio-stream.html'
-asyncio.run(print_http_headers(url))
+print(translate(19))
