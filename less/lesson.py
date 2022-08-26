@@ -6846,9 +6846,16 @@ import time
 # bin1(8, 3)
 
 
-def translate(a, n=2):
-    if not a:
-        return ''
-    return translate(a // n, n) + str(a % n)
+# def translate(a, n=2):
+#     if not a:
+#         return ''
+#     return translate(a // n, n) + str(a % n)
+#
+# print(translate(19))
 
-print(translate(19))
+# with open('1.txt', 'r', encoding='utf-8') as f:
+#     vul = f.readlines()
+#     dig = [int(j) for i in vul for j in i if j.isdigit()]
+# with open('2.txt', 'r', encoding='utf-8') as j:
+#     grade = j.read()
+#     print('OK' if sum(dig)/len(dig) == int(grade) else 'ERROR')
