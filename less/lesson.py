@@ -6610,7 +6610,6 @@ import os.path
 # print(datetime.fromtimestamp(a).strftime("%H:%M:%S"))
 import time
 
-
 # async def main():
 #     start_time = time.time()
 #     print('hello')
@@ -6859,3 +6858,84 @@ import time
 # with open('2.txt', 'r', encoding='utf-8') as j:
 #     grade = j.read()
 #     print('OK' if sum(dig)/len(dig) == int(grade) else 'ERROR')
+
+
+# def kaprekar(n):
+#     st = str(n ** 2)
+#     print(st)
+#     test1 = []
+#     for i in range(1, len(st)):
+#         if int(st[i:]):
+#             a = int(st[:i]) + int(st[i:])
+#             if a == n:
+#                 test1.append(a)
+#     if test1:
+#         return True
+#     return False
+#
+# print(kaprekar(218400870420))
+
+# def kaprekar(n):
+#     st = str(n ** 2)
+#     for i in range(1, len(st)):
+#         a, b = int(st[:i]), int(st[i:])
+#         if b:
+#             if a + b == n:
+#                 return True
+#     return False
+#
+#
+# print(kaprekar(100))
+
+alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+
+# def conver_to(n, from_base):
+#     s = []
+#     for i in str(n):
+#         if i.isdigit():
+#             s.append(i)
+#         else:
+#             for j in range(len(alphabet)):
+#                 if i == alphabet[j]:
+#                     s.append(str(j))
+#     di = []
+#     ind = len(s) - 1
+#     for i in range(len(s)):
+#         di.append(int(s[i]) * from_base ** ind)
+#         ind -= 1
+#     return sum(di)
+#
+#
+# def conver_by(n, from_base):
+#     s = ""
+#     while n:
+#         num = str(n % from_base)
+#         if int(num) > 9:
+#             for i in range(len(alphabet)):
+#                 if int(num) == i:
+#                     s = alphabet[i] + s
+#                     n //= from_base
+#         else:
+#             s = str(n % from_base) + s
+#             n //= from_base
+#     return s
+#
+#
+# def convert(n, to_base=10, from_base=10):
+#     a = conver_to(n, from_base)
+#     b = conver_by(a, to_base)
+#     return b
+#
+#
+# print(convert('2A', 10, 16))
+
+def convert(num, to_base=10, from_base=10):
+    num = int(str(num), base=from_base)
+    c = ''
+    while num:
+        c = alphabet[num % to_base] + c
+        num //= to_base
+    return c
+
+print(convert(101010, 8, 2))
