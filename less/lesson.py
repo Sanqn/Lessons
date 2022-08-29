@@ -6943,16 +6943,16 @@ alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 #
 # print(convert('059', 10, 16))
 
-def kaprekar16(n, base):
-    st = n ** 2
-    print(st)
-    c = ''
-    while st:
-        c = alphabet[st % base] + c
-        st //= base
-    print(c)
-    c = [c[0], c[1:]]
-    print(c)
+# def kaprekar16(n, base):
+#     st = n ** 2
+#     print(st)
+#     c = ''
+#     while st:
+#         c = alphabet[st % base] + c
+#         st //= base
+#     print(c)
+#     c = [c[0], c[1:]]
+#     print(c)
     # di = []
     # for j in c:
     #     ind = len(j) -1
@@ -6986,27 +6986,71 @@ def kaprekar16(n, base):
 
 # convert('FF', base=16)
 # (100−((100−x)+(100−y)))⋅100+(100−x)⋅(100−y)
-def multiplication_check_list(default=None, start=10, stop=99):
-    count = 0
-    no_plus = 0
-    if default == 'default':
-        start = 10
-        stop = 99
-        for x in range(start, stop + 1):
-            for y in range(start, stop + 1):
-                count += 1
-                if x * y != (100 - ((100 - x) + (100 - y))) * 100 + ((100 - x) * (100 - y)):
-                    no_plus += 1
+# def multiplication_check_list(default=None, start=10, stop=99):
+#     count = 0
+#     no_plus = 0
+#     if default == 'default':
+#         start = 10
+#         stop = 99
+#         for x in range(start, stop + 1):
+#             for y in range(start, stop + 1):
+#                 count += 1
+#                 if x * y != (100 - ((100 - x) + (100 - y))) * 100 + ((100 - x) * (100 - y)):
+#                     no_plus += 1
+#     else:
+#         for x in range(start, stop + 1):
+#             for y in range(start, stop + 1):
+#                 count += 1
+#                 if x * y != (100 - ((100 - x) + (100 - y))) * 100 + ((100 - x) * (100 - y)):
+#                     no_plus += 1
+#
+#     print(f"Правильных результатов: {count}\nНеправильных результатов: {no_plus}")
+#
+#
+# multiplication_check_list(start=96, stop=97)
+
+
+# def wisdom_multiplication(x, y, length_check=True):
+#     first_two_digit = 100 - ((100 - x) + (100 - y))
+#     second_two_digit = (100 - x) * (100 - y)
+#     if length_check:
+#         if len(str(second_two_digit)) == 1:
+#             second_two_digit = '0' + str(second_two_digit)
+#             return str(first_two_digit) + second_two_digit
+#         else:
+#             return str(first_two_digit) + str(second_two_digit)
+#     else:
+#         return str(first_two_digit) + str(second_two_digit)
+#
+#
+#
+# print(wisdom_multiplication(96, 97, length_check=True))
+
+
+def wisdom_multiplication(x, y, length_check=None):
+    first_two_digit = 100 - ((100 - x) + (100 - y))
+    second_two_digit = (100 - x) * (100 - y)
+    if length_check == True and len(str(second_two_digit)) == 1:
+            second_two_digit = '0' + str(second_two_digit)
+            di = str(first_two_digit) + second_two_digit
+            return int(di)
     else:
-        for x in range(start, stop + 1):
-            for y in range(start, stop + 1):
+        di = str(first_two_digit) + str(second_two_digit)
+        return int(di)
+
+
+def multiplication_check_list(start=10, stop=99, length_check=True):
+    count = 0
+    zero_add = 0
+    for x in range(start, stop + 1):
+        for y in range(start, stop + 1):
+            check_mult = wisdom_multiplication(x, y, length_check)
+            if check_mult == x * y:
                 count += 1
-                if x * y != (100 - ((100 - x) + (100 - y))) * 100 + ((100 - x) * (100 - y)):
-                    no_plus += 1
-
-    print(f"Правильных результатов: {count}\nНеправильных результатов: {no_plus}")
+            else:
+                zero_add += 1
 
 
-multiplication_check_list(start=96, stop=97)
+    print(f"Правильных результатов: {count}\nНеправильных результатов: {zero_add}")
 
-
+print(multiplication_check_list(length_check=False))
