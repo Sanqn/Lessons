@@ -6890,7 +6890,6 @@ import pytz
 
 alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-
 # def conver_to(n, from_base):
 #     s = []
 #     for i in str(n):
@@ -6953,15 +6952,15 @@ alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 #     print(c)
 #     c = [c[0], c[1:]]
 #     print(c)
-    # di = []
-    # for j in c:
-    #     ind = len(j) -1
-    #     for i in range(len(j)):
-    #         di.append(int(j[i]) * base ** ind)
-    #         ind -= 1
-    # if n == sum(di):
-    #     return True
-    # return False
+# di = []
+# for j in c:
+#     ind = len(j) -1
+#     for i in range(len(j)):
+#         di.append(int(j[i]) * base ** ind)
+#         ind -= 1
+# if n == sum(di):
+#     return True
+# return False
 
 
 # def kaprekar(n):
@@ -7027,30 +7026,44 @@ alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # print(wisdom_multiplication(96, 97, length_check=True))
 
 
-def wisdom_multiplication(x, y, length_check=None):
-    first_two_digit = 100 - ((100 - x) + (100 - y))
-    second_two_digit = (100 - x) * (100 - y)
-    if length_check == True and len(str(second_two_digit)) == 1:
-            second_two_digit = '0' + str(second_two_digit)
-            di = str(first_two_digit) + second_two_digit
-            return int(di)
-    else:
-        di = str(first_two_digit) + str(second_two_digit)
-        return int(di)
+# def wisdom_multiplication(x, y, length_check=None):
+#     first_two_digit = 100 - ((100 - x) + (100 - y))
+#     second_two_digit = (100 - x) * (100 - y)
+#     if length_check == True and len(str(second_two_digit)) == 1:
+#             second_two_digit = '0' + str(second_two_digit)
+#             di = str(first_two_digit) + second_two_digit
+#             return int(di)
+#     else:
+#         di = str(first_two_digit) + str(second_two_digit)
+#         return int(di)
+#
+#
+# def multiplication_check_list(start=10, stop=99, length_check=True):
+#     count = 0
+#     zero_add = 0
+#     for x in range(start, stop + 1):
+#         for y in range(start, stop + 1):
+#             check_mult = wisdom_multiplication(x, y, length_check)
+#             if check_mult == x * y:
+#                 count += 1
+#             else:
+#                 zero_add += 1
+#
+#
+#     print(f"Правильных результатов: {count}\nНеправильных результатов: {zero_add}")
+#
+# print(multiplication_check_list(length_check=False))
+
+import re
+import string
 
 
-def multiplication_check_list(start=10, stop=99, length_check=True):
-    count = 0
-    zero_add = 0
-    for x in range(start, stop + 1):
-        for y in range(start, stop + 1):
-            check_mult = wisdom_multiplication(x, y, length_check)
-            if check_mult == x * y:
-                count += 1
-            else:
-                zero_add += 1
+def caesar(text, key):
+    text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
+    alph = string.ascii_uppercase
+    Encrypted = ([alph[(j + key) % 26] for i in range(len(text)) for j in range(len(alph)) if text[i] == alph[j]])
+    return ''.join(Encrypted)
 
 
-    print(f"Правильных результатов: {count}\nНеправильных результатов: {zero_add}")
-
-print(multiplication_check_list(length_check=False))
+t = "Ave, Caesar"
+print(caesar(t, 3))
