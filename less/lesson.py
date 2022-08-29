@@ -6886,6 +6886,7 @@ import time
 #
 #
 # print(kaprekar(100))
+import pytz
 
 alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -6928,14 +6929,84 @@ alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 #     return b
 #
 #
-# print(convert('2A', 10, 16))
+# print(convert('2A', 8, 12))
 
-def convert(num, to_base=10, from_base=10):
-    num = int(str(num), base=from_base)
+
+# def convert(num, to_base=10, from_base=10):
+#     num = int(str(num), base=from_base)
+#     c = ''
+#     while num:
+#         c = alphabet[num % to_base] + c
+#         num //= to_base
+#     return c
+#
+#
+# print(convert('059', 10, 16))
+
+def kaprekar16(n, base):
+    st = n ** 2
+    print(st)
     c = ''
-    while num:
-        c = alphabet[num % to_base] + c
-        num //= to_base
-    return c
+    while st:
+        c = alphabet[st % base] + c
+        st //= base
+    print(c)
+    c = [c[0], c[1:]]
+    print(c)
+    # di = []
+    # for j in c:
+    #     ind = len(j) -1
+    #     for i in range(len(j)):
+    #         di.append(int(j[i]) * base ** ind)
+    #         ind -= 1
+    # if n == sum(di):
+    #     return True
+    # return False
 
-print(convert(101010, 8, 2))
+
+# def kaprekar(n):
+#     st = str(n ** 2)
+#     for i in range(1, len(st)):
+#         a, b = int(st[:i]), int(st[i:])
+#         if b:
+#             if a + b == n:
+#                 return True
+#         return False
+#
+#
+# def convert(n, base=10):
+#     num = int(str(n), base=base)
+#     print(num)
+#     if base == 16:
+#         print(kaprekar16(num, base), '161611616')
+#     # elif base == 12:
+#     #     print(kaprekar12(num, base), 'kkkkk')
+#     else:
+#         print(kaprekar(num), '100000000')
+
+# convert('FF', base=16)
+# (100−((100−x)+(100−y)))⋅100+(100−x)⋅(100−y)
+def multiplication_check_list(default=None, start=10, stop=99):
+    count = 0
+    no_plus = 0
+    if default == 'default':
+        start = 10
+        stop = 99
+        for x in range(start, stop + 1):
+            for y in range(start, stop + 1):
+                count += 1
+                if x * y != (100 - ((100 - x) + (100 - y))) * 100 + ((100 - x) * (100 - y)):
+                    no_plus += 1
+    else:
+        for x in range(start, stop + 1):
+            for y in range(start, stop + 1):
+                count += 1
+                if x * y != (100 - ((100 - x) + (100 - y))) * 100 + ((100 - x) * (100 - y)):
+                    no_plus += 1
+
+    print(f"Правильных результатов: {count}\nНеправильных результатов: {no_plus}")
+
+
+multiplication_check_list(start=96, stop=97)
+
+
