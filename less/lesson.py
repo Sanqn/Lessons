@@ -7054,16 +7054,86 @@ alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 #
 # print(multiplication_check_list(length_check=False))
 
+# import re
+# import string
+#
+#
+# def caesar(text, key):
+#     text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
+#     alph = string.ascii_uppercase
+#     Encrypted = ([alph[(j + key) % 26] for i in range(len(text)) for j in range(len(alph)) if text[i] == alph[j]])
+#     return ''.join(Encrypted)
+#
+#
+# t = "Ave, Caesar"
+# print(caesar(t, 3))
+
+# import re
+# import string
+
+
+# def caesar(text, key, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+#     text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
+#     len_alf = len(alphabet)
+#     Encrypted = ''
+#     for i in range(len(text)):
+#         for j in range(len(alphabet)):
+#             if text[i] == alphabet[j]:
+#                 ind = (j + key) % len_alf
+#                 Encrypted += alphabet[ind]
+#                 break
+#     return f"{Encrypted}"
+#
+#
+# t = "Ave, Caesar"
+# print(caesar(t, 3))
+
+# def bruteforce(text, alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+#     len_alf = len(alphabet)
+#     for i in range(1, len_alf):
+#         decode = ''
+#         for l in range(len(text)):
+#             for j in range(len(alphabet)):
+#                 if text[l] == alphabet[j]:
+#                     ind = (j - i) % len_alf
+#                     decode += alphabet[ind]
+#
+#
+#
+#         print(decode)
+#
+# text = 'BQQMF'
+# print(bruteforce(text, alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+
 import re
 import string
 
 
-def caesar(text, key):
+def jarriquez_encryption(text, key, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ', reverse=False):
     text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
-    alph = string.ascii_uppercase
-    Encrypted = ([alph[(j + key) % 26] for i in range(len(text)) for j in range(len(alph)) if text[i] == alph[j]])
-    return ''.join(Encrypted)
+    len_alf = len(alphabet)
+    encode = ''
+    decode = ''
+    te = ''.join([(str(key)[i % len(str(key))]) for i in range(len(text))])
+    # for j in range(len(text)):
+    #     for i in range(len(str(key))):
+    #         if i <= len(text):
+    #             te += str(key)[i]
+    if not reverse:
+        for k in range(len(text)):
+            for j in range(len(alphabet)):
+                if text[k] == alphabet[j]:
+                    ind = (j + int(te[k])) % len_alf
+                    encode += alphabet[ind]
+        return encode
+    else:
+        for k in range(len(text)):
+            for j in range(len(alphabet)):
+                if text[k] == alphabet[j]:
+                    ind = (j - int(te[k])) % len_alf
+                    decode += alphabet[ind]
+        return decode
 
 
-t = "Ave, Caesar"
-print(caesar(t, 3))
+text = 'У СУДЬИ ЖАРРИКЕСА ПРОНИЦАТЕЛЬНЫЙ УМ'
+print(jarriquez_encryption(text, 423, alphabet='АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ', reverse=False))
