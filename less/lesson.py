@@ -7112,27 +7112,28 @@ import string
 def jarriquez_encryption(text, key, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ', reverse=False):
     text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
     len_alf = len(alphabet)
-    encode = ''
-    decode = ''
+    code = ''
+    # count = 0
     te = ''.join([(str(key)[i % len(str(key))]) for i in range(len(text))])
+    # te = ''
     # for j in range(len(text)):
     #     for i in range(len(str(key))):
-    #         if i <= len(text):
+    #         if count < len(text):
+    #             count += 1
     #             te += str(key)[i]
-    if not reverse:
-        for k in range(len(text)):
-            for j in range(len(alphabet)):
-                if text[k] == alphabet[j]:
-                    ind = (j + int(te[k])) % len_alf
-                    encode += alphabet[ind]
-        return encode
-    else:
-        for k in range(len(text)):
-            for j in range(len(alphabet)):
-                if text[k] == alphabet[j]:
+    for k in range(len(text)):
+        for j in range(len(alphabet)):
+            if text[k] == alphabet[j]:
+                if reverse:
                     ind = (j - int(te[k])) % len_alf
-                    decode += alphabet[ind]
-        return decode
+                    code += alphabet[ind]
+                else:
+                    ind = (j + int(te[k])) % len_alf
+                    code += alphabet[ind]
+    return code
+
+
+
 
 
 text = 'У СУДЬИ ЖАРРИКЕСА ПРОНИЦАТЕЛЬНЫЙ УМ'
