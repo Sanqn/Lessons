@@ -7107,14 +7107,16 @@ alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 import re
 import string
-
+from itertools import cycle
 
 def jarriquez_encryption(text, key, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ', reverse=False):
     text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
     len_alf = len(alphabet)
+    te = ''.join([i for i, j in zip(cycle(str(key)), text)])
     code = ''
     # count = 0
-    te = ''.join([(str(key)[i % len(str(key))]) for i in range(len(text))])
+    te = ''.join([i for i, j in zip(cycle(str(key)), text)])
+    # te = ''.join([(str(key)[i % len(str(key))]) for i in range(len(text))])
     # te = ''
     # for j in range(len(text)):
     #     for i in range(len(str(key))):
