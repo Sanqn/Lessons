@@ -1,3 +1,21 @@
+import logging
+
+root = logging.getLogger()
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    filename="mylog.log",
+    format="%(asctime)s - %(module)s - %(levelname)s - %(funcName)s: %(lineno)d - %(message)s",
+    datefmt='%Y-%m-%d %H:%M:%S',
+)
+# try:
+#     a = 6/0
+#     print(a)
+# except Exception as e:
+#     print(e)
+#     root.error(f'some problems {e}')
+
+
 # def plus(a, b):
 #     return a + b
 #
@@ -6189,10 +6207,10 @@
 # k = [int(j) for i in text for j in i if j.isdigit()]
 # print(sum(k)/len(k))
 # print('OK' if sum(k)/len(k) == didg_m else 'ERROR')
-import asyncio
-import concurrent
-import datetime
-import os.path
+# import asyncio
+# import concurrent
+# import datetime
+# import os.path
 
 # a = 'tmp/dir/re.txt'
 #
@@ -6886,9 +6904,9 @@ import time
 #
 #
 # print(kaprekar(100))
-import pytz
-
-alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+# import pytz
+#
+# alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 # def conver_to(n, from_base):
 #     s = []
@@ -7105,38 +7123,59 @@ alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # text = 'BQQMF'
 # print(bruteforce(text, alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
 
-import re
-import string
-from itertools import cycle
-
-def jarriquez_encryption(text, key, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ', reverse=False):
-    text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
-    len_alf = len(alphabet)
-    te = ''.join([i for i, j in zip(cycle(str(key)), text)])
-    code = ''
-    # count = 0
-    te = ''.join([i for i, j in zip(cycle(str(key)), text)])
-    # te = ''.join([(str(key)[i % len(str(key))]) for i in range(len(text))])
-    # te = ''
-    # for j in range(len(text)):
-    #     for i in range(len(str(key))):
-    #         if count < len(text):
-    #             count += 1
-    #             te += str(key)[i]
-    for k in range(len(text)):
-        for j in range(len(alphabet)):
-            if text[k] == alphabet[j]:
-                if reverse:
-                    ind = (j - int(te[k])) % len_alf
-                    code += alphabet[ind]
-                else:
-                    ind = (j + int(te[k])) % len_alf
-                    code += alphabet[ind]
-    return code
-
-
+# import re
+# import string
+# from itertools import cycle
+#
+# def jarriquez_encryption(text, key, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ', reverse=False):
+#     text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
+#     len_alf = len(alphabet)
+#     te = ''.join([i for i, j in zip(cycle(str(key)), text)])
+#     code = ''
+#     # count = 0
+#     te = ''.join([i for i, j in zip(cycle(str(key)), text)])
+#     # te = ''.join([(str(key)[i % len(str(key))]) for i in range(len(text))])
+#     # te = ''
+#     # for j in range(len(text)):
+#     #     for i in range(len(str(key))):
+#     #         if count < len(text):
+#     #             count += 1
+#     #             te += str(key)[i]
+#     for k in range(len(text)):
+#         for j in range(len(alphabet)):
+#             if text[k] == alphabet[j]:
+#                 if reverse:
+#                     ind = (j - int(te[k])) % len_alf
+#                     code += alphabet[ind]
+#                 else:
+#                     ind = (j + int(te[k])) % len_alf
+#                     code += alphabet[ind]
+#     return code
 
 
+# text = 'У СУДЬИ ЖАРРИКЕСА ПРОНИЦАТЕЛЬНЫЙ УМ'
+# print(jarriquez_encryption(text, 423, alphabet='АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ', reverse=False))
 
-text = 'У СУДЬИ ЖАРРИКЕСА ПРОНИЦАТЕЛЬНЫЙ УМ'
-print(jarriquez_encryption(text, 423, alphabet='АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ', reverse=False))
+# import itertools
+# b = [1, 2, 3]
+# a = itertools.cycle(b)
+# count = 0
+# c = 0
+#
+# for i in a:
+#     if count < 14:
+#         print(i, end=' ')
+#         count += 1
+#         if count % len(b) == 0:
+#             print()
+#     else:
+#         break
+
+for i in range(10):
+    if i == 5:
+        try:
+            a = i/0
+            print(a)
+        except Exception as e:
+            logging.error(f'error {e}')
+    logging.info(f'load file {i} on server')
