@@ -7133,7 +7133,6 @@ import time
 #     te = ''.join([i for i, j in zip(cycle(str(key)), text)])
 #     code = ''
 #     # count = 0
-#     te = ''.join([i for i, j in zip(cycle(str(key)), text)])
 #     # te = ''.join([(str(key)[i % len(str(key))]) for i in range(len(text))])
 #     # te = ''
 #     # for j in range(len(text)):
@@ -7171,11 +7170,90 @@ import time
 #     else:
 #         break
 
-for i in range(10):
-    if i == 5:
-        try:
-            a = i/0
-            print(a)
-        except Exception as e:
-            logging.error(f'error {e}')
-    logging.info(f'load file {i} on server')
+# for i in range(10):
+#     if i == 5:
+#         try:
+#             a = i/0
+#             print(a)
+#         except Exception as e:
+#             logging.error(f'error {e}')
+#     logging.info(f'load file {i} on server')
+
+# import itertools
+#
+#
+# def par(arr, N):
+#     a = list(itertools.combinations(arr, 2))
+#     new_li = [i for i in a if sum(i) == N]
+#     print('Пара: ', *new_li)
+#
+#
+# arr = [1, 2, 40, 3, 9, 4]
+# N = 3
+# par(arr, N)
+
+# import string
+# from itertools import cycle
+#
+# def jarriquez_encryption(text, alphabet='АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'):
+#     text = text.replace('\n\n', '')
+#     len_alf = len(alphabet)
+#     count = 0
+#     for number in range(999999):
+#         code = ''
+#         count += 1
+#         print(count)
+#         te = ''.join([i for i, g in zip(cycle(str(number)), text)])
+#         for k in range(len(text)):
+#             for j in range(len(alphabet)):
+#                 if text[k] == alphabet[j]:
+#                     ind = (j - int(te[k])) % len_alf
+#                     code += alphabet[ind]
+#
+#
+#         if "АЛМАЗ" and "ДАКОСТА" in code:
+#             return number
+#
+# text = 'ТЛБЛДУЭППТКЛФЧУВНУПБКЗИХТЛТТЫХНЛОИНУВЖММИНПФНПШОКЧЛЕРНТФНАХЖИДМЯКЛТУБЖИУЕЖЕАХЛГЩЕЕ\n\nЪУВНГАХИЯШПЙАОЦЦПВТЛБФТТИИНДИДНЧЮОНЯОФВТЕАТФУШБЛРЮЮЧЖДРУУШГЕХУРПЧЕУВАЭУОЙБДБНОЛСКЦБ\n\nСАОЦЦПВИШЮТППЦЧНЖОИНШВРЗЕЗКЗСБЮНЙРКПСЪЖФФШНЦЗРСЭШЦПЖСЙНГЭФФВЫМЖИЛРОЩСЗЮЙФШФДЖО\n\nИЗТРМООЙБНФГОЩЧФЖООКОФВЙСЭФЖУЬХИСЦЖГИЪЖДШПРМЖПУПГЦНВКБНРЕКИБШМЦХЙИАМФЛУЬЙИСЗРТЕС'
+# print(jarriquez_encryption(text))
+
+import random
+import re
+
+random.seed(42)
+
+
+def disc_generator(alphabet, n):
+    discs = []
+    for _ in range(n):
+        a = list(alphabet)
+        random.shuffle(a)
+        discs.append(''.join(a))
+    return discs
+
+
+clear_alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+text = 'Some encripted text'
+discs = disc_generator(clear_alphabet, 6)
+
+
+def jefferson_encryption(text, discs, step, reverse=False):
+    text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
+    len_alf = len(discs[0])
+    code = ''
+    for i in range(len(text)):
+        number_di = i % len(discs)
+        for k in range(len(discs[number_di])):
+            if text[i] == discs[number_di][k]:
+                if reverse:
+                    ind = (k - step) % len_alf
+                    code += discs[number_di][ind]
+                    break
+                else:
+                    ind = (k + step) % len_alf
+                    code += discs[number_di][ind]
+                    break
+    return code
+
+
+print(jefferson_encryption(text, discs, step=4))
