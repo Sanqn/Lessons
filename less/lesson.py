@@ -7285,8 +7285,8 @@ import time
 #           1: 'EKMFLGDQVZNTOWYHXUSPAIBRCJ',
 #           2: 'AJDKSIRUXBLHWTMCQGZNPYFVOE',
 #           3: 'BDFHJLCPRTXVZNYEIWGAKMUSQO', }
-#
-#
+
+
 # def rotor(symbol, n, reverse=False):
 #     symbol = symbol.replace(' ', '').upper()
 #     new_alph = ''.join([ROTORS[n][ROTORS[0].index(i)] for i in symbol if i in ROTORS[n]])
@@ -7297,16 +7297,45 @@ import time
 #
 # print(rotor('SOME ENCRYPTED TEXT FOR EXAMPLE', 3))
 
+# REFLECTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+#               1: 'YRUHQSLDPXNGOKMIEBFZCWVJAT',
+#               2: 'FVPJIAOYEDRZXWGCTKUQSBNMHL',
+#               3: 'ENKQAUYWJICOPBLMDXZVFTHRGS',
+#               4: 'RDOBJNTKVEHMLFCWZAXGYIPSUQ',
+#               }
+
+# def reflector(symbol, n):
+#     symbol = symbol.replace(' ', '').upper()
+#     refl = ''.join([REFLECTORS[n][REFLECTORS[0].index(i)] for i in symbol if i in REFLECTORS[n]])
+#     return refl
+#
+# print(reflector('SOME ENCRYPTED TEXT FOR EXAMPLE', 1))
+
 REFLECTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
               1: 'YRUHQSLDPXNGOKMIEBFZCWVJAT',
               2: 'FVPJIAOYEDRZXWGCTKUQSBNMHL',
               3: 'ENKQAUYWJICOPBLMDXZVFTHRGS',
               4: 'RDOBJNTKVEHMLFCWZAXGYIPSUQ',
               }
+ROTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+          1: 'EKMFLGDQVZNTOWYHXUSPAIBRCJ',
+          2: 'AJDKSIRUXBLHWTMCQGZNPYFVOE',
+          3: 'BDFHJLCPRTXVZNYEIWGAKMUSQO', }
 
-def reflector(symbol, n):
-    symbol = symbol.replace(' ', '').upper()
-    refl = ''.join([REFLECTORS[n][REFLECTORS[0].index(i)] for i in symbol if i in REFLECTORS[n]])
-    return refl
 
-print(reflector('SOME ENCRYPTED TEXT FOR EXAMPLE', 1))
+def enigma(text, ref, rot1, rot2, rot3):
+    text = text.replace(' ', '').upper()
+    out_text = ''
+    for i in text:
+        if i in ROTORS[0]:
+            si_rot3 = ROTORS[rot3][ROTORS[0].index(i)]
+            si_rot2 = ROTORS[rot2][ROTORS[0].index(si_rot3)]
+            si_rot1 = ROTORS[rot1][ROTORS[0].index(si_rot2)]
+            refl = REFLECTORS[ref][REFLECTORS[0].index(si_rot1)]
+            si_for1 = ROTORS[0][ROTORS[rot1].index(refl)]
+            si_for2 = ROTORS[0][ROTORS[rot2].index(si_for1)]
+            out_text += ROTORS[0][ROTORS[rot3].index(si_for2)]
+    return out_text
+
+
+print(enigma('Some encripted text', 1, 1, 2, 3))
