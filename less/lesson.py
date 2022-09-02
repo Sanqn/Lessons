@@ -7281,18 +7281,32 @@ import time
 # text = 'ethosnairfdlmbyguvcp'
 # print(kidds_encryption(text, reverse=True))
 
-ROTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-          1: 'EKMFLGDQVZNTOWYHXUSPAIBRCJ',
-          2: 'AJDKSIRUXBLHWTMCQGZNPYFVOE',
-          3: 'BDFHJLCPRTXVZNYEIWGAKMUSQO', }
+# ROTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+#           1: 'EKMFLGDQVZNTOWYHXUSPAIBRCJ',
+#           2: 'AJDKSIRUXBLHWTMCQGZNPYFVOE',
+#           3: 'BDFHJLCPRTXVZNYEIWGAKMUSQO', }
+#
+#
+# def rotor(symbol, n, reverse=False):
+#     symbol = symbol.replace(' ', '').upper()
+#     new_alph = ''.join([ROTORS[n][ROTORS[0].index(i)] for i in symbol if i in ROTORS[n]])
+#     new_alph1 = ''.join([ROTORS[0][ROTORS[n].index(i)] for i in symbol if i in ROTORS[0]])
+#
+#     return new_alph1 if reverse else new_alph
+#
+#
+# print(rotor('SOME ENCRYPTED TEXT FOR EXAMPLE', 3))
 
+REFLECTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+              1: 'YRUHQSLDPXNGOKMIEBFZCWVJAT',
+              2: 'FVPJIAOYEDRZXWGCTKUQSBNMHL',
+              3: 'ENKQAUYWJICOPBLMDXZVFTHRGS',
+              4: 'RDOBJNTKVEHMLFCWZAXGYIPSUQ',
+              }
 
-def rotor(symbol, n, reverse=False):
+def reflector(symbol, n):
     symbol = symbol.replace(' ', '').upper()
-    new_alph = ''.join([ROTORS[n][ROTORS[0].index(i)] for i in symbol if i in ROTORS[n]])
-    new_alph1 = ''.join([ROTORS[0][ROTORS[n].index(i)] for i in symbol if i in ROTORS[0]])
+    refl = ''.join([REFLECTORS[n][REFLECTORS[0].index(i)] for i in symbol if i in REFLECTORS[n]])
+    return refl
 
-    return new_alph1 if reverse else new_alph
-
-
-print(rotor('SOME ENCRYPTED TEXT FOR EXAMPLE', 3))
+print(reflector('SOME ENCRYPTED TEXT FOR EXAMPLE', 1))
