@@ -7258,25 +7258,41 @@ import time
 #
 # print(jefferson_encryption(text, discs, step=4))
 
-cypher = {'e': '8', 't': ';', 'h': '4', 'o': '‡', 's': ')', 'n': '*', 'a': '5', 'i': '6', 'r': '(', 'f': '1', 'd': '†',
-          'l': '0', 'm': '9', 'b': '2', 'y': ':', 'g': '3', 'u': '?', 'v': '¶', 'c': '-', 'p': '.'}
+# cypher = {'e': '8', 't': ';', 'h': '4', 'o': '‡', 's': ')', 'n': '*', 'a': '5', 'i': '6', 'r': '(', 'f': '1', 'd': '†',
+#           'l': '0', 'm': '9', 'b': '2', 'y': ':', 'g': '3', 'u': '?', 'v': '¶', 'c': '-', 'p': '.'}
+#
+#
+# def kidds_encryption(text, reverse=False):
+#     text1 = text.lower()
+#     decr = ''.join([key for i in text1 for key, val in cypher.items() if i == val])
+#     encr = ''.join([val for i in text1 for key, val in cypher.items() if i == key])
+#     # for i in range(len(text)):
+#     #     for key, val in cypher.items():
+#     #         if reverse:
+#     #             if val == text[i]:
+#     #                 new_text += key
+#     #         else:
+#     #             if key == text[i]:
+#     #                 new_text += val
+#
+#     return encr if reverse else decr
+#
+#
+# text = 'ethosnairfdlmbyguvcp'
+# print(kidds_encryption(text, reverse=True))
+
+ROTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+          1: 'EKMFLGDQVZNTOWYHXUSPAIBRCJ',
+          2: 'AJDKSIRUXBLHWTMCQGZNPYFVOE',
+          3: 'BDFHJLCPRTXVZNYEIWGAKMUSQO', }
 
 
-def kidds_encryption(text, reverse=False):
-    text1 = text.lower()
-    decr = ''.join([key for i in text1 for key, val in cypher.items() if i == val])
-    encr = ''.join([val for i in text1 for key, val in cypher.items() if i == key])
-    # for i in range(len(text)):
-    #     for key, val in cypher.items():
-    #         if reverse:
-    #             if val == text[i]:
-    #                 new_text += key
-    #         else:
-    #             if key == text[i]:
-    #                 new_text += val
+def rotor(symbol, n, reverse=False):
+    symbol = symbol.replace(' ', '').upper()
+    new_alph = ''.join([ROTORS[n][ROTORS[0].index(i)] for i in symbol if i in ROTORS[n]])
+    new_alph1 = ''.join([ROTORS[0][ROTORS[n].index(i)] for i in symbol if i in ROTORS[0]])
 
-    return encr if reverse else decr
+    return new_alph1 if reverse else new_alph
 
 
-text = 'ethosnairfdlmbyguvcp'
-print(kidds_encryption(text, reverse=True))
+print(rotor('SOME ENCRYPTED TEXT FOR EXAMPLE', 3))
