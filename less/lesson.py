@@ -7217,43 +7217,66 @@ import time
 # text = 'ТЛБЛДУЭППТКЛФЧУВНУПБКЗИХТЛТТЫХНЛОИНУВЖММИНПФНПШОКЧЛЕРНТФНАХЖИДМЯКЛТУБЖИУЕЖЕАХЛГЩЕЕ\n\nЪУВНГАХИЯШПЙАОЦЦПВТЛБФТТИИНДИДНЧЮОНЯОФВТЕАТФУШБЛРЮЮЧЖДРУУШГЕХУРПЧЕУВАЭУОЙБДБНОЛСКЦБ\n\nСАОЦЦПВИШЮТППЦЧНЖОИНШВРЗЕЗКЗСБЮНЙРКПСЪЖФФШНЦЗРСЭШЦПЖСЙНГЭФФВЫМЖИЛРОЩСЗЮЙФШФДЖО\n\nИЗТРМООЙБНФГОЩЧФЖООКОФВЙСЭФЖУЬХИСЦЖГИЪЖДШПРМЖПУПГЦНВКБНРЕКИБШМЦХЙИАМФЛУЬЙИСЗРТЕС'
 # print(jarriquez_encryption(text))
 
-import random
-import re
+# import random
+# import re
+#
+# random.seed(42)
+#
+#
+# def disc_generator(alphabet, n):
+#     discs = []
+#     for _ in range(n):
+#         a = list(alphabet)
+#         random.shuffle(a)
+#         discs.append(''.join(a))
+#     return discs
+#
+#
+# clear_alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+# text = 'Some encripted text'
+# discs = disc_generator(clear_alphabet, 6)
+#
+#
+# def jefferson_encryption(text, discs, step, reverse=False):
+#     text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
+#     len_alf = len(discs[0])
+#     code = ''
+#     for i in range(len(text)):
+#         number_di = i % len(discs)
+#         for k in range(len(discs[number_di])):
+#             if text[i] == discs[number_di][k]:
+#                 if reverse:
+#                     ind = (k - step) % len_alf
+#                     code += discs[number_di][ind]
+#                     break
+#                 else:
+#                     ind = (k + step) % len_alf
+#                     code += discs[number_di][ind]
+#                     break
+#     return code
+#
+#
+# print(jefferson_encryption(text, discs, step=4))
 
-random.seed(42)
+cypher = {'e': '8', 't': ';', 'h': '4', 'o': '‡', 's': ')', 'n': '*', 'a': '5', 'i': '6', 'r': '(', 'f': '1', 'd': '†',
+          'l': '0', 'm': '9', 'b': '2', 'y': ':', 'g': '3', 'u': '?', 'v': '¶', 'c': '-', 'p': '.'}
 
 
-def disc_generator(alphabet, n):
-    discs = []
-    for _ in range(n):
-        a = list(alphabet)
-        random.shuffle(a)
-        discs.append(''.join(a))
-    return discs
+def kidds_encryption(text, reverse=False):
+    text1 = text.lower()
+    decr = ''.join([key for i in text1 for key, val in cypher.items() if i == val])
+    encr = ''.join([val for i in text1 for key, val in cypher.items() if i == key])
+    # for i in range(len(text)):
+    #     for key, val in cypher.items():
+    #         if reverse:
+    #             if val == text[i]:
+    #                 new_text += key
+    #         else:
+    #             if key == text[i]:
+    #                 new_text += val
+
+    return encr if reverse else decr
 
 
-clear_alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-text = 'Some encripted text'
-discs = disc_generator(clear_alphabet, 6)
-
-
-def jefferson_encryption(text, discs, step, reverse=False):
-    text = re.sub(r'[^\w\s]', '', text).replace(' ', '').upper()
-    len_alf = len(discs[0])
-    code = ''
-    for i in range(len(text)):
-        number_di = i % len(discs)
-        for k in range(len(discs[number_di])):
-            if text[i] == discs[number_di][k]:
-                if reverse:
-                    ind = (k - step) % len_alf
-                    code += discs[number_di][ind]
-                    break
-                else:
-                    ind = (k + step) % len_alf
-                    code += discs[number_di][ind]
-                    break
-    return code
-
-
-print(jefferson_encryption(text, discs, step=4))
+text = 'ethosnairfdlmbyguvcp'
+print(kidds_encryption(text, reverse=True))
