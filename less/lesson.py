@@ -6840,6 +6840,8 @@ import time
 #             return 1
 # print(factorial(1, 10))
 
+# ========================================== cipher ===============================================================
+
 # def bin1(n, s=2):
 #     a = set()
 #     for _ in range(int(n/s)):
@@ -7341,6 +7343,8 @@ import time
 #
 # print(enigma('Some encripted text', 1, 1, 2, 3))
 
+
+# ========================================== numpy ===============================================================
 # import numpy as np
 # print(np.array([1., 2, 5]))
 # print(np.array([1, 2, 5]))
@@ -7357,6 +7361,8 @@ import time
 # V4 = f"V4[{type(np.array(V))}]: {np.array(V[::3])}"
 # V5 = f"V5[{type(np.array(V))}]: {np.array(range(len(V)))}"
 
+
+# ========================================== requests ===============================================================
 # import requests
 # import os
 # import zipfile
@@ -7412,35 +7418,80 @@ import time
 # else:
 #     print('ОШИБКА ' + str(r.status_code))
 
-import requests
+# import requests
+#
+# url = 'http://oeis.org/search'
+# params = {
+#     'q': 19673,
+#     'fmt': 'json',
+#     'start': 0
+# }
+#
+# result = set()
+# while True:
+#     r = requests.get(url, params=params)
+#     if r.status_code == 200:
+#         Data = r.json()
+#         a = Data['count']
+#         print(a)
+#         if Data['count'] == 0:
+#             print('No eleents')
+#             break
+#         else:
+#             for i in range(len(Data['results'])):
+#                 print(f"#{Data['start'] + i + 1} - http://oeis.org/A{Data['results'][i]['number']}")
+#                 result.add(f"A{Data['results'][i]['number']}")
+#     else:
+#         print('ОШИБКА ' + str(r.status_code))
+#         break
+#     params['start'] += 10
+#     if Data['count'] - Data['start'] <= 10:
+#         break
+#
+# print(result)
 
-url = 'http://oeis.org/search'
-params = {
-    'q': 19673,
-    'fmt': 'json',
-    'start': 0
-}
+# ========================================== plotly ===============================================================
+import plotly
+import plotly.graph_objs as go
+import plotly.express as px
+from plotly.subplots import make_subplots
 
-result = set()
-while True:
-    r = requests.get(url, params=params)
-    if r.status_code == 200:
-        Data = r.json()
-        a = Data['count']
-        print(a)
-        if Data['count'] == 0:
-            print('No eleents')
-            break
-        else:
-            for i in range(len(Data['results'])):
-                print(f"#{Data['start'] + i + 1} - http://oeis.org/A{Data['results'][i]['number']}")
-                result.add(f"A{Data['results'][i]['number']}")
-    else:
-        print('ОШИБКА ' + str(r.status_code))
-        break
-    params['start'] += 10
-    if Data['count'] - Data['start'] <= 10:
-        break
+import numpy as np
+import pandas as pd
 
-print(result)
+x = np.arange(0, 5, 0.1)
 
+
+# x = [0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7
+#  1.8 1.9 2.  2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.  3.1 3.2 3.3 3.4 3.5
+#  3.6 3.7 3.8 3.9 4.  4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9]
+
+
+def f(x):
+    return x ** 2
+
+
+# fig = px.scatter(x=x, y=f(x))
+# fig.show()
+
+
+fig = go.Figure()
+# задаем приближение графика в месте их пересечения для наглядности
+fig.update_yaxes(range=[-0.5, 1.5], zeroline=True, zerolinewidth=2, zerolinecolor='LightPink')
+# задаем приближение графика в месте их пересечения для наглядности
+fig.update_xaxes(range=[-0.5, 1.5], zeroline=True, zerolinewidth=2, zerolinecolor='#008000')
+fig.add_trace(go.Scatter(x=x, y=f(x),
+                         mode='lines+markers',  # выделяем точки на графике (линия + точки)
+                         name='f(x)=x<sup>2</sup>'))
+fig.add_trace(go.Scatter(x=x, y=x,
+                         mode='markers',  # выделяем точки на графике (только точки)
+                         name='g(x)=x',
+                         marker=dict(color='LightSkyBlue', size=5, line=dict(color='MediumPurple', width=3))))
+fig.update_layout(legend_orientation="h",  # перенос легенды вниз,
+                  legend=dict(x=.5, xanchor="center"),  # сдвиг легенды к середине экрана
+                  title="Plot Title",  # подписи к графику в целом
+                  xaxis_title="x Axis",  # подписи к осям
+                  yaxis_title="y Axis",  # подписи к осям
+                  margin=dict(l=0, r=0, t=35, b=0))  # отступы графика
+fig.update_traces(hoverinfo="all", hovertemplate="Аргумент: %{x}<br>Функция: %{y}")
+fig.show()
