@@ -1,3 +1,4 @@
+import datetime
 import logging
 
 root = logging.getLogger()
@@ -7311,31 +7312,135 @@ import time
 #
 # print(reflector('SOME ENCRYPTED TEXT FOR EXAMPLE', 1))
 
-REFLECTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-              1: 'YRUHQSLDPXNGOKMIEBFZCWVJAT',
-              2: 'FVPJIAOYEDRZXWGCTKUQSBNMHL',
-              3: 'ENKQAUYWJICOPBLMDXZVFTHRGS',
-              4: 'RDOBJNTKVEHMLFCWZAXGYIPSUQ',
-              }
-ROTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-          1: 'EKMFLGDQVZNTOWYHXUSPAIBRCJ',
-          2: 'AJDKSIRUXBLHWTMCQGZNPYFVOE',
-          3: 'BDFHJLCPRTXVZNYEIWGAKMUSQO', }
+# REFLECTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+#               1: 'YRUHQSLDPXNGOKMIEBFZCWVJAT',
+#               2: 'FVPJIAOYEDRZXWGCTKUQSBNMHL',
+#               3: 'ENKQAUYWJICOPBLMDXZVFTHRGS',
+#               4: 'RDOBJNTKVEHMLFCWZAXGYIPSUQ',
+#               }
+# ROTORS = {0: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+#           1: 'EKMFLGDQVZNTOWYHXUSPAIBRCJ',
+#           2: 'AJDKSIRUXBLHWTMCQGZNPYFVOE',
+#           3: 'BDFHJLCPRTXVZNYEIWGAKMUSQO', }
+#
+#
+# def enigma(text, ref, rot1, rot2, rot3):
+#     text = text.replace(' ', '').upper()
+#     out_text = ''
+#     for i in text:
+#         if i in ROTORS[0]:
+#             si_rot3 = ROTORS[rot3][ROTORS[0].index(i)]
+#             si_rot2 = ROTORS[rot2][ROTORS[0].index(si_rot3)]
+#             si_rot1 = ROTORS[rot1][ROTORS[0].index(si_rot2)]
+#             refl = REFLECTORS[ref][REFLECTORS[0].index(si_rot1)]
+#             si_for1 = ROTORS[0][ROTORS[rot1].index(refl)]
+#             si_for2 = ROTORS[0][ROTORS[rot2].index(si_for1)]
+#             out_text += ROTORS[0][ROTORS[rot3].index(si_for2)]
+#     return out_text
+#
+#
+# print(enigma('Some encripted text', 1, 1, 2, 3))
 
+# import numpy as np
+# print(np.array([1., 2, 5]))
+# print(np.array([1, 2, 5]))
+# print(np.array([1, 2., 5, '9']))# ['1' '2.0' '5' '9'] привеодит все к одному типу
+#
+# a = np.array((1, 2, 4, 0))
+# print(a[2:], a)
+#
+# V = [float(i) for i in input().split(', ')]
+#
+# V1 = f"V1[{type(np.array(V))}]: {np.array(V)}"
+# V2 = f"V2[{type(np.array(V))}]: {np.array(V[-2:-1])}"
+# V3 = f"V3[{type(np.array(V))}]: {np.array(V[::-1])}"
+# V4 = f"V4[{type(np.array(V))}]: {np.array(V[::3])}"
+# V5 = f"V5[{type(np.array(V))}]: {np.array(range(len(V)))}"
 
-def enigma(text, ref, rot1, rot2, rot3):
-    text = text.replace(' ', '').upper()
-    out_text = ''
-    for i in text:
-        if i in ROTORS[0]:
-            si_rot3 = ROTORS[rot3][ROTORS[0].index(i)]
-            si_rot2 = ROTORS[rot2][ROTORS[0].index(si_rot3)]
-            si_rot1 = ROTORS[rot1][ROTORS[0].index(si_rot2)]
-            refl = REFLECTORS[ref][REFLECTORS[0].index(si_rot1)]
-            si_for1 = ROTORS[0][ROTORS[rot1].index(refl)]
-            si_for2 = ROTORS[0][ROTORS[rot2].index(si_for1)]
-            out_text += ROTORS[0][ROTORS[rot3].index(si_for2)]
-    return out_text
+# import requests
+# import os
+# import zipfile
+# import datetime
+# import matplotlib.pyplot as plt
+#
+#
+#
+# response = requests.get('https://stepik.org/media/attachments/lesson/196432/img.zip')
+#
+# work_path = 'temp'
+# if not os.path.exists(work_path):
+#     os.mkdir(work_path)
+# else:
+#     work_path = work_path + datetime.datetime.now().strftime("-%Y-%m-%d %H-%M")
+#     os.mkdir(work_path)
+# if response.status_code == 200:
+#     with open(f"{work_path}\img.zip", 'wb') as z:
+#         z.write(response.content)
+#
+#     with zipfile.ZipFile(f"{work_path}\img.zip", 'r') as f:
+#         namelist = f.namelist()
+#         print(namelist)
+#         f.extractall(work_path)
+# files_counter = 0
+# img = dict()
+#
+# for f in namelist:
+#     if os.path.isfile(work_path+'/'+f):
+#         files_counter += 1
+#         with open(work_path+'/'+f, 'rb') as img_file:
+#             img[files_counter] = plt.imread(img_file)
+# print(img)
+# print(files_counter)
 
+# import requests
+#
+# url = 'http://oeis.org/search'
+# params = {
+#     'q': 631764,
+#     'fmt': 'json'
+# }
+# r = requests.get(url, params=params)
+# if r.status_code == 200:
+#     print('Status code', r.status_code)
+#     data = r.json()['results']
+#     print(data)
+#     print(data[0].keys())
+#     print(data[0].values())
+#     for i in range(len(data)):
+#         print(f"#{i + 1} - http://oeis.org/A/{data[i]['number']}")
+#         print(f"{data[i]['name']}")
+# else:
+#     print('ОШИБКА ' + str(r.status_code))
 
-print(enigma('Some encripted text', 1, 1, 2, 3))
+import requests
+
+url = 'http://oeis.org/search'
+params = {
+    'q': 19673,
+    'fmt': 'json',
+    'start': 0
+}
+
+result = set()
+while True:
+    r = requests.get(url, params=params)
+    if r.status_code == 200:
+        Data = r.json()
+        a = Data['count']
+        print(a)
+        if Data['count'] == 0:
+            print('No eleents')
+            break
+        else:
+            for i in range(len(Data['results'])):
+                print(f"#{Data['start'] + i + 1} - http://oeis.org/A{Data['results'][i]['number']}")
+                result.add(f"A{Data['results'][i]['number']}")
+    else:
+        print('ОШИБКА ' + str(r.status_code))
+        break
+    params['start'] += 10
+    if Data['count'] - Data['start'] <= 10:
+        break
+
+print(result)
+
