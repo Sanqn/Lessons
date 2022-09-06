@@ -7556,19 +7556,55 @@ import math
 # fig.update_traces(hoverinfo="all", hovertemplate="Argument: %{x}<br>Function: %{y}")
 # fig.show()
 
-n = np.arange(0, 5, 0.1)
+# n = np.arange(0, 5, 0.1)
 
 
-def f(n):
-    return n ** 2
-def h(n):
-    return np.sin(n)
+# def f(n):
+#     return n ** 2
+# def h(n):
+#     return np.sin(n)
+#
+# fig = go.Figure()
+# fig.add_traces(go.Scatter(x=n, y=f(n), mode='lines + markers', name='f(n)=n<sub>2</sub>',
+#                           marker=dict(color=h(n), colorbar=dict(title="h(n)=sin(n)"), colorscale='Inferno', size=50*abs(h(n)))))
+# fig.update_layout(legend_orientation="h",
+#                   legend=dict(x=.5, xanchor="center"),
+#                   margin=dict(l=0, r=0, t=0, b=0))
+# fig.update_traces(hoverinfo="all", hovertemplate="Argument: %{x}<br>Function: %{y}")
+# fig.show()
+
+x = np.arange(0, 5, 0.1)
+
+
+def f(x):
+    return x ** x
+
+
+def h(x):
+    return np.sin(x)
+
 
 fig = go.Figure()
-fig.add_traces(go.Scatter(x=n, y=f(n), mode='lines + markers', name='f(n)=n<sub>2</sub>',
-                          marker=dict(color=h(n), colorbar=dict(title="h(n)=sin(n)"), colorscale='Inferno', size=50*abs(h(n)))))
+fig.add_trace(go.Scatter(x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>',
+                         marker=dict(color=h(x[0]), colorbar=dict(title="h(x)=sin(x)"), colorscale='Inferno',
+                                     size=50 * abs(h(x[0])))
+                         ))
+
+frames = []
+for i in range(1, len(x)):
+    frames.append(go.Frame(
+        data=[go.Scatter(x=x[:i + 1], y=f(x[:i + 1]), marker=dict(color=h(x[:i + 1]), size=50 * abs(h(x[:i + 1]))))]))
+
+fig.frames = frames
+
 fig.update_layout(legend_orientation="h",
                   legend=dict(x=.5, xanchor="center"),
+                  updatemenus=[dict(type="buttons",
+                                    buttons=[dict(label="►", method="animate", args=[None, {"fromcurrent": True}]),
+                                             dict(label="❚❚", method="animate",
+                                                  args=[[None], {"frame": {"duration": 0, "redraw": False},
+                                                                 "mode": "immediate",
+                                                                 "transition": {"duration": 0}}])])],
                   margin=dict(l=0, r=0, t=0, b=0))
 fig.update_traces(hoverinfo="all", hovertemplate="Argument: %{x}<br>Function: %{y}")
 fig.show()
