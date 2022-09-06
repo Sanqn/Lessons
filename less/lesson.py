@@ -7458,8 +7458,48 @@ from plotly.subplots import make_subplots
 
 import numpy as np
 import pandas as pd
+import math
 
-x = np.arange(0, 5, 0.1)
+# x = np.arange(0, 5, 0.1)
+
+
+# x = [0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7
+#  1.8 1.9 2.  2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.  3.1 3.2 3.3 3.4 3.5
+#  3.6 3.7 3.8 3.9 4.  4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9]
+
+
+# def f(x):
+#     return x ** 2
+#
+#
+# # fig = px.scatter(x=x, y=f(x))
+# # fig.show()
+#
+#
+# fig = go.Figure()
+# # задаем приближение графика в месте их пересечения для наглядности
+# fig.update_yaxes(range=[-0.5, 1.5], zeroline=True, zerolinewidth=2, zerolinecolor='LightPink')
+# # задаем приближение графика в месте их пересечения для наглядности
+# fig.update_xaxes(range=[-0.5, 1.5], zeroline=True, zerolinewidth=2, zerolinecolor='#008000')
+# fig.add_trace(go.Scatter(x=x, y=f(x),
+#                          mode='lines+markers',  # выделяем точки на графике (линия + точки)
+#                          name='f(x)=x<sup>2</sup>'))
+# fig.add_trace(go.Scatter(x=x, y=x,
+#                          mode='markers',  # выделяем точки на графике (только точки)
+#                          name='g(x)=x',
+#                          marker=dict(color='LightSkyBlue', size=5, line=dict(color='MediumPurple', width=3))))
+# fig.update_layout(legend_orientation="h",  # перенос легенды вниз,
+#                   legend=dict(x=.5, xanchor="center"),  # сдвиг легенды к середине экрана
+#                   title="Plot Title",  # подписи к графику в целом
+#                   xaxis_title="x Axis",  # подписи к осям
+#                   yaxis_title="y Axis",  # подписи к осям
+#                   margin=dict(l=0, r=0, t=35, b=0))  # отступы графика
+# fig.update_traces(hoverinfo="all", hovertemplate="Аргумент: %{x}<br>Функция: %{y}")
+# fig.show()
+
+
+x = np.arange(-2 * math.pi, 2*math.pi, 0.1)
+n = np.arange(0, 5, 0.1)
 
 
 # x = [0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7
@@ -7468,30 +7508,50 @@ x = np.arange(0, 5, 0.1)
 
 
 def f(x):
-    return x ** 2
+    return np.sin(x)
 
+def g(x):
+    return 1 - np.cos(x)
 
-# fig = px.scatter(x=x, y=f(x))
-# fig.show()
+def cross(x):
+    return np.pi + 2 * np.pi * x
 
+def f(n):
+    return n ** 2
 
-fig = go.Figure()
+def m(n):
+    return np.tan(n)
+
+# fig = go.Figure()
+# разбиваем на 4 графика, specs (растянем левый график на две строки, ролчим 3 графика)
+fig = make_subplots(rows=2, cols=2, specs=[[{"colspan": 2}, None], [{}, {}]])
+# задаем приближение графика в месте их пересечения для наглядности, col - задает размерность для 2 графика
+fig.update_yaxes(range=[-1, 2], zeroline=True, zerolinewidth=2, zerolinecolor='LightPink', col=2)
 # задаем приближение графика в месте их пересечения для наглядности
-fig.update_yaxes(range=[-0.5, 1.5], zeroline=True, zerolinewidth=2, zerolinecolor='LightPink')
-# задаем приближение графика в месте их пересечения для наглядности
-fig.update_xaxes(range=[-0.5, 1.5], zeroline=True, zerolinewidth=2, zerolinecolor='#008000')
+fig.update_xaxes(range=[-1, 2], zeroline=True, zerolinewidth=2, zerolinecolor='#008000', col=2)
+fig.add_trace(go.Scatter(x=n, y=m(n),  name='m(x)=tg(x)'), 1, 1)
 fig.add_trace(go.Scatter(x=x, y=f(x),
-                         mode='lines+markers',  # выделяем точки на графике (линия + точки)
-                         name='f(x)=x<sup>2</sup>'))
-fig.add_trace(go.Scatter(x=x, y=x,
-                         mode='markers',  # выделяем точки на графике (только точки)
-                         name='g(x)=x',
-                         marker=dict(color='LightSkyBlue', size=5, line=dict(color='MediumPurple', width=3))))
+                         mode='lines',  # выделяем точки на графике (линия + точки)
+                         name='f(x)=sin(x)'), 2, 2)
+fig.add_trace(go.Scatter(x=x, y=g(x),
+                         mode='lines',  # выделяем точки на графике (только точки)
+                         name='g(x)= 1 - cos(x)',
+                         marker=dict(color='LightSkyBlue', size=1, line=dict(color='MediumPurple', width=3))), 2,  2)
+fig.add_trace(go.Scatter(x=x, y=cross(x),
+                         mode='lines',  # выделяем точки на графике (линия + точки)
+                         name='cross(x)=x'), 2, 2)
+fig.add_trace(go.Scatter(x=n, y=f(n), mode='lines+markers',  name='f(n)=x<sup>2</sup>'), 2, 1)
+fig.add_trace(go.Scatter(x=n, y=n, mode='markers', name='g(n)=n',
+                         marker=dict(color='LightSkyBlue', size=5, line=dict(color='MediumPurple', width=3))), 2, 1)
 fig.update_layout(legend_orientation="h",  # перенос легенды вниз,
                   legend=dict(x=.5, xanchor="center"),  # сдвиг легенды к середине экрана
-                  title="Plot Title",  # подписи к графику в целом
-                  xaxis_title="x Axis",  # подписи к осям
-                  yaxis_title="y Axis",  # подписи к осям
                   margin=dict(l=0, r=0, t=35, b=0))  # отступы графика
-fig.update_traces(hoverinfo="all", hovertemplate="Аргумент: %{x}<br>Функция: %{y}")
+fig.update_layout(title="Plot Title")
+fig.update_xaxes(title='Axis X graphics 1', col=1, row=1)
+fig.update_xaxes(title='Axis X graphics 2', col=2, row=1)
+fig.update_xaxes(title='Axis X graphics 3', col=2, row=2)
+fig.update_yaxes(title='Axis Y graphics 1', col=1, row=1)
+fig.update_yaxes(title='Axis Y graphics 2', col=2, row=1)
+fig.update_yaxes(title='Axis Y graphics 3', col=2, row=2)
+fig.update_traces(hoverinfo="all", hovertemplate="Argument: %{x}<br>Function: %{y}")
 fig.show()
