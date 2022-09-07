@@ -7345,14 +7345,14 @@ import time
 
 
 # ========================================== numpy ===============================================================
-# import numpy as np
+import numpy as np
 # print(np.array([1., 2, 5]))
 # print(np.array([1, 2, 5]))
 # print(np.array([1, 2., 5, '9']))# ['1' '2.0' '5' '9'] привеодит все к одному типу
 #
 # a = np.array((1, 2, 4, 0))
 # print(a[2:], a)
-#
+
 # V = [float(i) for i in input().split(', ')]
 #
 # V1 = f"V1[{type(np.array(V))}]: {np.array(V)}"
@@ -7360,6 +7360,68 @@ import time
 # V3 = f"V3[{type(np.array(V))}]: {np.array(V[::-1])}"
 # V4 = f"V4[{type(np.array(V))}]: {np.array(V[::3])}"
 # V5 = f"V5[{type(np.array(V))}]: {np.array(range(len(V)))}"
+
+# print(np.array((1, 2, 3)) * 4)
+# print(np.array((1, 2, 3)) + 4)
+# print(np.array((1, 2, 3)) - 4)
+# v1 = np.array((1, 3, 5))
+# v2 = np.array((1, 3, 5))
+# print('Sum v1 + v2= ', v1 + v2) # Sum v1 + v2=  [ 2  6 10]
+# v1 = np.array((1, 2, 3, 4, 5, 6))
+# v2 = np.array((1, 2, 3))
+# a = []
+# b = []
+# if len(v1) > len(v2):
+#     for i in range(len(v1) - len(v2)):
+#         a.append(0)
+# else:
+#     for i in range(len(v2) - len(v1)):
+#         b.append(0)
+# v1 = np.append(v1, b)
+# v2 = np.append(v2, a)
+# print(v1 + v2)
+
+# V = [int(i) for i in input().split(', ')]
+# VV = [int(i) for i in input().split(', ')]
+#
+# V1 = np.array(V)
+# V2 = np.array(VV)
+# V3 = np.array(V) + np.array(VV)
+# V4 = np.array(V[::2]) * np.array(VV[::-2])
+# print(V, VV, V1, V2, V3, V4)
+
+# a = [-1, 2, -3, -4, 5]
+# v = np.array(a)
+# v[2] = 15
+# print(v[v > 0])
+# print(v[v % 2 == 0])
+# v1 = np.array(list(map(int, input().split(', '))))
+# v2 = np.array(list(map(int, input().split(', '))))
+# print(v1[v1 % v2[-2] == 0]/v2[-2])
+
+A1 = np.array((-1, 1))
+A2 = np.array((2, 5))
+A3 = np.array((5, -3))
+# 1 solution
+A1A2 = ((A2[0] - A1[0])**2 + (A2[1] - A1[1])**2) ** 0.5
+A1A3 = ((A3[0] - A1[0])**2 + (A3[1] - A1[1])**2) ** 0.5
+A2A3 = ((A3[0] - A2[0])**2 + (A3[1] - A2[1])**2) ** 0.5
+p = 0.5 * (A1A2 + A1A3 + A2A3)
+s = (p*(p - A1A2)*(p - A2A3)*(p - A1A3)) ** 0.5
+print(s)
+
+# 2 solution
+ss1 = abs(0.5 * (((A2[0] - A1[0]) * (A3[1] - A1[1])) - ((A3[0] - A1[0]) * (A2[1] - A1[1]))))
+print(ss1)
+
+# 3 solution
+A = np.column_stack((A2 - A1, A3 - A1))
+S = abs(np.linalg.det(A))/2
+print(s)
+
+
+
+
 
 
 # ========================================== requests ===============================================================
@@ -7455,6 +7517,7 @@ import plotly
 import plotly.graph_objs as go
 import plotly.express as px
 from plotly.subplots import make_subplots
+
 
 import numpy as np
 import pandas as pd
@@ -7573,38 +7636,106 @@ import math
 # fig.update_traces(hoverinfo="all", hovertemplate="Argument: %{x}<br>Function: %{y}")
 # fig.show()
 
-x = np.arange(0, 5, 0.1)
+# x = np.arange(0, 5, 0.1)
+#
+#
+# def f(x):
+#     return x ** x
+#
+#
+# def h(x):
+#     return np.sin(x)
+#
+#
+# def k(x):
+#     return np.cos(x)
 
 
-def f(x):
-    return x ** x
+# fig = go.Figure()
+# fig.add_trace(go.Scatter(x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>',
+#                          marker=dict(color=h(x[0]), colorbar=dict(title="h(x)=sin(x)"), colorscale='Inferno',
+#                                      size=50 * abs(h(x[0])))
+#                          ))
+#
+# frames = []
+# for i in range(1, len(x)):
+#     frames.append(go.Frame(
+#         data=[go.Scatter(x=x[:i + 1], y=f(x[:i + 1]), marker=dict(color=h(x[:i + 1]), size=50 * abs(h(x[:i + 1]))))]))
+#
+# fig.frames = frames
+#
+# fig.update_layout(legend_orientation="h",
+#                   legend=dict(x=.5, xanchor="center"),
+#                   updatemenus=[dict(type="buttons",
+#                                     buttons=[dict(label="►", method="animate", args=[None, {"fromcurrent": True}]),
+#                                              dict(label="❚❚", method="animate",
+#                                                   args=[[None], {"frame": {"duration": 0, "redraw": False},
+#                                                                  "mode": "immediate",
+#                                                                  "transition": {"duration": 0}}])])],
+#                   margin=dict(l=0, r=0, t=0, b=0))
+# fig.update_traces(hoverinfo="all", hovertemplate="Argument: %{x}<br>Function: %{y}")
+# fig.show()
 
+# num_steps = len(x)
+# fig = go.Figure(data=[go.Scatter(x=[x[0]], y=[h(x)[0]], mode='lines+markers', name='h(x)=sin(x)',
+#                                  marker=dict(color=[f(x[0])],
+#                                              colorbar=dict(yanchor='top', y=0.8, title="f(x)=x<sup>2</sup>"),
+#                                              colorscale='Inferno', size=[50 * abs(h(x[0]))])),
+#                       go.Scatter(x=[x[0]], y=[k(x)[0]], mode='lines+markers', name='k(x)=cos(x)',
+#                                  marker=dict(color=[f(x[0])], colorscale='Inferno', size=[50 * abs(k(x[0]))]))])
+#
+# frames = []
+# for i in range(0, len(x)):
+#     frames.append(go.Frame(name=str(i),
+#                            data=[go.Scatter(x=x[:i + 1], y=h(x[:i + 1]), mode='lines+markers', name='h(x)=sin(x)',
+#                                             marker=dict(color=f(x[:i + 1]), colorscale='Inferno',
+#                                                         size=50 * abs(h(x[:i + 1])))),
+#                                  go.Scatter(x=x[:i + 1], y=k(x[:i + 1]), mode='lines+markers', name='k(x)=cos(x)',
+#                                             marker=dict(color=f(x[:i + 1]), colorscale='Inferno',
+#                                                         size=50 * abs(k(x[:i + 1]))))]))
+#
+# steps = []
+# for i in range(num_steps):
+#     step = dict(
+#         label=str(i),
+#         method="animate",
+#         args=[[str(i)]]
+#     )
+#     steps.append(step)
+#
+# sliders = [dict(
+#     steps=steps,
+# )]
+#
+# fig.update_layout(updatemenus=[dict(direction="left",
+#                                     x=0.5,
+#                                     xanchor="center",
+#                                     y=0,
+#                                     showactive=False,
+#                                     type="buttons",
+#                                     buttons=[dict(label="►", method="animate", args=[None, {"fromcurrent": True}]),
+#                                              dict(label="❚❚", method="animate",
+#                                                   args=[[None], {"frame": {"duration": 0, "redraw": False},
+#                                                                  "mode": "immediate",
+#                                                                  "transition": {"duration": 0}}])])],
+#                   )
+#
+# fig.layout.sliders = sliders
+# fig.frames = frames
+#
+# fig.show()
 
-def h(x):
-    return np.sin(x)
-
-
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>',
-                         marker=dict(color=h(x[0]), colorbar=dict(title="h(x)=sin(x)"), colorscale='Inferno',
-                                     size=50 * abs(h(x[0])))
-                         ))
-
-frames = []
-for i in range(1, len(x)):
-    frames.append(go.Frame(
-        data=[go.Scatter(x=x[:i + 1], y=f(x[:i + 1]), marker=dict(color=h(x[:i + 1]), size=50 * abs(h(x[:i + 1]))))]))
-
-fig.frames = frames
-
-fig.update_layout(legend_orientation="h",
-                  legend=dict(x=.5, xanchor="center"),
-                  updatemenus=[dict(type="buttons",
-                                    buttons=[dict(label="►", method="animate", args=[None, {"fromcurrent": True}]),
-                                             dict(label="❚❚", method="animate",
-                                                  args=[[None], {"frame": {"duration": 0, "redraw": False},
-                                                                 "mode": "immediate",
-                                                                 "transition": {"duration": 0}}])])],
-                  margin=dict(l=0, r=0, t=0, b=0))
-fig.update_traces(hoverinfo="all", hovertemplate="Argument: %{x}<br>Function: %{y}")
-fig.show()
+# dices = pd.DataFrame(np.random.randint(low=1, high=7, size=(100, 2)), columns=('Кость 1', 'Кость 2'))
+#
+#
+# dices['Сумма'] = dices['Кость 1'] + dices['Кость 2']
+# # Первые 5 бросков игральных костей
+# print(dices.head())
+# print()
+# sum_counts = dices['Сумма'].value_counts().sort_index()
+# # количество выпавших сумм
+# print(sum_counts)
+#
+# fig = go.Figure()
+# fig.add_trace(go.Pie(values=sum_counts, labels=sum_counts.index))
+# fig.show()
