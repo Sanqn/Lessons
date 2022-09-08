@@ -7346,6 +7346,7 @@ import time
 
 # ========================================== numpy ===============================================================
 import numpy as np
+
 # print(np.array([1., 2, 5]))
 # print(np.array([1, 2, 5]))
 # print(np.array([1, 2., 5, '9']))# ['1' '2.0' '5' '9'] привеодит все к одному типу
@@ -7399,32 +7400,209 @@ import numpy as np
 # v2 = np.array(list(map(int, input().split(', '))))
 # print(v1[v1 % v2[-2] == 0]/v2[-2])
 
-A1 = np.array((-1, 1))
-A2 = np.array((2, 5))
-A3 = np.array((5, -3))
-# 1 solution
-A1A2 = ((A2[0] - A1[0])**2 + (A2[1] - A1[1])**2) ** 0.5
-A1A3 = ((A3[0] - A1[0])**2 + (A3[1] - A1[1])**2) ** 0.5
-A2A3 = ((A3[0] - A2[0])**2 + (A3[1] - A2[1])**2) ** 0.5
-p = 0.5 * (A1A2 + A1A3 + A2A3)
-s = (p*(p - A1A2)*(p - A2A3)*(p - A1A3)) ** 0.5
-print(s)
+# A1 = np.array((-1, 1))
+# A2 = np.array((2, 5))
+# A3 = np.array((5, -3))
+# # 1 solution
+# A1A2 = ((A2[0] - A1[0])**2 + (A2[1] - A1[1])**2) ** 0.5
+# A1A3 = ((A3[0] - A1[0])**2 + (A3[1] - A1[1])**2) ** 0.5
+# A2A3 = ((A3[0] - A2[0])**2 + (A3[1] - A2[1])**2) ** 0.5
+# p = 0.5 * (A1A2 + A1A3 + A2A3)
+# s = (p*(p - A1A2)*(p - A2A3)*(p - A1A3)) ** 0.5
+# print(s)
+#
+# # 2 solution
+# ss1 = abs(0.5 * (((A2[0] - A1[0]) * (A3[1] - A1[1])) - ((A3[0] - A1[0]) * (A2[1] - A1[1]))))
+# print(ss1)
+#
+# # 3 solution
+# A = np.column_stack((A2 - A1, A3 - A1))
+# S = abs(np.linalg.det(A))/2
+# print(s)
+#
+# # 4 solution
+# print(abs(np.cross(A1-A2, A1-A3))/2)
 
-# 2 solution
-ss1 = abs(0.5 * (((A2[0] - A1[0]) * (A3[1] - A1[1])) - ((A3[0] - A1[0]) * (A2[1] - A1[1]))))
-print(ss1)
+# mat = np.array((
+#     (1, 2, 3),
+#     (4, 5, 6),
+#     (7, 8, 9),
+# ))
+# print(mat[0], mat[1, 1], mat[1][1])
+# print(mat[:2, :2])
+# print(mat[:, 0])  # [1 4 7] выбираем 0 столбец
+# print(mat + mat)  # сложение одной и той же матрицы
+# print(mat + np.array((3, 3, 3)))  # сложение всех строк
 
-# 3 solution
-A = np.column_stack((A2 - A1, A3 - A1))
-S = abs(np.linalg.det(A))/2
-print(s)
+# Numpy array не имеет ограничений на вложенность!
+# mat1 = np.array((
+#     (
+#         (1, 2, 3),
+#         (4, 5, 6),
+#         (7, 8, 9),
+#     ),
+#     (
+#         (5, 2, 5),
+#         (4, 5, 5),
+#         (7, 3, 2),
+#     ),
+# ))
+# print(mat1)
+# print((mat1, mat1))
 
-# 4 solution
-print(abs(np.cross(A1-A2, A1-A3))/2)
+# v1 = np.array((1, 3, 50, 8, 9))
+# v2 = np.array((5, 100, -5, -3, 32))
+# v3 = np.array((1, -1, -2, -2, 1))
+# v4 = np.array((0, 43, -50, 77, 23))
+#
+# m1 = np.array((v1, v2))
+# m2 = np.array((v3, v4))
+# hyper_matrix = np.array((m1, m2))
+# print(hyper_matrix)
+#
+# for matrix in hyper_matrix:
+#     print('matrix')
+#     print(matrix)
+#     print()
+#     for line_in_matrix in matrix:
+#         print('Line')
+#         print(line_in_matrix)
+#         print()
+#         for elem in line_in_matrix:
+#             print('Element: ', elem)
+
+# Constants in numpy (https://numpy.org/doc/stable/reference/constants.html)
+# basic const
+# print(np.pi, np.e)  # 3.141592653589793 2.718281828459045
+# ar = np.array((1, 2, 3, 4, 5))
+# print(ar.shape)  # (5,) count elements in array
+# matrix = np.array((
+#     (1, 2, 3, 4, 5),
+#     (4, 7, 3, 1, 2),
+# ))
+# print(matrix.shape)  # (2, 5) count len lines(2) and elements(5) in lines
+#
+# hyper_mat = np.array((matrix, matrix, matrix, matrix))
+# print(hyper_mat.shape)  # (4, 2, 5) 4 matrix, 2 lines in matrix, 5 elements in line
+
+# ============================ dot Скалярное произведение (для векторов и матриц) =========================
+# ar = np.array((1, 2, 3, 4, 5))
+# ar1 = np.array((2, 5, 2, 2, 3))
+# print(np.dot(ar, ar1), sum(ar * ar1))  # 41 41
+# ar_mat = np.array((
+#     (1, 2, 3),
+#     (2, 2, 3)
+# ))
+# ar_mat1 = np.array((
+#     (1, 2),
+#     (3, 4),
+#     (5, 6),
+# ))
+# print(ar_mat.dot(ar_mat1))
+
+# v = np.array((1, 2, 3, 4, 5))
+# print(np.sum(v), np.mean(v))
+# print(v.astype(float))
+# print(v.astype(bool))
+# print(v.astype(str))
+# print(np.arange(5))  # [0 1 2 3 4]
+# print(np.linspace(1, 20, 10))  # 10 point in range 1 - 20
+
+# M1 = np.array((
+#     (1., 2., 3., 0.),
+#     (4., 5., 6., 0.),
+#     (0., 1., 1., 6.),
+#     (7., 8., 9., 0.)
+# ))
+# np.set_printoptions(suppress=True)
+# M1[2] = np.sin((M1[2] * np.pi)/6)
+# M1[:, -2] = np.e**M1[:, -2]
+# # M1[2][-2] = np.e**np.sin((M1[2][-2] * np.pi)/6)
+# M2 = M1
+# print(M2)
+
+# e1 = np.array([1., 0., 0.])
+# e2 = np.array([0., 5., 0.])
+# print(-3*e1 + 2 * e2)
+
+# m = np.array([
+#     [0, 0, 1, 1, 1, 0],
+#     [1, 0, 1, 1, 0, 0],
+#     [1, 1, 0, 0, 1, 0],
+#     [1, 0, 0, 1, 0, 1],
+#     [0, 0, 1, 0, 1, 1],
+#     [0, 1, 1, 1, 0, 0],
+# ])
+# print(np.linalg.matrix_rank(m))
+#
+# for a, b, c, d, e, f in m:
+#     print(a, b, c, d, e, f)
+#     n = np.array([
+#         [a, 0, 0],
+#         [b, d, 0],
+#         [c, e, f],
+#     ])
+#     print(n)
+#     print(np.linalg.matrix_rank(n))
+
+# import pandas as pd
+#
+# pd.set_option('display.max_columns', None)  # выыодит все колонки без сокращений
+# pd.options.display.expand_frame_repr = False  # выводит все колонки без их переноса на следующую строку
+# d = pd.read_csv('winequality-red.csv')
+# print(d.head(20))
+# print(np.__version__)
+import numpy as np
+# n = int(input())
+# Z = np.array([float(0) for i in range(n)])
+# Z1 = np.zeros(n)
+# Z2 = np.array([0.] * n)
+# print(Z, Z1, Z2)
+#
+# a = list(map(str, input().split(' ')))
+# if a[-1].isdigit():
+#     Z = np.zeros(list(map(lambda x: int(x), a)), dtype=np.float64)
+#     print(Z)
+# else:
+#     Z = np.zeros([int(i) for i in a[:-1]], dtype=a[-1])
+print()
 
 
 
 
+
+
+# if len(a) == 1:
+#     Z = np.zeros(int(a[0]))
+# if len(a) == 2:
+#     if a[1] == 'bool':
+#         Z = np.full((int(a[0])), 0) > 0
+#     elif a[1].isdigit():
+#         Z = np.full((int(a[0]), int(a[1])), 0)
+#     elif a[1] == 'str':
+#         Z = np.array(([str(0)] * int(a[0])))
+#     elif a[1] == 'int':
+#         Z = np.array(([0] * int(a[0])))
+# if len(a) == 3:
+#     if a[2] == 'bool':
+#         Z = np.full((int(a[0]), int(a[1])), 0) > 0
+#     elif a[2].isdigit():
+#         Z = np.full((int(a[0]), int(a[1]), int(a[2])), 0)
+#     elif a[2] == 'str':
+#         Z = np.full((int(a[0]), int(a[1])), str(0))
+#     elif a[2] == 'int':
+#         Z = np.full((int(a[0]), int(a[1])), int(0))
+
+
+
+
+
+
+# if a1 and not a2 and not b:
+#
+# else:
+#     if a1.isdigit() and a2.isdigit() and b == 'bool':
+#         print(np.full((int(a1), int(a2)), 0) > 0)
 
 
 # ========================================== requests ===============================================================
@@ -7520,7 +7698,6 @@ import plotly
 import plotly.graph_objs as go
 import plotly.express as px
 from plotly.subplots import make_subplots
-
 
 import numpy as np
 import pandas as pd
