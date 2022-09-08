@@ -1,6 +1,8 @@
 import datetime
 import logging
 
+import numpy
+
 root = logging.getLogger()
 
 logging.basicConfig(
@@ -7552,7 +7554,7 @@ import numpy as np
 # d = pd.read_csv('winequality-red.csv')
 # print(d.head(20))
 # print(np.__version__)
-import numpy as np
+# import numpy as np
 # n = int(input())
 # Z = np.array([float(0) for i in range(n)])
 # Z1 = np.zeros(n)
@@ -7565,44 +7567,26 @@ import numpy as np
 #     print(Z)
 # else:
 #     Z = np.zeros([int(i) for i in a[:-1]], dtype=a[-1])
-print()
 
 
+# a = np.array([1,2,3], dtype=np.float64)
+# print(a.nbytes)
 
+import numpy as np
 
+# n = int(input())
+# m, k = map(int, input().split(' '))
+# v = np.arange(n)
+# l = v.reshape((m, k))
+# print(l)
 
-
-# if len(a) == 1:
-#     Z = np.zeros(int(a[0]))
-# if len(a) == 2:
-#     if a[1] == 'bool':
-#         Z = np.full((int(a[0])), 0) > 0
-#     elif a[1].isdigit():
-#         Z = np.full((int(a[0]), int(a[1])), 0)
-#     elif a[1] == 'str':
-#         Z = np.array(([str(0)] * int(a[0])))
-#     elif a[1] == 'int':
-#         Z = np.array(([0] * int(a[0])))
-# if len(a) == 3:
-#     if a[2] == 'bool':
-#         Z = np.full((int(a[0]), int(a[1])), 0) > 0
-#     elif a[2].isdigit():
-#         Z = np.full((int(a[0]), int(a[1]), int(a[2])), 0)
-#     elif a[2] == 'str':
-#         Z = np.full((int(a[0]), int(a[1])), str(0))
-#     elif a[2] == 'int':
-#         Z = np.full((int(a[0]), int(a[1])), int(0))
-
-
-
-
-
-
-# if a1 and not a2 and not b:
-#
-# else:
-#     if a1.isdigit() and a2.isdigit() and b == 'bool':
-#         print(np.full((int(a1), int(a2)), 0) > 0)
+# Z = np.array([1, 2, 3, 4])
+# print(list(Z[Z>3]))
+# Z = [i for i in Z.ravel() if i > 3]
+# print(Z)
+a = int(input())
+Z = np.eye(int(input()))
+print(Z)
 
 
 # ========================================== requests ===============================================================
