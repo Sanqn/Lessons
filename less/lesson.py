@@ -7584,10 +7584,60 @@ import numpy as np
 # print(list(Z[Z>3]))
 # Z = [i for i in Z.ravel() if i > 3]
 # print(Z)
-a = int(input())
-Z = np.eye(int(input()))
-print(Z)
+# a = int(input())
+# Z = np.eye(int(input()))
+# print(Z)
 
+np.random.seed(42)
+
+
+# n, m, l = map(int, input().split(' '))
+# Z = np.random.random((n, m, l))
+# print(Z)
+
+# n, m = map(int, input().split(' '))
+# Z = np.random.random((n, m))
+# print(Z.min(), Z.max(), sep='\n')
+
+# n, m = map(int, input().split(' '))
+# Z = np.random.random((n, m))
+# print(min(np.mean(Z, axis=0)), max(np.mean(Z, axis=0)), sep='\n')
+
+# n, m = map(int, input().split(' '))
+# Z = np.zeros((n, m))
+# Z[:, 0] = 1
+# Z[:, -1] = 1
+# Z[0, :] = 1
+# Z[-1, :] = 1
+# print(Z)
+# def pad_with(vector, pad_width, iaxis, kwargs):
+#     pad_value = kwargs['padder']
+#     vector[:pad_width[0]] = pad_value
+#     vector[-pad_width[1]:] = pad_value
+#     return vector
+#
+#
+# a = np.array([[1, 2, 3],
+#               [4, 5, 6],
+#               [7, 8, 9]])
+# Z = np.pad(a, 1, pad_with, padder=0)
+# print(Z)
+#
+# a = np.array([[1, 2, 3],
+#               [4, 5, 6],
+#               [7, 8, 9]])
+# print(np.pad(a, 1, 'constant'))
+#
+# c= np.zeros((a.shape[0] + 2, a.shape[1] + 2), dtype=int)
+# c[1:-1, 1:-1] = a
+# a = c
+# print(a)
+# n = 3
+# Z = np.diag(np.arange(1, n + 1))
+# print(Z)
+# a = np.eye(n)
+# a[a != 0] = np.arange(1, n + 1)
+# print(np.array(a, dtype=int))
 
 # ========================================== requests ===============================================================
 # import requests
