@@ -7663,24 +7663,42 @@ np.random.seed(42)
 # Z = np.around((Y - np.average(Y))/np.std(Y), 2)
 # print(Z)
 
-A = np.array([
-    [1, 2, 3],
-    [4, 5, 6]
-])
-B = np.array([
-    [11.5],
-    [12.5],
-    [13.5]
-])
-try:
-    Z = np.dot(A, B)
-    Z1 = A @ B
-    print(Z)
-    print()
-    print(Z1)
-except Exception as e:
-    print('Упс! Что-то пошло не так...')
+# A = np.array([
+#     [1, 2, 3],
+#     [4, 5, 6]
+# ])
+# B = np.array([
+#     [11.5],
+#     [12.5],
+#     [13.5]
+# ])
+# try:
+#     Z = np.dot(A, B)
+#     Z1 = A @ B
+#     print(Z)
+#     print()
+#     print(Z1)
+# except Exception as e:
+#     print('Упс! Что-то пошло не так...')
 
+# Z = np.arange(11)
+# Z = np.array([-10, -5, 0, 5, 10])
+# Z[(3 < Z) & (Z <= 8)] *= -1
+# print(Z)
+
+# A = np.array([-3.1, -5.9, 0, 2.2, 9.8])
+#
+# A[A < 0] = np.floor(A[A < 0])
+# A[A > 0] = np.ceil(A[A > 0])
+# print(A)
+
+A = np.array([1, 2, 3, 4, 5])
+B = np.array([-5, -4, -3])
+try:
+    Z = np.intersect1d(A, B)
+except:
+    Z = np.array([])
+print(np.sqrt(-1) == np.emath.sqrt(-1))
 
 # ========================================== requests ===============================================================
 # import requests
