@@ -7590,7 +7590,6 @@ import numpy as np
 
 np.random.seed(42)
 
-
 # n, m, l = map(int, input().split(' '))
 # Z = np.random.random((n, m, l))
 # print(Z)
@@ -7632,12 +7631,56 @@ np.random.seed(42)
 # c[1:-1, 1:-1] = a
 # a = c
 # print(a)
-# n = 3
-# Z = np.diag(np.arange(1, n + 1))
+
+# x, k = map(int, input().split(' '))
+# Z = np.diag(np.arange(1, k + 1), x)
 # print(Z)
 # a = np.eye(n)
 # a[a != 0] = np.arange(1, n + 1)
 # print(np.array(a, dtype=int))
+
+# n, m = map(int, input().split(' '))
+# Zero = np.zeros((n, m))
+# Zero[::2, 1::2] = 1
+# Zero[1::2, ::2] = 1
+# print(Zero)
+
+# a = np.array((
+#     (0, 1),
+#     (1, 0),
+# ))
+# print(np.tile(a, (4, 4)))
+
+# i = 5
+# i = (5, 10)
+# Z = np.array([[0, 1, 2, 3],
+#                [4, 5, 6, 7],
+#                [8, 9, 10, 11]])
+# print(np.unravel_index(i, np.shape(Z))) #  OUTPUT index elements in matrix
+# a = list(map(int, input().split(' ')))
+# b = list(map(int, input().split(' ')))
+# Y = np.array((a, b))
+# Z = np.around((Y - np.average(Y))/np.std(Y), 2)
+# print(Z)
+
+A = np.array([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+B = np.array([
+    [11.5],
+    [12.5],
+    [13.5]
+])
+try:
+    Z = np.dot(A, B)
+    Z1 = A @ B
+    print(Z)
+    print()
+    print(Z1)
+except Exception as e:
+    print('Упс! Что-то пошло не так...')
+
 
 # ========================================== requests ===============================================================
 # import requests
