@@ -7692,13 +7692,137 @@ np.random.seed(42)
 # A[A > 0] = np.ceil(A[A > 0])
 # print(A)
 
-A = np.array([1, 2, 3, 4, 5])
-B = np.array([-5, -4, -3])
-try:
-    Z = np.intersect1d(A, B)
-except:
-    Z = np.array([])
-print(np.sqrt(-1) == np.emath.sqrt(-1))
+# A = np.array([1, 2, 3, 4, 5])
+# B = np.array([-5, -4, -3])
+# try:
+#     Z = np.intersect1d(A, B)
+#     print(Z)
+# except:
+#     Z = np.array([])
+#     print(Z)
+
+# print(np.datetime64('2005-02-25'))  # 2005-02-25
+# print(np.datetime64('2005-02', 'D'))  # 2005-02-01
+# print(np.array(['2001-01-01T12:00', '2002-02-03T13:56:03.172'], dtype='datetime64[D]'))  # ['2001-01-01' '2002-02-03']
+# # ['2001-01-01T12:00:00.000' '2002-02-03T13:56:03.172']
+# print(np.array(['2001-01-01T12:00', '2002-02-03T13:56:03.172'], dtype='datetime64[ms]'))
+# print(np.datetime64('nat'))
+# b = input()
+# c = input()
+#
+# Z = np.arange(b, c, dtype='datetime64[D]')
+# print(Z)
+
+# Z = np.random.uniform(0, 10, 10)
+# print(Z)
+# # array([1.45929438, 7.67176895, 4.30717228, 3.87291767, 1.12721643, 2.44432376, 9.03933531,
+# # 2.09715241, 2.61381042, 4.27172585])
+# print(Z - Z % 1)
+# print(np.floor(Z))
+# print(np.ceil(Z) - 1)
+# print(np.trunc(Z))
+# print(Z.astype(int))
+
+# n, m = map(int, input().split(' '))
+# k = int(input())
+# Z = np.zeros((n, m))
+# Z += np.arange(k, k + m)
+# Z1 = np.array([np.arange(k, k + m, 1)] * n, dtype=float)
+# print(Z)
+# print(Z1)
+
+# n, m = map(int, input().split(' '))
+# k = int(input())
+# Z = np.zeros((n, m))
+# for i in range(m):
+#     Z[:, i] += np.arange(k, k+n, 1)
+# Z1 = np.full((m, n), np.arange(k, k+n, 1)).T
+# print(Z)
+# print(Z1)
+
+# V = {1:2, 3:4}
+# print(np.array(list(V), dtype=float))
+# start = int(input())
+# stop = int(input())
+# n = int(input())
+# # Z = np.around(np.linspace(start, stop, n, endpoint=False)[1:], 3)
+# Z = np.array(np.linspace(start, stop, n)[:-1])
+# print(Z)
+
+# start = int(input())
+# stop = int(input())
+# n = int(input())
+#
+# Z = np.around(np.geomspace(start, stop, n), 3)
+# print(Z)
+# seed = int(input())
+# n = int(input())
+# np.random.seed(seed)
+# Z = np.random.random_sample(n)
+# Z.sort()
+# print(Z)
+# ========================================== Pandas ===============================================================
+import pandas as pd
+
+# print(pd.show_versions(as_json=True))
+# data = {'animal': ['cat', 'cat', 'snake', 'dog', 'dog', 'cat', 'snake', 'cat', 'dog', 'dog'],
+#         'age': [2.5, 3, 0.5, np.nan, 5, 2, 4.5, np.nan, 7, 3],
+#         'visits': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+#         'priority': ['yes', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no']}
+#
+# labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+#
+# df = pd.DataFrame(data=data, index=labels)
+# print(df)
+
+# a = np.arange(9)
+# matr = np.reshape(a, (3, 3))
+# df = pd.DataFrame(data=matr, columns=['a', 'b', 'c'])
+# df.columns.name = 'Number col'
+# print(df)
+# import io
+#
+# col = "animal"
+# row = "e"
+# df = pd.DataFrame({'animal': ['cat', 'cat', 'snake', 'dog', 'dog', 'cat', 'snake', 'cat', 'dog', 'dog'],
+#                    'age': [2.5, 3, 0.5, np.nan, 5, 2, 4.5, np.nan, 7, 3],
+#                    'visits': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+#                    'priority': ['yes', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no']},
+#                   index=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+#
+# print(df.loc[row, col])
+# # buffer = io.StringIO()
+# # # df.info(buf=buffer)
+# # # s = buffer.getvalue()
+# # # L = []
+# # # for line in s.splitlines():
+# # #     L.append(line.split())
+# # # print(np.array(L, dtype=object))
+
+# df = pd.DataFrame({'animal': ['cat', 'cat', 'snake', 'dog', 'dog', 'cat', 'snake', 'cat', 'dog', 'dog'],
+#                    'age': [2.5, 3, 0.5, np.nan, 5, 2, 4.5, np.nan, 7, 3],
+#                    'visits': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+#                    'priority': ['yes', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no']},
+#                   index=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+
+# print(df.describe().loc['count', 'age'])
+# print(df.describe().loc['75%', 'age'])
+#
+# print(df.iloc[:3])
+# print(df[:3])
+
+# print(df.loc[df.index[[0, 2, 3]]])
+# print(df.iloc[[0, 2, 3]])
+df = pd.DataFrame({'animal': ['cat', 'cat', 'snake', 'dog', 'dog', 'cat', 'snake', 'cat', 'dog', 'dog'],
+                   'age': [2.5, 3, 0.5, np.nan, 5, 2, 4.5, np.nan, 7, 3],
+                   'name': ['Murzik', 'Pushok', 'Kaa', 'Bobik', 'Strelka', 'Vaska', 'Kaa2', 'Murka', 'Graf', 'Muhtar'],
+                   'visits': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+                   'priority': ['yes', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no']},
+                  index=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+critical_age = 3
+# print(df.loc[df.index[[0, 2, 3]], ['name', 'age']])
+# print(df.loc[df['age'] > critical_age])
+print(df[df['age'].isnull()])
 
 # ========================================== requests ===============================================================
 # import requests
