@@ -7819,10 +7819,22 @@ df = pd.DataFrame({'animal': ['cat', 'cat', 'snake', 'dog', 'dog', 'cat', 'snake
                    'visits': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
                    'priority': ['yes', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no']},
                   index=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
-critical_age = 3
+# critical_age = 3
 # print(df.loc[df.index[[0, 2, 3]], ['name', 'age']])
 # print(df.loc[df['age'] > critical_age])
-print(df[df['age'].isnull()])
+# print(df[df['age'].isnull()])
+
+# filter_names = ["animal", "age"]
+# filter_values = ["cat", 3]
+# print(df[(df[filter_names[0]] == filter_values[0]) & (df[filter_names[1]] < filter_values[1])])
+
+# age_between = [2, 4]
+# print(df[df['age'].between(age_between[0], age_between[-1])])
+
+# index = 'f'
+# df.loc[index, 'age'] += 1
+# print(df)
+
 
 # ========================================== requests ===============================================================
 # import requests
