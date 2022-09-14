@@ -7813,12 +7813,12 @@ import pandas as pd
 
 # print(df.loc[df.index[[0, 2, 3]]])
 # print(df.iloc[[0, 2, 3]])
-df = pd.DataFrame({'animal': ['cat', 'cat', 'snake', 'dog', 'dog', 'cat', 'snake', 'cat', 'dog', 'dog'],
-                   'age': [2.5, 3, 0.5, np.nan, 5, 2, 4.5, np.nan, 7, 3],
-                   'name': ['Murzik', 'Pushok', 'Kaa', 'Bobik', 'Strelka', 'Vaska', 'Kaa2', 'Murka', 'Graf', 'Muhtar'],
-                   'visits': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
-                   'priority': ['yes', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no']},
-                  index=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+# df = pd.DataFrame({'animal': ['cat', 'cat', 'snake', 'dog', 'dog', 'cat', 'snake', 'cat', 'dog', 'dog'],
+#                    'age': [2.5, 3, 0.5, np.nan, 5, 2, 4.5, np.nan, 7, 3],
+#                    'name': ['Murzik', 'Pushok', 'Kaa', 'Bobik', 'Strelka', 'Vaska', 'Kaa2', 'Murka', 'Graf', 'Muhtar'],
+#                    'visits': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+#                    'priority': ['yes', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no']},
+#                   index=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
 # critical_age = 3
 # print(df.loc[df.index[[0, 2, 3]], ['name', 'age']])
 # print(df.loc[df['age'] > critical_age])
@@ -7880,11 +7880,81 @@ df = pd.DataFrame({'animal': ['cat', 'cat', 'snake', 'dog', 'dog', 'cat', 'snake
 # df[column] = df[column].map({'yes': True, 'no': False, 1: True, 0: False})
 # print(df)
 
-column = 'animal'
-old_value = 'snake'
-new_value = 'python'
-df[column] = df[column].replace(old_value, new_value)
-print(df)
+# column = 'animal'
+# old_value = 'snake'
+# new_value = 'python'
+# df[column] = df[column].replace(old_value, new_value)
+# print(df)
+
+pd.set_option('display.max_columns', None)  # выыодит все колонки без сокращений
+pd.options.display.expand_frame_repr = False  # выводит все колонки без их переноса на следующую строку
+# df = pd.read_csv('students.csv')
+# print(df)
+# print(df.groupby('Group')['Mark'].mean())
+# print(df[['Group', 'Mark']].groupby('Group').mean())
+
+
+# df = pd.read_csv('torg.csv', sep=';')
+# print(df.head())
+# print(df.groupby(['IP_PROP30'])['IP_PROP30'].count())
+
+# df_group = df[['IP_PROP30', 'CP_QUANTITY']].groupby('IP_PROP30')
+# print(df_group.sum().idxmax())
+
+# df_group = df.groupby('IP_PROP32').CP_QUANTITY.sum()
+# print(df_group)
+
+# titanic_df = pd.read_csv('titanic.csv')
+# print(titanic_df.groupby(['Sex', 'Survived'])['Sex'].count())
+# print(df.groupby(['Group'])['Mark'].mean())
+# a = df.groupby(['Group', 'sex'])['Mark'].mean()
+# Group  sex
+# А      f      4.5
+#        m      3.0
+# Б      f      5.0
+#        m      4.0
+# print(a)
+#   Group sex  Mark
+# 0     А   f   4.5
+# 1     А   m   3.0
+# 2     Б   f   5.0
+# 3     Б   m   4.0
+# print(a.reset_index())
+# print(a.loc[('А', 'f')])
+# m = df.groupby(['Group', 'sex'], as_index=False)['Mark'].mean()
+# print(m, '+++++++++++')
+# gr = df.groupby(['Group'])
+# for i in gr:
+#     print(i)
+#     print()
+
+# df_log = pd.read_csv('dataset_345422_8 (2).txt', sep=';')
+# df_log['total'] = df_log['CP_QUANTITY'] * df_log['CR_PRICE_1_USD']
+# print(df_log.groupby(['IP_PROP30', 'IP_PROP32'])['total'].sum().loc['pink', 'XL'])
+
+# df_log = pd.read_csv('export.csv', sep=';')
+# df_log['IP_PROP5562'] = pd.to_datetime(df_log['IP_PROP5562'])
+# df_log['date'] = df_log['IP_PROP5562'].dt.date
+# print(df_log.groupby(['date'])['date'].count())
+
+# df = pd.read_csv('students.csv')
+#
+#
+# # print(df.agg(x=('Mark', 'min'), y=('id', 'min')))
+# def grants_count(col):
+#     return col[col > 3].count()
+#
+#
+# print(df.groupby('Group', as_index=False).agg({'Mark': ['min', 'max', grants_count, 'count']}).
+#       rename(
+#     columns={'Group': 'Группа', 'Mark': 'Оценки', 'grants_count': 'Получат оценкки', 'count': 'Всего учеников'}))
+
+df = pd.read_csv('doc/StudentsPerformance.csv')
+df = df.groupby(['gender', 'parental level of education']).mean()
+df['mean_score'] = df[['math score', 'reading score', 'writing score']].mean(axis=1)
+female = df.groupby(['gender', 'parental level of education'])['mean_score'].mean().loc['female']
+male = df.groupby(['gender', 'parental level of education'])['mean_score'].mean().loc['male']
+print(male[female.idxmax()].round(1))
 
 
 # ========================================== requests ===============================================================
