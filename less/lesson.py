@@ -2,6 +2,7 @@ import datetime
 import logging
 
 import numpy
+from dateutil.parser import parser
 
 root = logging.getLogger()
 
@@ -7949,12 +7950,26 @@ pd.options.display.expand_frame_repr = False  # выводит все колон
 #       rename(
 #     columns={'Group': 'Группа', 'Mark': 'Оценки', 'grants_count': 'Получат оценкки', 'count': 'Всего учеников'}))
 
-df = pd.read_csv('doc/StudentsPerformance.csv')
-df = df.groupby(['gender', 'parental level of education']).mean()
-df['mean_score'] = df[['math score', 'reading score', 'writing score']].mean(axis=1)
-female = df.groupby(['gender', 'parental level of education'])['mean_score'].mean().loc['female']
-male = df.groupby(['gender', 'parental level of education'])['mean_score'].mean().loc['male']
-print(male[female.idxmax()].round(1))
+# df = pd.read_csv('doc/StudentsPerformance.csv')
+# df = df.groupby(['gender', 'parental level of education']).mean()
+# df['mean_score'] = df[['math score', 'reading score', 'writing score']].mean(axis=1)
+# female = df.groupby(['gender', 'parental level of education'])['mean_score'].mean().loc['female']
+# male = df.groupby(['gender', 'parental level of education'])['mean_score'].mean().loc['male']
+# print(male[female.idxmax()].round(1))
+from dateutil import parser
+
+days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+df = pd.read_csv('doc/dataset_345422_14.txt')
+df['Date'] = pd.to_datetime(df['Date'])
+df['Weeakday'] = df['Date'].dt.dayofweek
+
+df['mean_day_road'] = df[['Berri 1', 'Côte-Sainte-Catherine', 'Maisonneuve 1',
+                  'Maisonneuve 2', 'du Parc', 'Pierre-Dupuy', 'Rachel1']].mean(axis=1)
+day = df.groupby(['Weeakday'], as_index=False)['mean_day_road'].mean()
+print(day)
+print(days[int(day['mean_day_road'].idxmax())])
+
+
 
 
 # ========================================== requests ===============================================================
