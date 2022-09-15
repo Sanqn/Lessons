@@ -7956,18 +7956,54 @@ pd.options.display.expand_frame_repr = False  # выводит все колон
 # female = df.groupby(['gender', 'parental level of education'])['mean_score'].mean().loc['female']
 # male = df.groupby(['gender', 'parental level of education'])['mean_score'].mean().loc['male']
 # print(male[female.idxmax()].round(1))
-from dateutil import parser
 
-days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-df = pd.read_csv('doc/dataset_345422_14.txt')
-df['Date'] = pd.to_datetime(df['Date'])
-df['Weeakday'] = df['Date'].dt.dayofweek
+#
+# days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+# df = pd.read_csv('doc/dataset_345422_14.txt')
+# df['Date'] = pd.to_datetime(df['Date'])
+# df['Weeakday'] = df['Date'].dt.dayofweek
+#
+# df['mean_day_road'] = df[['Berri 1', 'Côte-Sainte-Catherine', 'Maisonneuve 1',
+#                   'Maisonneuve 2', 'du Parc', 'Pierre-Dupuy', 'Rachel1']].mean(axis=1)
+# day = df.groupby(['Weeakday'], as_index=False)['mean_day_road'].mean()
+# print(day)
+# print(days[int(day['mean_day_road'].idxmax())])
 
-df['mean_day_road'] = df[['Berri 1', 'Côte-Sainte-Catherine', 'Maisonneuve 1',
-                  'Maisonneuve 2', 'du Parc', 'Pierre-Dupuy', 'Rachel1']].mean(axis=1)
-day = df.groupby(['Weeakday'], as_index=False)['mean_day_road'].mean()
-print(day)
-print(days[int(day['mean_day_road'].idxmax())])
+# df = pd.read_csv('doc/football_players.csv')
+# mean_zp = df.groupby('Club', as_index=False)['Wage'].mean()
+# median_zp = df.groupby('Club', as_index=False)['Wage'].median()
+# mean_zp['med_wa'] = median_zp['Wage']
+# print(mean_zp.loc[mean_zp['Wage'] == mean_zp['med_wa']].count())
+
+# df = pd.read_csv('doc/dataset_file_storage.csv', sep=';')
+# file_size_by_company = df.groupby(['CompanyID', 'ProjectID'], as_index=False)['FileSize'].sum()
+# mean_si = file_size_by_company.mean()['FileSize']
+# file_size_by_company = file_size_by_company.groupby(['CompanyID'], as_index=False).max()
+# file_size_by_company['FileSize1'] = ((file_size_by_company['FileSize'] * 0) + 1) * mean_si
+# print(file_size_by_company.head())
+# print(file_size_by_company.loc[file_size_by_company['FileSize'] > file_size_by_company['FileSize1']].count())
+
+df = pd.read_csv('doc/dataset_file_storage.csv', sep=';')
+file_size_by_company = df.groupby(['CompanyID', 'ProjectID'], as_index=False)['FileSize'].sum()
+mean_si = file_size_by_company.mean()['FileSize']
+file_size_by_company['FileSize'] = ((file_size_by_company['FileSize'] * 0) + 1) * mean_si
+file_me1 = df.groupby(['CompanyID', 'ProjectID'], as_index=False)['FileSize'].sum()
+file_me1 = file_me1.groupby(['CompanyID'], as_index=False).max()
+new_tab = pd.merge(file_size_by_company, file_me1, on=('CompanyID', 'ProjectID'))
+print(new_tab)
+print(new_tab.loc[new_tab['FileSize_x'] < new_tab['FileSize_y']].count())
+
+
+# df = pd.read_csv('doc/dataset_file_storage.csv', sep=';')
+# file_size_by_company = df.groupby(['CompanyID', 'ProjectID'])['FileSize'].sum()
+# print(file_size_by_company)
+# mean = file_size_by_company.mean()
+# print(sum(file_size_by_company.groupby("CompanyID").max() > mean))
+
+
+
+
+
 
 
 
@@ -8072,11 +8108,9 @@ import math
 
 # x = np.arange(0, 5, 0.1)
 
-
 # x = [0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7
 #  1.8 1.9 2.  2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.  3.1 3.2 3.3 3.4 3.5
 #  3.6 3.7 3.8 3.9 4.  4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9]
-
 
 # def f(x):
 #     return x ** 2
@@ -8106,7 +8140,6 @@ import math
 #                   margin=dict(l=0, r=0, t=35, b=0))  # отступы графика
 # fig.update_traces(hoverinfo="all", hovertemplate="Аргумент: %{x}<br>Функция: %{y}")
 # fig.show()
-
 
 # x = np.arange(-2 * math.pi, 2*math.pi, 0.1)
 # n = np.arange(0, 5, 0.1)
@@ -8168,7 +8201,6 @@ import math
 
 # n = np.arange(0, 5, 0.1)
 
-
 # def f(n):
 #     return n ** 2
 # def h(n):
@@ -8196,7 +8228,6 @@ import math
 #
 # def k(x):
 #     return np.cos(x)
-
 
 # fig = go.Figure()
 # fig.add_trace(go.Scatter(x=[x[0]], y=[f(x)[0]], mode='lines+markers', name='f(x)=x<sup>2</sup>',
