@@ -4,14 +4,24 @@ import logging
 import numpy
 from dateutil.parser import parser
 
-root = logging.getLogger()
+logging.getLogger()
 
 logging.basicConfig(
     level=logging.DEBUG,
-    filename="mylog.log",
+    filename="doc/mylog.log",
     format="%(asctime)s - %(module)s - %(levelname)s - %(funcName)s: %(lineno)d - %(message)s",
     datefmt='%Y-%m-%d %H:%M:%S',
 )
+
+# for i in range(10):
+#     if i == 5:
+#         try:
+#             a = i/0
+#             print(a)
+#         except Exception as e:
+#             logging.error(f'error {e}')
+#     logging.info(f'load file {i} on server')
+
 # try:
 #     a = 6/0
 #     print(a)
@@ -7176,15 +7186,6 @@ import time
 #     else:
 #         break
 
-# for i in range(10):
-#     if i == 5:
-#         try:
-#             a = i/0
-#             print(a)
-#         except Exception as e:
-#             logging.error(f'error {e}')
-#     logging.info(f'load file {i} on server')
-
 # import itertools
 #
 #
@@ -7983,15 +7984,15 @@ pd.options.display.expand_frame_repr = False  # выводит все колон
 # print(file_size_by_company.head())
 # print(file_size_by_company.loc[file_size_by_company['FileSize'] > file_size_by_company['FileSize1']].count())
 
-df = pd.read_csv('doc/dataset_file_storage.csv', sep=';')
-file_size_by_company = df.groupby(['CompanyID', 'ProjectID'], as_index=False)['FileSize'].sum()
-mean_si = file_size_by_company.mean()['FileSize']
-file_size_by_company['FileSize'] = ((file_size_by_company['FileSize'] * 0) + 1) * mean_si
-file_me1 = df.groupby(['CompanyID', 'ProjectID'], as_index=False)['FileSize'].sum()
-file_me1 = file_me1.groupby(['CompanyID'], as_index=False).max()
-new_tab = pd.merge(file_size_by_company, file_me1, on=('CompanyID', 'ProjectID'))
-print(new_tab)
-print(new_tab.loc[new_tab['FileSize_x'] < new_tab['FileSize_y']].count())
+# df = pd.read_csv('doc/dataset_file_storage.csv', sep=';')
+# file_size_by_company = df.groupby(['CompanyID', 'ProjectID'], as_index=False)['FileSize'].sum()
+# mean_si = file_size_by_company.mean()['FileSize']
+# file_size_by_company['FileSize'] = ((file_size_by_company['FileSize'] * 0) + 1) * mean_si
+# file_me1 = df.groupby(['CompanyID', 'ProjectID'], as_index=False)['FileSize'].sum()
+# file_me1 = file_me1.groupby(['CompanyID'], as_index=False).max()
+# new_tab = pd.merge(file_size_by_company, file_me1, on=('CompanyID', 'ProjectID'))
+# print(new_tab)
+# print(new_tab.loc[new_tab['FileSize_x'] < new_tab['FileSize_y']].count())
 
 
 # df = pd.read_csv('doc/dataset_file_storage.csv', sep=';')
@@ -8000,13 +8001,61 @@ print(new_tab.loc[new_tab['FileSize_x'] < new_tab['FileSize_y']].count())
 # mean = file_size_by_company.mean()
 # print(sum(file_size_by_company.groupby("CompanyID").max() > mean))
 
+# df = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3', 'K4', 'K5'],
+#                    'A': ['A0', 'A1', 'A2', 'A3', 'A4', 'A5']})
+#
+# other = pd.DataFrame({'key': ['K0', 'K1', 'K2'],
+#                       'B': ['B0', 'B1', 'B2']})
+#
+# a = pd.merge(df, other, on='key', how='left')
+#
+# a.index.name = 'Numb'
+# print(a)
 
+# with open('doc/dataset_48784_9 (1).txt', 'r', encoding='utf8') as f:
+#     a = f.readlines()
+#     print(a)
+#     print(*map(lambda x: x[0], a))
+#
+# import re
+# print(re.split('[^a-z]', input().lower()))
 
+# L1 = ['cat', 's', '', 'power', '']
+# L2 = [i for i in L1 if i]
+# print(L2)
 
+# L1 = [['one', 'two', 'three'], [1, 2, 3, 4, 5, 6]]
+# L2 = []
+# for i in L1:
+#     L2 += i
+# print(L2)
 
+# a = '2 5 1'.split()
+# b = '1 -10 3'.split()
+# a = [int(i) for i in a]
+# b = [int(i) for i in b]
+# print(a, b)
+# n_m = np.array([a[:-1], b[:-1]])
+# v = np.array([a[-1], b[-1]])
+# x = np.linalg.solve(n_m, v)
+# print(x)
 
-
-
+# a11, a12, b1 = input().split()
+# a21, a22, b2 = input().split()
+# M1 = numpy.array([[int(a11), int(a12)], [int(a21), int(a22)]]) # Матрица (левая часть системы)
+# v1 = numpy.array([int(b1), int(b2)]) # Вектор (правая часть системы)
+# if numpy.linalg.det(M1) != 0.0:
+#     r = numpy.linalg.solve(M1, v1)
+#     print(r[0], r[1])
+# else:
+#     print("Матрица системы вырожденная")
+# n = [int(i) for i in input().split()]
+# if len(n) < 2:
+#     print('Ошибка. Кучек слишком мало, чтобы можно было решить задачу.')
+# elif sum(n) % len(n) == 0:
+#     print('Кучки можно уравнять')
+# else:
+#     print('Кучки нельзя уравнять')
 
 # ========================================== requests ===============================================================
 # import requests
@@ -8107,11 +8156,11 @@ import pandas as pd
 import math
 
 # x = np.arange(0, 5, 0.1)
-
-# x = [0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7
-#  1.8 1.9 2.  2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.  3.1 3.2 3.3 3.4 3.5
-#  3.6 3.7 3.8 3.9 4.  4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9]
-
+#
+# # x = [0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7
+# #  1.8 1.9 2.  2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.  3.1 3.2 3.3 3.4 3.5
+# #  3.6 3.7 3.8 3.9 4.  4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9]
+#
 # def f(x):
 #     return x ** 2
 #
@@ -8317,3 +8366,40 @@ import math
 # fig = go.Figure()
 # fig.add_trace(go.Pie(values=sum_counts, labels=sum_counts.index))
 # fig.show()
+
+# def checker(func):
+#     def tmp(*args):
+#         print(args)
+#         a, b, v = args
+#         a = a * 10
+#         b = b + 30000
+#         v = v /20000
+#         return func(a, b, v)
+#     return tmp
+#
+# @checker
+# def colbont(a, b, v):
+#     return f' So its digits = {a}, {b}, {v}'
+#
+# print(colbont(4, 6, 79009))
+
+from base64 import b64encode, b64decode
+import requests
+from urllib.parse import unquote_plus
+# log = b64encode(b'user123' + b':' + b'pass321')
+# print(log)
+# print(b64decode(log))
+url = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
+# url = 'https://stepic.org/favicon.ico'
+res = requests.get(url)
+data = dict(key='API_KEY', text='Hello', lang='en-es')
+headers = {'token': 'jgeljjgeljglejglegjelgjelgjel'}
+res = requests.get(url, headers=headers, data=data)
+print(res.status_code)
+print(res.headers['Server'])
+print(res.headers['Set-Cookie'], 'Set-Cookie')
+print(res.headers['Content-Length'])
+print(res.json(), 'json')
+print(res.cookies, 'cookies')
+print(res.text)
+# print(unquote_plus('%D0%A3%D1%87%D0%B5%D0%BD%D1%8C%D0%B5%20-%20%D1%81%D0%B2%D0%B5%D1%82'))
