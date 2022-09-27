@@ -8383,23 +8383,55 @@ import math
 #
 # print(colbont(4, 6, 79009))
 
-from base64 import b64encode, b64decode
-import requests
-from urllib.parse import unquote_plus
-# log = b64encode(b'user123' + b':' + b'pass321')
-# print(log)
-# print(b64decode(log))
-url = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
-# url = 'https://stepic.org/favicon.ico'
-res = requests.get(url)
-data = dict(key='API_KEY', text='Hello', lang='en-es')
-headers = {'token': 'jgeljjgeljglejglegjelgjelgjel'}
-res = requests.get(url, headers=headers, data=data)
-print(res.status_code)
-print(res.headers['Server'])
-print(res.headers['Set-Cookie'], 'Set-Cookie')
-print(res.headers['Content-Length'])
-print(res.json(), 'json')
-print(res.cookies, 'cookies')
-print(res.text)
+# from base64 import b64encode, b64decode
+# import requests
+# from urllib.parse import unquote_plus
+# # log = b64encode(b'user123' + b':' + b'pass321')
+# # print(log)
+# # print(b64decode(log))
+# url = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
+# # url = 'https://stepic.org/favicon.ico'
+# res = requests.get(url)
+# data = dict(key='API_KEY', text='Hello', lang='en-es')
+# headers = {'token': 'jgeljjgeljglejglegjelgjelgjel'}
+# res = requests.get(url, headers=headers, data=data)
+# print(res.status_code)
+# print(res.headers['Server'])
+# print(res.headers['Set-Cookie'], 'Set-Cookie')
+# print(res.headers['Content-Length'])
+# print(res.json(), 'json')
+# print(res.cookies, 'cookies')
+# print(res.text)
 # print(unquote_plus('%D0%A3%D1%87%D0%B5%D0%BD%D1%8C%D0%B5%20-%20%D1%81%D0%B2%D0%B5%D1%82'))
+
+# Echo server program
+import socket
+
+HOST = 'localhost'
+PORT = 2222
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.bind((HOST, PORT))
+    s.listen(1)
+    while True:
+        conn, addr = s.accept()
+        print(f'Connected: {addr}')
+        while True:
+            data = conn.recv(1024)
+            if not data or data == b'close':
+                break
+            print(data)
+            conn.send(data)
+        print('close')
+
+# Echo client program (copy this code and insert into other file and run two files)
+import socket
+
+HOST = 'localhost'
+PORT = 2222
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((HOST, PORT))
+    s.send(b'close')
+    data = s.recv(1024)
+print('Received', data)
+
+
