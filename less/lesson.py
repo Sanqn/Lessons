@@ -6586,6 +6586,8 @@ logging.basicConfig(
 # import time
 #
 #
+import asyncio
+import time
 # async def fun(l):
 #     for i in range(l):
 #         print(i**50)
@@ -6739,7 +6741,7 @@ import time
 #     print(f"Task {name} factorial{number} = {f}")
 #     return f
 #
-#
+# #
 # # async def main():
 # #     L = await asyncio.gather(
 # #         factorial('A', 3),
@@ -8406,32 +8408,78 @@ import math
 
 # Echo server program
 import socket
+import os
 
-HOST = 'localhost'
-PORT = 2222
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.bind((HOST, PORT))
-    s.listen(1)
-    while True:
-        conn, addr = s.accept()
-        print(f'Connected: {addr}')
-        while True:
-            data = conn.recv(1024)
-            if not data or data == b'close':
-                break
-            print(data)
-            conn.send(data)
-        print('close')
+# HOST = 'localhost'
+# PORT = 2222
+# with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+#     s.bind((HOST, PORT))
+#     s.listen(1)
+#     while True:
+#         conn, addr = s.accept()
+#         print(f'Connected: {addr}')
+#         while True:
+#             data = conn.recv(1024)
+#             if not data or data == b'close':
+#                 break
+#             print(data)
+#             conn.send(data)
+#         print('close')
 
+# # Echo server program
+# HOST = 'localhost'
+# PORT = 2222
+# with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+#     s.bind((HOST, PORT))
+#     s.listen(1)
+#     while True:
+#             conn, addr = s.accept()
+#             pid = os.fork() # fork work only on Unix platform
+#             if pid == 0:
+#                     while True:
+#                             data = conn.recv(1024)
+#                             if data == b'close':
+#                                     conn.close()
+#                                     break
+#                             print(data)
+#                             conn.send(data)
+#             else:
+#                     conn.close()
 # Echo client program (copy this code and insert into other file and run two files)
-import socket
+# import socket
+#
+# HOST = 'localhost'
+# PORT = 2222
+# with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+#     s.connect((HOST, PORT))
+#     s.send(b'close')
+#     data = s.recv(1024)
+# print('Received', data)
 
-HOST = 'localhost'
-PORT = 2222
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    s.send(b'close')
-    data = s.recv(1024)
-print('Received', data)
 
-
+# import asyncio, socket
+#
+# async def handle_client(client):
+#     loop = asyncio.get_event_loop()
+#     request = None
+#     while request != b'close':
+#         request = (await loop.sock_recv(client, 1024)).decode('utf8')
+#         print(request)
+#         response = str(eval(request)) + '\n'
+#         await loop.sock_sendall(client, response.encode('utf8'))
+#     client.close()
+#
+# async def run_server():
+#     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#     server.bind(('localhost', 2222))
+#     server.listen(10)
+#     # server.setblocking(False)
+#     #
+#     loop = asyncio.get_event_loop()
+#
+#     while True:
+#         client, addr = await loop.sock_accept(server)
+#         print(addr)
+#         loop.create_task(handle_client(client))
+#
+# asyncio.run(run_server())
