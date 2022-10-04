@@ -2,6 +2,7 @@ import datetime
 import logging
 
 import numpy
+import requests
 from dateutil.parser import parser
 
 logging.getLogger()
@@ -8060,16 +8061,44 @@ pd.options.display.expand_frame_repr = False  # выводит все колон
 #     print('Кучки нельзя уравнять')
 
 # ========================================== requests ===============================================================
-# import requests
-# import os
-# import zipfile
-# import datetime
-# import matplotlib.pyplot as plt
+import requests
+import os
+import zipfile
+import datetime
+import matplotlib.pyplot as plt
+from base64 import b64encode, b64decode
+from urllib.parse import unquote_plus, urlparse
+
+url = 'https://mail.com/search?name=lora&age=8'
+name = urlparse(url)
+a = name.query.split('&')
+di = {i.split('=')[0]: i.split('=')[1] for i in a}
+print(di)
+
+
+
+# # log = b64encode(b'user123' + b':' + b'pass321')
+# # print(log)
+# # print(b64decode(log))
+# url = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
+# # url = 'https://stepic.org/favicon.ico'
+# res = requests.get(url)
+# data = dict(key='API_KEY', text='Hello', lang='en-es')
+# headers = {'token': 'jgeljjgeljglejglegjelgjelgjel'}
+# res = requests.get(url, headers=headers, data=data)
+# print(res.status_code)
+# print(res.headers['Server'])
+# print(res.headers['Set-Cookie'], 'Set-Cookie')
+# print(res.headers['Content-Length'])
+# print(res.json(), 'json')
+# print(res.cookies, 'cookies')
+# print(res.text)
+# print(unquote_plus('%D0%A3%D1%87%D0%B5%D0%BD%D1%8C%D0%B5%20-%20%D1%81%D0%B2%D0%B5%D1%82'))
 #
 #
 #
 # response = requests.get('https://stepik.org/media/attachments/lesson/196432/img.zip')
-#
+# print(response.headers['Content-Type'])
 # work_path = 'temp'
 # if not os.path.exists(work_path):
 #     os.mkdir(work_path)
@@ -8082,7 +8111,7 @@ pd.options.display.expand_frame_repr = False  # выводит все колон
 #
 #     with zipfile.ZipFile(f"{work_path}\img.zip", 'r') as f:
 #         namelist = f.namelist()
-#         print(namelist)
+#         print(namelist, 'namelist')
 #         f.extractall(work_path)
 # files_counter = 0
 # img = dict()
@@ -8093,7 +8122,7 @@ pd.options.display.expand_frame_repr = False  # выводит все колон
 #         with open(work_path+'/'+f, 'rb') as img_file:
 #             img[files_counter] = plt.imread(img_file)
 # print(img)
-# print(files_counter)
+# print('files =', files_counter)
 
 # import requests
 #
@@ -8105,6 +8134,7 @@ pd.options.display.expand_frame_repr = False  # выводит все колон
 # r = requests.get(url, params=params)
 # if r.status_code == 200:
 #     print('Status code', r.status_code)
+#     print(r.json(), '==================')
 #     data = r.json()['results']
 #     print(data)
 #     print(data[0].keys())
@@ -8385,26 +8415,6 @@ import math
 #
 # print(colbont(4, 6, 79009))
 
-# from base64 import b64encode, b64decode
-# import requests
-# from urllib.parse import unquote_plus
-# # log = b64encode(b'user123' + b':' + b'pass321')
-# # print(log)
-# # print(b64decode(log))
-# url = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
-# # url = 'https://stepic.org/favicon.ico'
-# res = requests.get(url)
-# data = dict(key='API_KEY', text='Hello', lang='en-es')
-# headers = {'token': 'jgeljjgeljglejglegjelgjelgjel'}
-# res = requests.get(url, headers=headers, data=data)
-# print(res.status_code)
-# print(res.headers['Server'])
-# print(res.headers['Set-Cookie'], 'Set-Cookie')
-# print(res.headers['Content-Length'])
-# print(res.json(), 'json')
-# print(res.cookies, 'cookies')
-# print(res.text)
-# print(unquote_plus('%D0%A3%D1%87%D0%B5%D0%BD%D1%8C%D0%B5%20-%20%D1%81%D0%B2%D0%B5%D1%82'))
 
 # Echo server program
 import socket
@@ -8463,12 +8473,12 @@ import os
 #     loop = asyncio.get_event_loop()
 #     request = None
 #     while request != b'close':
-#         request = (await loop.sock_recv(client, 1024)).decode('utf8')
+#         request = await loop.sock_recv(client, 1024).decode('utf8')
 #         print(request)
 #         response = str(eval(request)) + '\n'
 #         await loop.sock_sendall(client, response.encode('utf8'))
 #     client.close()
-#
+
 # async def run_server():
 #     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #     server.bind(('localhost', 2222))
@@ -8483,3 +8493,58 @@ import os
 #         loop.create_task(handle_client(client))
 #
 # asyncio.run(run_server())
+# import time
+# import requests
+# import asyncio
+# import aiohttp
+#
+# URL = 'https://api.github.com/events'
+# MAX_CLIENTS = 3
+#
+#
+# def fetch_sync(pid):
+#     print('Fetch sync process {} started'.format(pid))
+#     start = time.time()
+#     print(start)
+#     response = requests.get(URL)
+#     datetime = response.headers['Date']
+#
+#     print(f'Process {pid}: {datetime}, took: {time.time() - start} seconds')
+#
+#     return datetime
+#
+#
+# async def fetch_async(pid):
+#     print('Fetch async process {} started'.format(pid))
+#     start = time.time()
+#     response = await aiohttp.request('GET', URL)
+#     datetime1 = response.headers.get('Date')
+#
+#     print(f'Process {pid}: {datetime1}, took: {time.time() - start} seconds')
+#
+#     response.close()
+#     return datetime
+#
+#
+# def synchronous():
+#     start = time.time()
+#     for i in range(1, MAX_CLIENTS + 1):
+#         fetch_sync(i)
+#     print(f"Process took: {time.time() - start} seconds")
+#
+#
+# async def asynchronous():
+#     start = time.time()
+#     tasks = [asyncio.ensure_future(
+#         fetch_async(i)) for i in range(1, MAX_CLIENTS + 1)]
+#     await asyncio.wait(tasks)
+#     print(f"Process took: {time.time() - start} seconds")
+#
+#
+# print('Synchronous:')
+# synchronous()
+#
+# print('Asynchronous:')
+# loop = asyncio.get_event_loop()
+# loop.run_until_complete(asynchronous())
+# loop.close()
