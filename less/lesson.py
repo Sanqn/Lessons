@@ -8061,20 +8061,19 @@ pd.options.display.expand_frame_repr = False  # выводит все колон
 #     print('Кучки нельзя уравнять')
 
 # ========================================== requests ===============================================================
-import requests
-import os
-import zipfile
-import datetime
-import matplotlib.pyplot as plt
-from base64 import b64encode, b64decode
-from urllib.parse import unquote_plus, urlparse
-
-url = 'https://mail.com/search?name=lora&age=8'
-name = urlparse(url)
-a = name.query.split('&')
-di = {i.split('=')[0]: i.split('=')[1] for i in a}
-print(di)
-
+# import requests
+# import os
+# import zipfile
+# import datetime
+# import matplotlib.pyplot as plt
+# from base64 import b64encode, b64decode
+# from urllib.parse import unquote_plus, urlparse
+#
+# url = 'https://mail.com/search?name=lora&age=8'
+# name = urlparse(url)
+# a = name.query.split('&')
+# di = {i.split('=')[0]: i.split('=')[1] for i in a}
+# print(di)
 
 
 # # log = b64encode(b'user123' + b':' + b'pass321')
@@ -8548,3 +8547,176 @@ import os
 # loop = asyncio.get_event_loop()
 # loop.run_until_complete(asynchronous())
 # loop.close()
+# import json
+#
+# data = {'users': [{'id': 1, 'name': 'user1', }, {'id': 2, 'name': 'user2', }, ]}
+# print(type(data))
+# json_str = json.dumps(data)
+# print(json_str, type(json_str))
+# import pandas
+#
+# excel_data_df = pandas.read_excel('test_file.xlsx')
+# list_articles = list(excel_data_df[73512949])
+# li = excel_data_df.cummins
+# print(list_articles)
+# print(li)
+# for i in li:
+#     print(i, 'iiiiiiiiiiiiii')
+# x = [7, 4, 5, 7]
+# a = [x[i] for i in range(len(x) - 1) if x[i] < x[i + 1]]
+# b = [x[i] for i in range(len(x) - 1) if x[i] >= x[i + 1]]
+# print(a)
+# print(x[0], b)
+# print([*a, *b, x[0]])
+
+
+# def qsort1(L):
+#     if L:
+#         print(L[:1])
+#         print(L)
+#         return qsort1([i for i in L[1:] if i < L[0]]) + L[:1] + \
+#     qsort1([i for i in L[1:] if i >= L[0]])
+#     return []
+
+#  ================================================= Jinja2 =========================================
+
+# class Person:
+#
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#
+# per = Person("Lussy", 90)
+# tm = Template("Hello my name is {{ p.name }}, my age {{ p.age }}")
+# msg = tm.render(p=per)
+# print(msg)
+
+from jinja2 import Template
+from markupsafe import escape
+
+
+# можно экранировать текст так {% raw %} {% endraw %}
+# link = ''' {% raw %}
+# Доказательство ведётся индуктивно по n. При n=3 теорема тривиальна. Рассмотрим случай при n>3 и предположим,
+# что теорема выполняется при всех m<n. Докажем существование диагонали в многоугольнике P.
+# Возьмём самую левую по оси x вершину v многоугольника P и <a href="https://google.com">Триангуляция</a> две смежных с ней вершины u и w.
+# Если отрезок uw принадлежит внутренней области P — мы нашли диагональ.{% endraw %}
+# '''
+
+# link = ''' {% raw %}
+# Доказательство ведётся индуктивно по n. При n=3 теорема тривиальна. Рассмотрим случай при n>3 и предположим,
+# что теорема выполняется при всех m<n. Докажем существование диагонали в многоугольнике P.
+# Возьмём самую левую по оси x вершину v многоугольника P и <a href="https://google.com">Триангуляция</a> две смежных с ней вершины u и w.
+# Если отрезок uw принадлежит внутренней области P — мы нашли диагональ.{% endraw %}
+# '''
+# #  test page jinj_page.html
+# # e - экранирование тегов и других символов (&lt;a href=&#34;https://google.com&#34;&gt;Триангуляция&lt;/a&gt;)
+# # tm = Template("{{ link| e }}")
+# # mg = tm.render(link=link)
+#
+# # более простое экранироавние
+# tm = escape(link)
+# print(tm)
+# ---------------------------------------------------------------------------------
+# cities = [
+#     {'id': 1, 'city': 'NY'},
+#     {'id': 2, 'city': 'Boston'},
+#     {'id': 3, 'city': 'London'},
+# ]
+# # '-' в for убирает пробелы и переносы
+# link = '''
+#     Most popular cities is:
+#     {% for c in cities -%}
+#         {%- if c.id > 1 -%}
+#             Number {{ c.id }}, city: {{ c.city }}
+#         {%- endif %}
+#     {% endfor %}
+# '''
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+# print(msg)
+# ---------------------------------------------------------------------------------------------
+# cars = [
+#     {'model': 'Audi', 'price': 20000},
+#     {'model': 'BMW', 'price': 22000},
+#     {'model': 'Jaguar', 'price': 120000},
+#     {'model': 'Lexus', 'price': 60000},
+# ]
+#
+# s_slice = '''
+#     Price car:
+#     {% for i in c  %}
+#     Car model {% filter upper %}{{ i.model }}{% endfilter %} and price {{ i.price }}
+#     {%- endfor %}
+#     Total price all cars is {{ c | sum(attribute = 'price') }}
+# '''
+#
+# tm = Template(s_slice)
+# msg = tm.render(c=cars)
+# print(msg)
+
+# a = [1, 3, 4, 5, 60]
+# tm = Template("Total digits {{ a | sum }}")
+# msg = tm.render(a=a)
+# print(msg)
+# ----------------------------------------------------------------------------------
+# makro_s = '''
+#     {% macro input(name) -%}
+#     <input type='{{ type }}' name='{{ name }}'>
+#     {%- endmacro %}
+#
+# <p>{{ input('username') }}</p>
+# <p>{{ input('email') }}</p>
+# <p>{{ input('password') }}</p>
+# '''
+#
+# tm = Template(makro_s)
+# msg = tm.render()
+# print(msg)
+# --------------------------------------------------------------------------------
+# persons = [
+#     {'name': 'Alex', 'age': 18, 'weight': 50},
+#     {'name': 'Bob', 'age': 24, 'weight': 56},
+#     {'name': 'Luna', 'age': 12, 'weight': 35},
+# ]
+# html = '''
+#     {% macro list_users(list_of_user) -%}
+#     <ul>
+#     {% for user in list_of_user -%}
+#     <li>
+#         {{ user.name }} {{ caller(user) }}
+#     </li>
+#     {% endfor -%}
+#     </ul>
+#     {%- endmacro %}
+#     {% call(u) list_users(persons) %}
+#         <ul>
+#             <li>age: {{ u.age }}</li>
+#             <li>weight: {{ u.weight }}</li>
+#         </ul>
+#     {%- endcall -%}
+# '''
+#
+# tm = Template(html)
+# msg = tm.render(persons=persons)
+# print(msg)
+# -------------------------------------------------------------------------------
+# from jinja2 import Environment, FileSystemLoader
+#
+# persons = [
+#     {'name': 'Alex', 'age': 18, 'weight': 50},
+#     {'name': 'Bob', 'age': 24, 'weight': 56},
+#     {'name': 'Luna', 'age': 12, 'weight': 35},
+# ]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template('main.html')
+# msg = tm.render(persons=persons)
+# print(msg)
+# ---------------------------------------------------------------------------
+
+# test
